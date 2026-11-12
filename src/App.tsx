@@ -1,4 +1,3 @@
-import { useCallback, useState } from "react";
 import { FloatingActions, Footer, Header } from "./components/Chrome";
 import { useReveal } from "./components/useReveal";
 import { About, Areas, Hero, WhyUs } from "./sections/HomeSections";
@@ -6,26 +5,22 @@ import { Services } from "./sections/Services";
 import { Gallery } from "./sections/Gallery";
 import { Faq } from "./sections/FaqReviews";
 import { Contact } from "./sections/Contact";
+import { ServicePage } from "./sections/ServicePage";
+import { NotFound } from "./sections/NotFound";
+import { SERVICES, servicePath } from "./lib/data";
 import { LocalPage, PLACES } from "./sections/LocalPage";
 
 export type ServiceRequest = { title: string; id: number } | null;
 
 export default function App({ pathname = "/" }: { pathname?: string }) {
-  const [request, setRequest] = useState<ServiceRequest>(null);
   useReveal();
 
-  const handleRequest = useCallback((title: string) => {
-    setRequest((current) => ({ title, id: (current?.id ?? 0) + 1 }));
-    window.setTimeout(() => {
-      const el = document.getElementById("contact");
-      if (!el) return;
-      const y = el.getBoundingClientRect().top + window.scrollY - 108;
-      window.scrollTo({ top: Math.max(y, 0), behavior: "smooth" });
-    }, 80);
-  }, []);
+  const service = SERVICES.find((item) => servicePath(item) === (pathname.endsWith("/") ? pathname : `${pathname}/`));
+  if (service) return <ServicePage service={service} />;
 
   const place = PLACES[pathname.endsWith("/") ? pathname : `${pathname}/`];
   if (place) return <LocalPage place={place} />;
+  if (pathname !== "/") return <NotFound />;
 
   return (
     <>
@@ -41,13 +36,13 @@ export default function App({ pathname = "/" }: { pathname?: string }) {
       <main id="main">
         <Hero />
         <About />
-        <Services onRequest={handleRequest} />
+        <Services />
         <WhyUs />
         <Gallery />
         <Areas />
         <Faq />
 
-        <Contact initialService={request} />
+        <Contact initialService={null} />
       </main>
 
       <Footer />

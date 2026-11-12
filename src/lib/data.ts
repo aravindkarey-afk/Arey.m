@@ -456,3 +456,6 @@ export const scrollToSection = (target: string) => {
   const y = el.getBoundingClientRect().top + window.scrollY - 108;
   window.scrollTo({ top: Math.max(y, 0), behavior: "smooth" });
 };
+
+/** Stable, readable URLs shared by the service cards and static page generation. */
+export const servicePath = (service: Service) => `/services/${service.short.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}/`;

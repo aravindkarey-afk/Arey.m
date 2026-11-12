@@ -57,7 +57,7 @@ export function Hero() {
           </h1>
 
           <p className="mb-5 max-w-[540px] text-[16px] leading-[1.7] text-muted sm:text-[17px]">
-            Invisible grills and safety nets for balconies, windows and the spaces you love. Serving Nalgonda, Nallagandla, Vanasthalipuram and communities across Hyderabad and Telangana.
+            Invisible grills and safety nets for balconies, windows and the spaces you love. Serving Nallagandla, Vanasthalipuram and communities across Hyderabad and Telangana.
           </p>
 
           <div className="mb-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-[13.5px] font-medium text-navy">
@@ -294,11 +294,11 @@ export function Areas() {
       <section id="localities" className="mx-auto max-w-[1200px] px-5 py-20">
         <SectionHead
           title="Serving Hyderabad & Telangana"
-          subtitle="Explore our services in Nalgonda, Nallagandla, Vanasthalipuram and beyond"
+          subtitle="Explore our services in Nallagandla, Vanasthalipuram and beyond"
         />
 
         <div className="local-feature-grid mb-8">
-          {[{name: "Nalgonda", region: "Telangana", url: "/invisible-grills-nalgonda/"}, {name: "Nallagandla", region: "Hyderabad", url: "/invisible-grills-nallagandla/"}, {name: "Vanasthalipuram", region: "Hyderabad", url: "/invisible-grills-vanasthalipuram/"}].map(place => <a className="local-feature" href={place.url} key={place.name}><span>{place.region}</span><strong>Invisible grills in {place.name}</strong><small>Explore local services ↗</small></a>)}
+          {[{name: "Nallagandla", region: "Hyderabad", url: "/invisible-grills-nallagandla/"}, {name: "Vanasthalipuram", region: "Hyderabad", url: "/invisible-grills-vanasthalipuram/"}].map(place => <a className="local-feature" href={place.url} key={place.name}><span>{place.region}</span><strong>Invisible grills in {place.name}</strong><small>Explore local services ↗</small></a>)}
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {LOCALITY_GROUPS.map((group) => (
