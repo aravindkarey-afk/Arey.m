@@ -28,7 +28,11 @@
     color: #1a1a1a;
     background-color: #fff;
     line-height: 1.6;
+    /* `clip` (unlike `hidden`) does not create a scroll container, so the
+       sticky service sidebar keeps working while horizontal overflow is
+       still prevented. `hidden` stays as a fallback for older browsers. */
     overflow-x: hidden;
+    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -44,12 +48,19 @@
 
   img {
     max-width: 100%;
+    height: auto;
   }
+}
+
+section {
+  scroll-margin-top: 110px;
 }
 
 .section-title {
   display: inline-block;
   position: relative;
+  letter-spacing: -0.035em;
+  text-transform: none;
 }
 
 .section-title::after {
@@ -66,17 +77,26 @@
 
 .hero-track {
   transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
 }
 
+/* Scroll reveal: base state is visible so the page works without JS and
+   never hides content from crawlers. The `js` class (set by an inline script
+   in <head> before first paint) opts elements into the hidden-then-reveal
+   transition — hidden before first paint, revealed via IntersectionObserver. */
 .reveal {
+  opacity: 1;
+}
+
+.js .reveal {
   opacity: 0;
+  transform: translateY(28px);
   transition:
     opacity 0.7s ease,
     transform 0.7s ease;
-  transform: translateY(28px);
 }
 
-.reveal-visible {
+.js .reveal.reveal-visible {
   opacity: 1;
   transform: none;
 }
@@ -150,7 +170,7 @@
     scroll-behavior: auto;
   }
 
-  .reveal {
+  .js .reveal {
     opacity: 1;
     transform: none;
     transition: none;
@@ -161,10 +181,11 @@
     animation: none;
     transition: none;
   }
-}
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-  cursor: pointer;
+  .faq-answer,
+  .gallery-item img {
+    transition: none;
+  }
 }
 
 select {
@@ -176,14 +197,8 @@ select {
 }
 
 /* Refined visual system shared by the home and local pages. */
-body { background: #fff; }
-section { scroll-margin-top: 110px; }
 #home { position: relative; min-height: 0; padding-bottom: 5rem; }
 #home h1 { font-size: clamp(2.8rem, 5.2vw, 5rem); letter-spacing: -.045em; line-height: 1.06; }
-#home > div > div:first-child > span:first-child { letter-spacing: .12em; }
-#home .hero-track img { object-fit: cover; }
-.section-title { letter-spacing: -.035em; text-transform: none; }
-.reveal { opacity: 1; transform: none; }
 .local-feature-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
 .local-feature { display:flex; flex-direction:column; gap:.6rem; border-radius:1.1rem; padding:1.6rem; background:#0a2540; color:white; transition:transform .2s, background .2s; }
 .local-feature:hover { transform:translateY(-4px); background:#164258; }

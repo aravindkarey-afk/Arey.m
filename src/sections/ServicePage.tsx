@@ -1,5 +1,6 @@
 import { CONTACT, type Service } from "../lib/data";
 import { Header, Footer, FloatingActions } from "../components/Chrome";
+import { Picture } from "../components/Picture";
 import { Check, Phone, WhatsApp } from "../components/Icons";
 
 const materialNotes: Record<string, string> = {
@@ -29,7 +30,7 @@ export function ServicePage({ service }: { service: Service }) {
       <div className="mx-auto max-w-[1200px] px-5">
         <a href="/#services" onClick={back} className="local-back inline-block py-3">← Back to Services</a>
         <div className="mt-3 overflow-hidden rounded-2xl bg-white shadow-[0_8px_32px_rgba(10,37,64,0.08)]">
-          <img src={service.image} alt={service.title} className="h-[250px] w-full object-cover sm:h-[380px] lg:h-[440px]" fetchPriority="high" />
+          <Picture src={service.image} alt={service.title} sizes="(min-width: 1200px) 1140px, 100vw" loading="eager" fetchPriority="high" className="h-[250px] w-full object-cover sm:h-[380px] lg:h-[440px]" />
           <div className="grid gap-8 p-6 sm:p-10 lg:grid-cols-[1fr_300px]">
             <div>
               <p className="text-xs font-bold uppercase tracking-[.16em] text-brand-dark">{service.category} · Hyderabad &amp; Telangana</p>

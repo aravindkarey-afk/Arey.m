@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { GALLERY, GALLERY_FILTERS, type GalleryCategory } from "../lib/data";
 import { SectionHead } from "../components/SectionHead";
+import { Picture } from "../components/Picture";
 import { ChevronDown, Plus, Search } from "../components/Icons";
 import { cn } from "../utils/cn";
 
@@ -19,7 +20,7 @@ export function Gallery() {
   );
 
   const visible = expanded || filter !== "All" ? filtered : filtered.slice(0, SHOWN);
-  const remaining = GALLERY.length - SHOWN;
+  const remaining = filtered.length - SHOWN;
 
   return (
     <section id="gallery" className="mx-auto max-w-[1200px] px-5 py-20">
@@ -55,10 +56,11 @@ export function Gallery() {
             className="gallery-item group relative block cursor-pointer overflow-hidden rounded-xl text-left shadow-[0_6px_22px_rgba(10,37,64,0.1)]"
             aria-label={`Enlarge photo: ${item.alt}`}
           >
-            <img
+            <Picture
               src={item.src}
               alt={item.alt}
               loading="lazy"
+              sizes="(min-width: 1024px) 370px, (min-width: 640px) 50vw, 100vw"
               className="h-[240px] w-full object-cover"
             />
             <span className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/10 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />

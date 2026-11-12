@@ -35,7 +35,7 @@ try {
       .replace(/<meta name="description" content="[^"]*"\s*\/?>/, `<meta name="description" content="${escape(page.description)}" />`)
       .replace(/<meta property="og:title" content="[^"]*"\s*\/?>/, `<meta property="og:title" content="${escape(page.title)}" />`)
       .replace(/<meta property="og:description" content="[^"]*"\s*\/?>/, `<meta property="og:description" content="${escape(page.description)}" />`)
-      .replace('</head>', `${origin ? `<link rel="canonical" href="${origin}${page.path}" /><meta property="og:url" content="${origin}${page.path}" />` : ''}<script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script></head>`)
+      .replace('</head>', `${origin ? `<link rel="canonical" href="${origin}${page.path}" /><meta property="og:url" content="${origin}${page.path}" /><meta property="og:image" content="${origin}/images/og-image.jpg" /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:image" content="${origin}/images/og-image.jpg" />` : ''}<script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script></head>`)
       .replace('<div id="root"></div>', `<div id="root">${renderToString(React.createElement(App, { pathname: page.path }))}</div>`);
     const directory = path.join('dist', page.path);
     await mkdir(directory, { recursive: true });

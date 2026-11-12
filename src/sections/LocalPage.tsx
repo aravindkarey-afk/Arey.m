@@ -1,5 +1,6 @@
 import { CONTACT, SERVICES, servicePath } from '../lib/data';
 import { Header, Footer, FloatingActions } from '../components/Chrome';
+import { Picture } from '../components/Picture';
 import { Contact } from './Contact';
 
 type Place = {
@@ -84,7 +85,7 @@ export function LocalPage({ place }: { place: Place }) {
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">{place.intro}</p>
           <div className="mt-8 flex flex-wrap gap-3"><a href="#contact" className="local-button">Request a quote ↗</a><a href={CONTACT.phoneHref} className="local-button-outline">Call {CONTACT.phone}</a></div>
         </div>
-        <img src="/images/reference/s26.webp" alt="Invisible grill fitted across a balcony" className="aspect-[4/3] w-full rounded-3xl object-cover shadow-xl" fetchPriority="high" />
+        <Picture src="/images/reference/s26.webp" alt="Invisible grill fitted across a balcony" sizes="(min-width: 1024px) 560px, 100vw" loading="eager" fetchPriority="high" className="aspect-[4/3] w-full rounded-3xl object-cover shadow-xl" />
       </section>
       <section className="bg-lightbg px-5 py-20"><div className="mx-auto max-w-[1200px]">
         <p className="text-sm font-semibold uppercase tracking-[.18em] text-brand-dark">Solutions for your space</p>
