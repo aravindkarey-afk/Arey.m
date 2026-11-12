@@ -1,6 +1,7 @@
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { CONTACT, SERVICES, servicePath } from "../lib/data";
 import { SectionHead } from "../components/SectionHead";
+import { Picture } from "../components/Picture";
 import {
   Clipboard,
   Phone,
@@ -9,8 +10,18 @@ import {
 } from "../components/Icons";
 
 export function Services() {
-  const [category, setCategory] = useState(() => typeof window === "undefined" ? "All" : history.state?.serviceCategory || "All");
+  // Always start at "All" so the first client render matches the prerendered
+  // HTML; the saved filter is restored after hydration.
+  const [category, setCategory] = useState("All");
   const categories = ["All", ...new Set(SERVICES.map((service) => service.category))];
+
+  useEffect(() => {
+    const saved = typeof history === "undefined" ? undefined : history.state?.serviceCategory;
+    if (typeof saved === "string" && saved !== "All" && categories.includes(saved)) {
+      setCategory(saved);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useLayoutEffect(() => {
     const navigation = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined;
@@ -32,7 +43,7 @@ export function Services() {
         />
 
         <div className="mb-9 flex flex-wrap justify-center gap-2" aria-label="Filter services">
-          {categories.map((item) => <button key={item} type="button" onClick={() => setCategory(item)} aria-pressed={category === item} className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${category === item ? "bg-navy text-white" : "bg-white text-navy ring-1 ring-slate-200 hover:ring-brand"}`}>{item}</button>)}
+          {categories.map((item) => <button key={item} type="button" onClick={() => setCategory(item)} aria-pressed={category === item} className={`cursor-pointer rounded-full px-4 py-2 text-sm font-semibold transition-colors ${category === item ? "bg-navy text-white" : "bg-white text-navy ring-1 ring-slate-200 hover:ring-brand"}`}>{item}</button>)}
         </div>
         <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.filter((service) => category === "All" || service.category === category).map((service) => (
@@ -46,10 +57,11 @@ export function Services() {
                 className="relative block cursor-pointer overflow-hidden text-left"
                 aria-label={`View details of ${service.title}`}
               >
-                <img
+                <Picture
                   src={service.image}
                   alt={service.title}
                   loading="lazy"
+                  sizes="(min-width: 1024px) 370px, (min-width: 640px) 50vw, 100vw"
                   className="h-[210px] w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 {service.badge && (

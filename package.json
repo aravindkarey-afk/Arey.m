@@ -7,7 +7,12 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build && node scripts/prerender.mjs",
     "preview": "vite preview",
-    "check": "tsc --noEmit"
+    "check": "tsc --noEmit",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "audit": "node scripts/audit-dist.mjs",
+    "check:hydration": "node scripts/hydration-check.mjs",
+    "verify": "npm run build && npm run audit && npm run check:hydration && npm run check:interactions",
+    "check:interactions": "node scripts/interaction-check.mjs"
   },
   "dependencies": {
     "clsx": "2.1.1",
@@ -21,6 +26,8 @@
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "5.1.1",
+    "jsdom": "^31.0.0",
+    "sharp": "^0.35.5",
     "tailwindcss": "4.1.17",
     "typescript": "5.9.3",
     "vite": "^7.3.8"

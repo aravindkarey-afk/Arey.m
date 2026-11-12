@@ -229,7 +229,7 @@ export function Contact({
               </div>
 
               {error && (
-                <p className="mb-4 rounded-md bg-red-50 px-3.5 py-2.5 text-[13px] font-medium text-red-600">
+                <p className="mb-4 rounded-md bg-red-50 px-3.5 py-2.5 text-[13px] font-medium text-red-600" role="alert">
                   {error}
                 </p>
               )}

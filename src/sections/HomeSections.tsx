@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { CONTACT, HERO_SLIDES, LOCALITY_GROUPS, SERVICE_AREAS, STATS, WHY_US, scrollToSection } from "../lib/data";
 import { IMG } from "../assets/refimg";
 import { SectionHead } from "../components/SectionHead";
+import { Picture } from "../components/Picture";
 import {
   ArrowLeft,
   ArrowRight,
@@ -27,6 +28,7 @@ export function Hero() {
 
   const [paused, setPaused] = useState(false);
   const timer = useRef<number | undefined>(undefined);
+  const touchStartX = useRef<number | null>(null);
 
   useEffect(() => {
     if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -98,6 +100,15 @@ export function Hero() {
           onMouseLeave={() => setPaused(false)}
           onFocus={() => setPaused(true)}
           onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false); }}
+          onTouchStart={(event) => { touchStartX.current = event.touches[0].clientX; setPaused(true); }}
+          onTouchEnd={(event) => {
+            const start = touchStartX.current;
+            touchStartX.current = null;
+            setPaused(false);
+            if (start == null) return;
+            const delta = event.changedTouches[0].clientX - start;
+            if (Math.abs(delta) > 40) go(active + (delta < 0 ? 1 : -1));
+          }}
         >
           <div
             className="hero-track flex h-full w-full"
@@ -105,10 +116,11 @@ export function Hero() {
           >
             {HERO_SLIDES.map((slide, index) => (
               <div key={slide.badge} className="relative h-full min-w-full select-none">
-                <img
+                <Picture
                   src={slide.src}
                   alt={slide.alt}
                   draggable={false}
+                  sizes="(min-width: 1024px) 590px, 100vw"
                   loading={index === 0 ? "eager" : "lazy"}
                   fetchPriority={index === 0 ? "high" : "low"}
                   className={cn(
@@ -180,9 +192,10 @@ export function About() {
       <section id="about" className="mx-auto max-w-[1200px] px-5 py-20">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div className="reveal relative">
-            <img
+            <Picture
               src={IMG.s26}
               alt="Invisible grill balcony with open city view"
+              sizes="(min-width: 1024px) 560px, 100vw"
               className="w-full rounded-2xl object-cover shadow-[0_14px_36px_rgba(10,37,64,0.2)]"
               loading="lazy"
             />
