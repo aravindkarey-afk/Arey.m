@@ -20,11 +20,14 @@ const escape = s => s.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAl
 const vite = await createServer({ server: { middlewareMode: true }, appType: 'custom' });
 try {
   const { default: App } = await vite.ssrLoadModule('/src/App.tsx');
+  const { SERVICES, servicePath } = await vite.ssrLoadModule('/src/lib/data.ts');
+  pages.push(...SERVICES.map(service => ({ path: servicePath(service), title: `${service.short} | Aravindh Invisible Grills`, description: service.desc })));
+  if (new Set(pages.map(page => page.path)).size !== pages.length) throw new Error('Duplicate page paths');
   const template = await readFile('dist/index.html', 'utf8');
   for (const page of pages) {
     const schema = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'LocalBusiness', '@id': origin ? `${origin}/#business` : '#business', name: 'Aravindh Invisible Grills', telephone: '+91-7995150298', email: 'aravindhinvisiblegrills@gmail.com', ...(origin ? { url: `${origin}/` } : {}), areaServed: [{ '@type': 'Place', name: 'Nalgonda, Telangana' }, { '@type': 'Place', name: 'Nallagandla, Hyderabad' }, { '@type': 'Place', name: 'Vanasthalipuram, Hyderabad' }, { '@type': 'Place', name: 'Hyderabad, Telangana' }], openingHours: 'Mo-Su 08:00-21:00' },
-      ...['Invisible grill installation', 'Balcony safety net installation', 'Bird protection net installation'].map(name => ({ '@type': 'Service', name, provider: { '@id': origin ? `${origin}/#business` : '#business' }, areaServed: page.path === '/' ? 'Hyderabad and Telangana' : page.path.split('-').pop().replace('/', '').replace(/^./, c => c.toUpperCase()) }))
+      ...['Invisible grill installation', 'Balcony safety net installation', 'Bird protection net installation'].map(name => ({ '@type': 'Service', name, provider: { '@id': origin ? `${origin}/#business` : '#business' }, areaServed: page.path === '/' || page.path.startsWith('/services/') ? 'Hyderabad and Telangana' : page.path.split('-').pop().replace('/', '').replace(/^./, c => c.toUpperCase()) }))
     ] };
     let html = template.replace(/<title>.*?<\/title>/, `<title>${escape(page.title)}</title>`)
       .replace(/<meta name="description" content="[^"]*"\s*\/?>/, `<meta name="description" content="${escape(page.description)}" />`)

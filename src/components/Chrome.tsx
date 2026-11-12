@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CONTACT, NAV, scrollToSection } from "../lib/data";
+import { CONTACT, NAV, SERVICES, servicePath, scrollToSection } from "../lib/data";
 import { Logo } from "./Logo";
 import {
   ArrowUp,
@@ -220,7 +220,7 @@ export function Footer() {
               {col.items.map((item) => (
                 <li key={item}>
                   <a
-                    href="/#services"
+                    href={SERVICES.find((service) => service.short === item) ? servicePath(SERVICES.find((service) => service.short === item)!) : "/#services"}
                     className="cursor-pointer text-left text-[13px] text-slate-300 transition-all hover:translate-x-1 hover:text-brand"
                   >
                     {item}

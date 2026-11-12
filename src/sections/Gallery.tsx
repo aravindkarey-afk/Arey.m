@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { GALLERY, GALLERY_FILTERS, type GalleryCategory } from "../lib/data";
 import { SectionHead } from "../components/SectionHead";
-import { ArrowUpRight, ChevronDown, Close, Plus, Search } from "../components/Icons";
+import { ChevronDown, Plus, Search } from "../components/Icons";
 import { cn } from "../utils/cn";
 
 const SHOWN = 6;
@@ -9,7 +9,6 @@ const SHOWN = 6;
 export function Gallery() {
   const [filter, setFilter] = useState<(typeof GALLERY_FILTERS)[number]>("All");
   const [expanded, setExpanded] = useState(false);
-  const [lightbox, setLightbox] = useState<(typeof GALLERY)[number] | null>(null);
 
   const filtered = useMemo(
     () =>
@@ -21,20 +20,6 @@ export function Gallery() {
 
   const visible = expanded || filter !== "All" ? filtered : filtered.slice(0, SHOWN);
   const remaining = GALLERY.length - SHOWN;
-
-  useEffect(() => {
-    if (!lightbox) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setLightbox(null);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = prev;
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [lightbox]);
 
   return (
     <section id="gallery" className="mx-auto max-w-[1200px] px-5 py-20">
@@ -64,10 +49,9 @@ export function Gallery() {
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {visible.map((item, index) => (
-          <button
+          <a
             key={`${item.alt}-${index}`}
-            type="button"
-            onClick={() => setLightbox(item)}
+            href={item.src}
             className="gallery-item group relative block cursor-pointer overflow-hidden rounded-xl text-left shadow-[0_6px_22px_rgba(10,37,64,0.1)]"
             aria-label={`Enlarge photo: ${item.alt}`}
           >
@@ -89,7 +73,7 @@ export function Gallery() {
                 {item.alt}
               </span>
             </span>
-          </button>
+          </a>
         ))}
       </div>
 
@@ -111,46 +95,6 @@ export function Gallery() {
         </div>
       )}
 
-      {lightbox && (
-        <div
-          className="fade-in fixed inset-0 z-[1100] flex items-center justify-center bg-navy-dark/92 p-4 backdrop-blur-sm"
-          onClick={() => setLightbox(null)}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Photo viewer"
-        >
-          <button
-            type="button"
-            onClick={() => setLightbox(null)}
-            className="absolute top-5 right-5 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-brand"
-            aria-label="Close photo viewer"
-          >
-            <Close className="h-[22px] w-[22px]" />
-          </button>
-          <figure className="lightbox-in max-w-4xl" onClick={(event) => event.stopPropagation()}>
-            <img
-              src={lightbox.src}
-              alt={lightbox.alt}
-              className="max-h-[78vh] w-full rounded-xl object-contain shadow-2xl"
-            />
-            <figcaption className="mt-4 text-center">
-              <span className="mb-1 block text-[11px] font-bold tracking-[1.5px] text-brand uppercase">
-                {lightbox.category}
-              </span>
-              <span className="text-[15px] text-slate-100">{lightbox.alt}</span>
-            </figcaption>
-            <div className="mt-4 text-center">
-              <a
-                href="#contact"
-                onClick={() => setLightbox(null)}
-                className="inline-flex items-center gap-2 rounded-md bg-brand px-5 py-2.5 text-[14px] font-semibold text-white transition-colors hover:bg-brand-dark"
-              >
-                Get a Free Quote <ArrowUpRight className="h-4 w-4" />
-              </a>
-            </div>
-          </figure>
-        </div>
-      )}
     </section>
   );
 }
