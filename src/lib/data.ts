@@ -360,7 +360,7 @@ export const GALLERY: { src: string; alt: string; category: GalleryCategory }[] 
 export const LOCALITY_GROUPS = [
   {
     title: "West Hyderabad",
-    areas: ["Nallagandla", "Gachibowli", "HITEC City", "Madhapur", "Kondapur", "Kukatpally", "Miyapur", "Financial District", "Kokapet", "Narsingi", "Tellapur"],
+    areas: ["Nallagandla", "Gachibowli", "HITEC City", "Madhapur", "Kondapur", "Kukatpally", "Miyapur", "Financial District", "Kokapet", "Narsingi", "Manikonda", "Tellapur"],
   },
   {
     title: "North & Central Hyderabad",
@@ -459,3 +459,11 @@ export const scrollToSection = (target: string) => {
 
 /** Stable, readable URLs shared by the service cards and static page generation. */
 export const servicePath = (service: Service) => `/services/${service.short.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}/`;
+
+/** Areas we travel to for measurement and installation. These are service areas, not branch offices. */
+export const SERVICE_AREAS = ["Hyderabad", "Gachibowli", "Kondapur", "Miyapur", "Kukatpally", "Madhapur", "HITEC City", "Nallagandla", "Vanasthalipuram", "LB Nagar", "Manikonda", "Narsingi", "Banjara Hills", "Jubilee Hills"];
+
+export const HOME_SEO = {
+  title: "Invisible Grills & Pigeon Safety Nets in Hyderabad | Aravindh",
+  description: "Invisible grills, pigeon safety nets, balcony safety nets, child safety nets and ceiling cloth hangers in Hyderabad. Free doorstep measurement.",
+};

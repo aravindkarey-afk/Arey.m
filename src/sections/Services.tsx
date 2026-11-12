@@ -28,7 +28,7 @@ export function Services() {
       <section id="services" className="mx-auto max-w-[1200px] px-5 py-20">
         <SectionHead
           title="Invisible Grills, Safety Nets & More"
-          subtitle="Explore balcony safety grills, child safety grills, pigeon nets and more in Nallagandla and Vanasthalipuram"
+          subtitle="Invisible grills, pigeon safety nets, balcony and window safety nets, child safety nets, bird protection nets and ceiling cloth hangers in Hyderabad"
         />
 
         <div className="mb-9 flex flex-wrap justify-center gap-2" aria-label="Filter services">

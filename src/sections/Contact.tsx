@@ -201,7 +201,7 @@ export function Contact({
                   id="contact-location"
                   type="text"
                   required
-                  placeholder="e.g. Nallagandla or Vanasthalipuram"
+                  placeholder="Enter your area or location"
                   value={fields.location}
                   onChange={(event) => update("location", event.target.value)}
                   className={fieldClass}
