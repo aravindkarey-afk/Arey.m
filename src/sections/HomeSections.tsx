@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { CONTACT, HERO_SLIDES, LOCALITY_GROUPS, STATS, WHY_US, scrollToSection } from "../lib/data";
+import { CONTACT, HERO_SLIDES, LOCALITY_GROUPS, SERVICE_AREAS, STATS, WHY_US, scrollToSection } from "../lib/data";
 import { IMG } from "../assets/refimg";
 import { SectionHead } from "../components/SectionHead";
 import {
@@ -57,7 +57,7 @@ export function Hero() {
           </h1>
 
           <p className="mb-5 max-w-[540px] text-[16px] leading-[1.7] text-muted sm:text-[17px]">
-            Invisible grills and safety nets for balconies, windows and the spaces you love. Serving Nallagandla, Vanasthalipuram and communities across Hyderabad and Telangana.
+            Invisible grills in Hyderabad, plus pigeon safety nets, balcony safety nets and child safety nets for the spaces you love. We visit homes in Gachibowli, Kondapur, Kukatpally, LB Nagar, Vanasthalipuram and across Hyderabad.
           </p>
 
           <div className="mb-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-[13.5px] font-medium text-navy">
@@ -294,11 +294,11 @@ export function Areas() {
       <section id="localities" className="mx-auto max-w-[1200px] px-5 py-20">
         <SectionHead
           title="Serving Hyderabad & Telangana"
-          subtitle="Explore our services in Nallagandla, Vanasthalipuram and beyond"
+          subtitle="Doorstep measurement and installation across Hyderabad, from Gachibowli and Kondapur to LB Nagar and Vanasthalipuram"
         />
 
         <div className="local-feature-grid mb-8">
-          {[{name: "Nallagandla", region: "Hyderabad", url: "/invisible-grills-nallagandla/"}, {name: "Vanasthalipuram", region: "Hyderabad", url: "/invisible-grills-vanasthalipuram/"}].map(place => <a className="local-feature" href={place.url} key={place.name}><span>{place.region}</span><strong>Invisible grills in {place.name}</strong><small>Explore local services ↗</small></a>)}
+          {[{name: "Hyderabad", region: "City-wide service", url: "/invisible-grills-hyderabad/"}, {name: "Nallagandla", region: "West Hyderabad", url: "/invisible-grills-nallagandla/"}, {name: "Vanasthalipuram", region: "East Hyderabad", url: "/invisible-grills-vanasthalipuram/"}].map(place => <a className="local-feature" href={place.url} key={place.name}><span>{place.region}</span><strong>Invisible grills &amp; safety nets in {place.name}</strong><small>Explore local services ↗</small></a>)}
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {LOCALITY_GROUPS.map((group) => (
@@ -324,6 +324,21 @@ export function Areas() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-9 rounded-xl border border-slate-100 bg-white p-7 shadow-[0_4px_18px_rgba(10,37,64,0.06)]">
+          <h3 className="mb-3 text-[18px] font-semibold text-navy">Invisible grills, pigeon nets and safety nets near you in Hyderabad</h3>
+          <p className="text-[14.5px] leading-[1.8] text-slate-600">
+            Our team travels to your home for measurement and installation, so you do not need to visit us. We regularly fit{" "}
+            <a className="font-medium text-brand-dark underline" href="/services/balcony-invisible-grills/">invisible grills</a>,{" "}
+            <a className="font-medium text-brand-dark underline" href="/services/pigeon-safety-nets/">pigeon safety nets</a>,{" "}
+            <a className="font-medium text-brand-dark underline" href="/services/balcony-safety-nets/">balcony safety nets</a>,{" "}
+            <a className="font-medium text-brand-dark underline" href="/services/bird-protection-nets/">bird protection nets</a>, window safety nets,{" "}
+            <a className="font-medium text-brand-dark underline" href="/services/children-safety-nets/">child safety nets</a> and{" "}
+            <a className="font-medium text-brand-dark underline" href="/services/ceiling-cloth-hangers/">ceiling cloth hangers</a>{" "}
+            in {SERVICE_AREAS.slice(1, -1).join(", ")} and {SERVICE_AREAS[SERVICE_AREAS.length - 1]}. We also install PG safety nets for PG hostels and shared accommodation in Hyderabad.
+          </p>
+          <p className="mt-3 text-[13px] text-slate-500">These are the areas we serve at your doorstep, not branch or office locations.</p>
         </div>
 
         <div className="reveal mt-9 flex flex-col items-center gap-4 rounded-xl bg-navy px-7 py-6 text-center shadow-[0_12px_30px_rgba(10,37,64,0.25)] sm:flex-row sm:text-left">
