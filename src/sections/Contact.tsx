@@ -39,7 +39,7 @@ const infoItems = [
   {
     icon: MapPin,
     title: "Service Coverage",
-    content: "Hyderabad, Nalgonda and across Telangana",
+    content: "Hyderabad and across Telangana",
   },
   {
     icon: Clock,
@@ -201,7 +201,7 @@ export function Contact({
                   id="contact-location"
                   type="text"
                   required
-                  placeholder="e.g. Nalgonda, Nallagandla or Vanasthalipuram"
+                  placeholder="e.g. Nallagandla or Vanasthalipuram"
                   value={fields.location}
                   onChange={(event) => update("location", event.target.value)}
                   className={fieldClass}

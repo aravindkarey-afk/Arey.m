@@ -232,7 +232,7 @@ export function Footer() {
         ))}
       </div>
 
-      <div className="mx-auto flex max-w-[1200px] flex-wrap gap-x-6 gap-y-3 px-5 pb-8 text-sm"><span className="font-semibold text-white">Local services:</span><a href="/invisible-grills-nalgonda/" className="hover:text-brand">Nalgonda</a><a href="/invisible-grills-nallagandla/" className="hover:text-brand">Nallagandla</a><a href="/invisible-grills-vanasthalipuram/" className="hover:text-brand">Vanasthalipuram</a></div>
+      <div className="mx-auto flex max-w-[1200px] flex-wrap gap-x-6 gap-y-3 px-5 pb-8 text-sm"><span className="font-semibold text-white">Local services:</span><a href="/invisible-grills-nallagandla/" className="hover:text-brand">Nallagandla</a><a href="/invisible-grills-vanasthalipuram/" className="hover:text-brand">Vanasthalipuram</a></div>
       <div className="border-t border-white/10">
         <p className="mx-auto max-w-[1200px] px-5 py-5 text-center text-[12.5px] text-slate-400">
           © {new Date().getFullYear()} Aravindh Invisible Grills. All Rights Reserved.

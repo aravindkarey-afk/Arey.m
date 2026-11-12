@@ -1,10 +1,9 @@
-import { CONTACT } from '../lib/data';
+import { CONTACT, SERVICES, servicePath } from '../lib/data';
 import { Header, Footer, FloatingActions } from '../components/Chrome';
 import { Contact } from './Contact';
 
 type Place = { name: string; region: string; intro: string; detail: string };
 export const PLACES: Record<string, Place> = {
-  '/invisible-grills-nalgonda/': { name: 'Nalgonda', region: 'Telangana', intro: 'For homes and properties in Nalgonda, explore unobtrusive balcony and window protection designed around your space.', detail: 'Tell us about your property in Nalgonda and our team can discuss measurements, installation availability and a quote.' },
   '/invisible-grills-vanasthalipuram/': { name: 'Vanasthalipuram', region: 'Hyderabad', intro: 'From apartment balconies to windows and utility spaces, find safety solutions that help preserve light and airflow in your Vanasthalipuram home.', detail: 'Contact our team with your location in Vanasthalipuram to discuss your requirements and arrange a measurement.' },
   '/invisible-grills-nallagandla/': { name: 'Nallagandla', region: 'Hyderabad', intro: 'Looking for invisible grills in Nallagandla? Explore discreet protection for apartment balconies and windows, alongside safety and bird netting.', detail: 'Share your Nallagandla property details with our team for a measurement and a tailored quotation.' },
 };
@@ -33,7 +32,19 @@ export function LocalPage({ place }: { place: Place }) {
           <article className="local-card"><span>03 / BIRD CONTROL</span><h3>Pigeon &amp; bird protection nets</h3><p>Keep open areas more comfortable with fitted pigeon safety nets and bird protection solutions.</p></article>
         </div>
       </div></section>
-      <section className="mx-auto max-w-[1200px] px-5 py-16"><h2 className="text-3xl font-bold text-navy">Planning an installation in {place.name}?</h2><p className="mt-4 max-w-3xl text-muted">{place.detail} We also serve <a className="text-brand-dark underline" href="/invisible-grills-nalgonda/">Nalgonda</a>, <a className="text-brand-dark underline" href="/invisible-grills-nallagandla/">Nallagandla</a> and <a className="text-brand-dark underline" href="/invisible-grills-vanasthalipuram/">Vanasthalipuram</a>. <a className="text-brand-dark underline" href="/#services">Explore all services</a>.</p></section>
+      <section className="mx-auto max-w-[1200px] px-5 pb-16">
+        <h2 className="text-3xl font-bold text-navy">Popular safety solutions in {place.name}</h2>
+        <p className="mt-4 max-w-3xl leading-7 text-muted">Whether you need balcony invisible grills, window invisible grills, child safety nets or pigeon nets in {place.name}, our team can help you explore options and arrange a free doorstep measurement.</p>
+        <div className="mt-6 flex flex-wrap gap-3">
+          {SERVICES.filter(service => ["Balcony Invisible Grills", "Window Invisible Grills", "Children Safety Nets", "Pigeon Safety Nets"].includes(service.short)).map(service => <a key={service.short} href={servicePath(service)} className="local-button-outline hover:bg-white">{service.short} ↗</a>)}
+        </div>
+        <h2 className="mt-10 text-2xl font-bold text-navy">Frequently asked questions</h2>
+        <div className="mt-4 max-w-3xl divide-y divide-slate-200">
+          <details className="py-4"><summary className="cursor-pointer font-semibold text-navy">How do I get an invisible grill quote in {place.name}?</summary><p className="mt-3 leading-7 text-muted">Call or message our team to arrange a free doorstep measurement. We can discuss your space, materials and a written quote.</p></details>
+          <details className="py-4"><summary className="cursor-pointer font-semibold text-navy">Do you install balcony safety nets and pigeon nets in {place.name}?</summary><p className="mt-3 leading-7 text-muted">We offer safety and bird protection netting. Contact us to discuss your property, suitable materials and installation availability.</p></details>
+        </div>
+      </section>
+      <section className="mx-auto max-w-[1200px] px-5 py-16"><h2 className="text-3xl font-bold text-navy">Planning an installation in {place.name}?</h2><p className="mt-4 max-w-3xl text-muted">{place.detail} We also serve <a className="text-brand-dark underline" href="/invisible-grills-nallagandla/">Nallagandla</a> and <a className="text-brand-dark underline" href="/invisible-grills-vanasthalipuram/">Vanasthalipuram</a>. <a className="text-brand-dark underline" href="/#services">Explore all services</a>.</p></section>
       <Contact initialService={null} />
     </main>
     <Footer /><FloatingActions />

@@ -6,6 +6,7 @@ import { Gallery } from "./sections/Gallery";
 import { Faq } from "./sections/FaqReviews";
 import { Contact } from "./sections/Contact";
 import { ServicePage } from "./sections/ServicePage";
+import { NotFound } from "./sections/NotFound";
 import { SERVICES, servicePath } from "./lib/data";
 import { LocalPage, PLACES } from "./sections/LocalPage";
 
@@ -19,6 +20,7 @@ export default function App({ pathname = "/" }: { pathname?: string }) {
 
   const place = PLACES[pathname.endsWith("/") ? pathname : `${pathname}/`];
   if (place) return <LocalPage place={place} />;
+  if (pathname !== "/") return <NotFound />;
 
   return (
     <>
