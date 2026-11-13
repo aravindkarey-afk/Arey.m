@@ -1,4 +1,7 @@
 import { IMG } from "../assets/refimg";
+import { SERVICES } from "./services";
+export { SERVICES, SERVICE_CATEGORIES, FEATURED_SERVICES, ADDITIONAL_SERVICES, SERVICE_BY_PATH, servicePath } from "./services";
+export type { Service, ServiceCategory } from "./services";
 
 export const CONTACT = {
   phone: "+91 7995150298",
@@ -14,13 +17,12 @@ export const CONTACT = {
 };
 
 export const NAV = [
-  { label: "Home", target: "home" },
-  { label: "Services", target: "services" },
-  { label: "Why Us", target: "why-us" },
-  { label: "Gallery", target: "gallery" },
-  { label: "Areas", target: "localities" },
-  { label: "FAQ", target: "faq" },
-  { label: "Contact", target: "contact" },
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about/" },
+  { label: "Services", href: "/services/" },
+  { label: "Gallery", href: "/gallery/" },
+  { label: "Locations", href: "/locations/" },
+  { label: "Contact", href: "/contact/" },
 ];
 
 export const HERO_SLIDES = [
@@ -51,257 +53,44 @@ export const HERO_SLIDES = [
   {
     src: IMG.s5,
     alt: "Children Safety Nets in Hyderabad",
-    badge: "Children Safety Nets",
-    tag: "Child Safe",
+    badge: "Child Safety Nets",
+    tag: "Measured Fit",
   },
   {
     src: IMG.s16,
     alt: "Bird & Pigeon Spikes in Hyderabad",
-    badge: "Bird Control Spikes",
+    badge: "Anti-Bird Spikes",
     tag: "SS 304",
   },
 ];
 
 export const STATS = [
   { value: "5,000+", label: "Installations Done" },
-  { value: "28", label: "Safety Services" },
-  { value: "SS 316", label: "Grill Materials" },
-  { value: "30+", label: "Areas Served in Hyderabad" },
-];
-
-export type Service = {
-  short: string;
-  title: string;
-  desc: string;
-  image: string;
-  badge?: string;
-  category: string;
-};
-
-export const SERVICES: Service[] = [
-  {
-    short: "Balcony Invisible Grills",
-    title: "Invisible Grill for Balconies in Hyderabad",
-    desc: "Add reliable balcony protection without blocking your view. Our high-tensile SS 316 invisible grills provide a clean, modern and elegant safety solution for homes and apartments.",
-    image: IMG.s26,
-    badge: "15 Years Warranty",
-    category: "Invisible Grills",
-  },
-  {
-    short: "Window Invisible Grills",
-    title: "Invisible Grill for Windows in Hyderabad",
-    desc: "Protect your windows with sleek and discreet invisible grills that offer added safety while maintaining natural light and outside visibility.",
-    image: IMG.s27,
-    badge: "15 Years Warranty",
-    category: "Invisible Grills",
-  },
-  {
-    short: "Invisible Grills for Pets",
-    title: "Invisible Grill for Pets Safety in Hyderabad",
-    desc: "Create a safer environment for your pets with professionally installed invisible grills for balconies and open areas.",
-    image: IMG.s28,
-    badge: "15 Years Warranty",
-    category: "Invisible Grills",
-  },
-  {
-    short: "Invisible Grills for Kids",
-    title: "Invisible Grill for Child Safety in Hyderabad",
-    desc: "Improve child safety around balconies and windows with discreet invisible grills designed to provide protection without compromising the view.",
-    image: IMG.s29,
-    badge: "15 Years Warranty",
-    category: "Invisible Grills",
-  },
-  {
-    short: "Invisible Grills for Birds",
-    title: "Invisible Grill for Bird Control in Hyderabad",
-    desc: "Help protect balconies and open spaces from unwanted bird entry with discreet and neatly installed invisible grill solutions.",
-    image: IMG.s30,
-    badge: "15 Years Warranty",
-    category: "Invisible Grills",
-  },
-  {
-    short: "Balcony Safety Nets",
-    title: "Balcony Safety Nets in Hyderabad",
-    desc: "Strong and neatly installed balcony safety nets for children, pets and high-rise homes.",
-    image: IMG.s1,
-    category: "Safety Nets",
-  },
-  {
-    short: "Building Safety Nets",
-    title: "Building Safety Nets in Hyderabad",
-    desc: "Reliable safety net solutions for residential and commercial buildings across Hyderabad.",
-    image: IMG.s3,
-    category: "Safety Nets",
-  },
-  {
-    short: "Car Parking Safety Nets",
-    title: "Car Parking Safety Nets in Hyderabad",
-    desc: "Practical safety netting for open and covered parking areas in apartments and buildings.",
-    image: IMG.s4,
-    category: "Safety Nets",
-  },
-  {
-    short: "Children Safety Nets",
-    title: "Children Safety Nets in Hyderabad",
-    desc: "Added protection for children around balconies, windows, staircases and open spaces.",
-    image: IMG.s5,
-    category: "Safety Nets",
-  },
-  {
-    short: "Coconut Tree Safety Nets",
-    title: "Coconut Tree Safety Nets in Hyderabad",
-    desc: "Safety net solutions designed for areas around coconut trees and nearby properties.",
-    image: IMG.s6,
-    category: "Safety Nets",
-  },
-  {
-    short: "Construction Safety Nets",
-    title: "Construction Safety Nets in Hyderabad",
-    desc: "Professional safety nets for construction sites and elevated working areas across Hyderabad.",
-    image: IMG.s7,
-    category: "Safety Nets",
-  },
-  {
-    short: "Duct Area Safety Nets",
-    title: "Duct Area Covering Safety Nets in Hyderabad",
-    desc: "Customized nets for covering and securing open duct areas in buildings and apartments.",
-    image: IMG.s8,
-    category: "Safety Nets",
-  },
-  {
-    short: "Industrial Safety Nets",
-    title: "Industrial Safety Nets in Hyderabad",
-    desc: "Heavy-duty safety net solutions for factories, warehouses and industrial spaces.",
-    image: IMG.s9,
-    category: "Safety Nets",
-  },
-  {
-    short: "Open Area Safety Nets",
-    title: "Open Area Safety Nets in Hyderabad",
-    desc: "Customized safety nets for terraces, open areas and exposed spaces across Hyderabad.",
-    image: IMG.s10,
-    category: "Safety Nets",
-  },
-  {
-    short: "Pets & Monkey Safety Nets",
-    title: "Pets and Monkey Safety Nets in Hyderabad",
-    desc: "Protective netting for balconies and open areas to help keep pets safe and prevent monkey entry.",
-    image: IMG.s11,
-    category: "Safety Nets",
-  },
-  {
-    short: "Staircase Safety Nets",
-    title: "Staircase Safety Nets in Hyderabad",
-    desc: "Professional staircase netting for homes, apartments, schools and commercial buildings.",
-    image: IMG.s12,
-    category: "Safety Nets",
-  },
-  {
-    short: "Swimming Pool Nets",
-    title: "Swimming Pool Safety Nets in Hyderabad",
-    desc: "Additional protection around swimming pools for residential and commercial properties.",
-    image: IMG.s13,
-    category: "Safety Nets",
-  },
-  {
-    short: "All Sports Practice Nets",
-    title: "All Sports Practice Nets Installation in Hyderabad",
-    desc: "Customized practice nets for cricket, football and other sports training areas across Hyderabad.",
-    image: IMG.s14,
-    category: "Sports Nets",
-  },
-  {
-    short: "Anti Bird Nets",
-    title: "Anti Bird Nets for Balconies in Hyderabad",
-    desc: "Keep balconies cleaner and protected with professionally installed anti-bird nets.",
-    image: IMG.s15,
-    category: "Bird Control",
-  },
-  {
-    short: "Bird Control Spikes",
-    title: "Bird and Pigeon Control Spikes in Hyderabad",
-    desc: "Help prevent pigeons from settling on ledges, windows, AC units and other areas.",
-    image: IMG.s16,
-    category: "Bird Control",
-  },
-  {
-    short: "Bird Protection Nets",
-    title: "Bird Protection Nets in Hyderabad",
-    desc: "Protect balconies, terraces and open areas from unwanted bird entry with quality netting.",
-    image: IMG.s19,
-    category: "Bird Control",
-  },
-  {
-    short: "Cricket Practice Nets",
-    title: "Cricket Practice Nets in Hyderabad",
-    desc: "Professional cricket nets for academies, schools, clubs and private practice areas across Hyderabad.",
-    image: IMG.s20,
-    category: "Sports Nets",
-  },
-  {
-    short: "Pigeon Safety Nets",
-    title: "Pigeon Safety Nets for Balconies in Hyderabad",
-    desc: "Keep balcony spaces cleaner and more comfortable with professionally fitted pigeon safety nets.",
-    image: IMG.s23,
-    category: "Bird Control",
-  },
-  {
-    short: "Terrace Cricket Nets",
-    title: "Terrace Cricket Practice Nets in Hyderabad",
-    desc: "Transform your terrace into a practical cricket practice area with customized net installation.",
-    image: IMG.s24,
-    category: "Sports Nets",
-  },
-  {
-    short: "Football Stop Nets",
-    title: "Football Stop Nets in Hyderabad",
-    desc: "Durable football stop nets for practice grounds, training areas and sports facilities across Hyderabad.",
-    image: IMG.s25,
-    category: "Sports Nets",
-  },
-  {
-    short: "Ceiling Cloth Hangers",
-    title: "Ceiling Cloth Hanger in Hyderabad",
-    desc: "Make better use of your balcony or utility space with a convenient ceiling-mounted cloth hanger. Ideal for modern homes and apartments.",
-    image: IMG.s31,
-    category: "Ceiling Cloth Hangers",
-  },
-  {
-    short: "Manual Ceiling Cloth Hangers",
-    title: "Manual Ceiling Cloth Hanger in Hyderabad",
-    desc: "Easy-to-use manual ceiling cloth hangers designed to provide convenient clothes drying while saving valuable floor and balcony space.",
-    image: IMG.s32,
-    category: "Ceiling Cloth Hangers",
-  },
-  {
-    short: "SS Ceiling Cloth Hangers",
-    title: "Stainless Steel Ceiling Cloth Hanger",
-    desc: "Durable stainless steel ceiling cloth hangers offering a neat, strong and long-lasting solution for everyday clothes drying.",
-    image: IMG.s33,
-    category: "Ceiling Cloth Hangers",
-  },
+  { value: "33", label: "Service Pages" },
+  { value: "304 / 316", label: "Stainless Steel Grades" },
+  { value: "14", label: "Focus Areas in Hyderabad" },
 ];
 
 export const WHY_US = [
   {
     icon: "shield",
-    title: "100% High Tensile Strength",
-    text: "Marine-grade SS 316 wire tensioned on aluminium tracks, engineered to absorb heavy impact loads safely.",
+    title: "Materials matched to the job",
+    text: "Stainless steel grills, application-specific nets and durable hanger systems, selected for the opening and its use.",
   },
   {
     icon: "sun",
-    title: "Anti-Rust & Weatherproof",
-    text: "A transparent nylon sheath over every cable blocks rust, rain damage and sun discolouration for years.",
+    title: "Weather-aware selection",
+    text: "Cable grades, coatings and UV-stabilised net options chosen with sun and rain exposure in mind.",
   },
   {
     icon: "eye",
-    title: "Unobstructed Panoramic Views",
-    text: "Cables virtually disappear from a distance, preserving daylight, airflow and your open-sky view.",
+    title: "A finish that fits your space",
+    text: "Slim grill cables, open mesh and overhead drying keep your rooms usable, bright and visually uncluttered.",
   },
   {
     icon: "bolt",
-    title: "Quick Professional Fitting",
-    text: "Neat, dust-controlled installation finished within hours by our own trained technicians — zero mess left behind.",
+    title: "Planned, neat installation",
+    text: "A site survey, agreed fixing plan and tidy installation, with access and timing confirmed before work.",
   },
   {
     icon: "award",
@@ -310,8 +99,8 @@ export const WHY_US = [
   },
   {
     icon: "tag",
-    title: "Best Factory-Direct Price",
-    text: "Honest, transparent billing with free measurement and a written quote before work begins. No surprises.",
+    title: "Clear, written quotations",
+    text: "Free measurement and an itemised quote before you approve the work. Discuss material and warranty terms in writing.",
   },
 ];
 
@@ -320,7 +109,7 @@ export type GalleryCategory =
   | "Safety Nets"
   | "Bird Control"
   | "Sports Nets"
-  | "Ceiling Cloth Hangers";
+  | "Cloth Hangers";
 
 export const GALLERY_FILTERS = [
   "All",
@@ -328,33 +117,36 @@ export const GALLERY_FILTERS = [
   "Safety Nets",
   "Bird Control",
   "Sports Nets",
-  "Ceiling Cloth Hangers",
+  "Cloth Hangers",
 ] as const;
 
 export const GALLERY: { src: string; alt: string; category: GalleryCategory }[] = [
-  { src: IMG.g1, alt: "Balcony Invisible Grill Installation", category: "Invisible Grills" },
-  { src: IMG.g2, alt: "Window Invisible Grill Installation", category: "Invisible Grills" },
-  { src: IMG.g3, alt: "High-Rise Balcony Invisible Grills", category: "Invisible Grills" },
-  { src: IMG.g4, alt: "Modern Balcony Invisible Grills", category: "Invisible Grills" },
-  { src: IMG.s1, alt: "Balcony Safety Net Installation", category: "Safety Nets" },
-  { src: IMG.s5, alt: "Children Safety Net on High-Rise Balcony", category: "Safety Nets" },
-  { src: IMG.s6, alt: "Coconut Tree Safety Net Installation", category: "Safety Nets" },
-  { src: IMG.s7, alt: "High-Rise Construction Safety Nets", category: "Safety Nets" },
-  { src: IMG.s11, alt: "Pets & Monkey Safety Net on Balcony", category: "Safety Nets" },
-  { src: IMG.s12, alt: "Staircase Safety Net in Duplex Villa", category: "Safety Nets" },
-  { src: IMG.s16, alt: "Bird & Pigeon Spikes on AC Ledge", category: "Bird Control" },
-  { src: IMG.s20, alt: "Cricket Practice Net Installation", category: "Sports Nets" },
-  { src: IMG.s31, alt: "Ceiling Cloth Hanger in Balcony", category: "Ceiling Cloth Hangers" },
-  { src: IMG.g10, alt: "Invisible Grills on Corner Balcony", category: "Invisible Grills" },
-  { src: IMG.g11, alt: "Apartment Balcony Safety Net Fitting", category: "Safety Nets" },
-  { src: IMG.g12, alt: "Window Safety Net Installation", category: "Safety Nets" },
-  { src: IMG.g13, alt: "High-Rise Balcony Safety Nets", category: "Safety Nets" },
-  { src: IMG.g14, alt: "Balcony Invisible Grills", category: "Invisible Grills" },
-  { src: IMG.g15, alt: "Terrace Cricket Netting", category: "Sports Nets" },
-  { src: IMG.g16, alt: "Pigeon Safety Net on Balcony", category: "Bird Control" },
-  { src: IMG.g17, alt: "Ceiling Cloth Hanger 6 Rod Set", category: "Ceiling Cloth Hangers" },
-  { src: IMG.g18, alt: "Swimming Pool Safety Netting", category: "Safety Nets" },
-  { src: IMG.g19, alt: "Industrial Fall Protection Safety Nets", category: "Safety Nets" },
+  { src: IMG.g1, alt: "Balcony invisible grill cables with an open residential outlook", category: "Invisible Grills" },
+  { src: IMG.g2, alt: "Window invisible grill reference with slim vertical cables", category: "Invisible Grills" },
+  { src: IMG.g3, alt: "Balcony invisible grill reference in a multi-storey building", category: "Invisible Grills" },
+  { src: IMG.g4, alt: "Modern balcony grill reference with a clear outside view", category: "Invisible Grills" },
+  { src: IMG.s1, alt: "Balcony safety net reference with a tied mesh perimeter", category: "Safety Nets" },
+  { src: IMG.s5, alt: "Child safety net reference on an apartment balcony", category: "Safety Nets" },
+  { src: IMG.s6, alt: "Safety net installed around a coconut tree", category: "Safety Nets" },
+  { src: IMG.s7, alt: "Construction safety net reference on a building exterior", category: "Safety Nets" },
+  { src: IMG.s11, alt: "Pet and monkey safety net reference collage with existing image labels", category: "Safety Nets" },
+  { src: IMG.s12, alt: "Staircase safety net reference in a residential interior", category: "Safety Nets" },
+  { src: IMG.s16, alt: "Anti-bird spikes fitted along a building ledge", category: "Bird Control" },
+  { src: IMG.s20, alt: "Cricket practice net reference enclosing an outdoor court", category: "Sports Nets" },
+  { src: IMG.s31, alt: "Ceiling-mounted cloth hanger reference in a utility balcony", category: "Cloth Hangers" },
+  { src: IMG.g10, alt: "Corner balcony invisible grill reference", category: "Invisible Grills" },
+  { src: IMG.s15, alt: "Bird protection net reference enclosing a balcony opening", category: "Bird Control" },
+  { src: IMG.g12, alt: "Window invisible grill reference with closely spaced cables", category: "Invisible Grills" },
+  { src: IMG.g13, alt: "Balcony invisible grill reference on a residential upper floor", category: "Invisible Grills" },
+  { src: IMG.g14, alt: "Floodlit sports practice netting at night", category: "Sports Nets" },
+  { src: IMG.g15, alt: "Balcony invisible grill reference photographed at night", category: "Invisible Grills" },
+  { src: IMG.g16, alt: "Terrace sports netting reference with an overhead enclosure", category: "Sports Nets" },
+  { src: IMG.g17, alt: "Balcony invisible grill reference beside an apartment window", category: "Invisible Grills" },
+  { src: IMG.g18, alt: "Balcony grill and protective barrier reference", category: "Invisible Grills" },
+  { src: IMG.g19, alt: "Window invisible grill reference with an outside view", category: "Invisible Grills" },
+  { src: IMG.s25, alt: "Football safety net reference around a practice pitch", category: "Sports Nets" },
+  { src: IMG.s32, alt: "Manual ceiling cloth drying hanger reference with pulley ropes", category: "Cloth Hangers" },
+  { src: IMG.s33, alt: "Stainless steel ceiling cloth hanger reference", category: "Cloth Hangers" },
 ];
 
 export const LOCALITY_GROUPS = [
@@ -373,39 +165,18 @@ export const LOCALITY_GROUPS = [
 ];
 
 export const FAQS = [
-  {
-    q: "What are invisible grills and how do they work?",
-    a: "Invisible grills are high-tensile SS 316 marine-grade stainless steel cables tensioned on heavy aluminium tracks across balconies, windows and open spaces. From a few metres away they are virtually invisible, preserving your outside view and ventilation while providing added protection.",
-  },
-  {
-    q: "Do invisible grills come with a warranty?",
-    a: "Yes! Our SS 316 invisible grills come with a 15-year product warranty on the stainless steel cables, subject to the terms applicable to your installation. Please ask our team for details.",
-  },
-  {
-    q: "How can I get a quotation for invisible grills or safety nets?",
-    a: "We offer completely free doorstep measurements anywhere in Hyderabad and Telangana. Our technician will visit your site, measure your space, and provide an exact written quote with zero hidden charges.",
-  },
-  {
-    q: "Are invisible grills safe for children and pets?",
-    a: "Absolutely. We provide customized cable spacing (2-inch, 3-inch, or 4-inch) to suit your space and safety requirements. The cables have high tensile strength and smooth nylon coatings.",
-  },
-  {
-    q: "Will invisible grills rust over time in Hyderabad's weather?",
-    a: "SS 316 stainless steel and protective coatings are selected for weather resistance. Maintenance and durability depend on the installation and environment.",
-  },
-  {
-    q: "How long does installation take?",
-    a: "Most residential balcony and window installations are completed within 2 to 4 hours on the same day as measurement. Our technicians work neatly and leave zero mess.",
-  },
-  {
-    q: "Do you install safety nets and bird spikes across all of Hyderabad?",
-    a: "Yes, we provide doorstep measurement and same-day installation across all areas of Greater Hyderabad and Secunderabad, including Gachibowli, Kondapur, Kukatpally, Miyapur, Hitec City, Uppal, and all surrounding localities.",
-  },
+  { q: "Which services do you provide beyond invisible grills?", a: "We install balcony and child safety nets, pigeon and bird protection nets, sports and cricket practice nets, football stop nets, anti-bird spikes and cloth drying hangers. Explore the Services page for each option and its dedicated guide." },
+  { q: "How do I choose between grills, nets and bird spikes?", a: "Cable grills suit balconies and windows where a clear view matters; nets enclose larger or irregular spaces; spikes discourage birds from landing on narrow ledges. We assess the opening and explain the suitable options during measurement." },
+  { q: "Is the site visit and measurement free?", a: "Yes. We offer a free site visit and measurement in our Hyderabad service areas. Share your location, service and preferred time so we can confirm availability before visiting." },
+  { q: "Can I book more than one service for the same property?", a: "Yes. Tell us about each balcony, window, ledge, practice area or utility space. We can plan multiple services together and explain the materials, access requirements and quotation." },
+  { q: "How long does installation take and what affects the price?", a: "Dimensions, material, fixing points, access and site preparation all affect the work. We confirm the scope, price and expected schedule after measurement; we do not promise a universal installation time." },
+  { q: "Do nets or grills replace adult supervision?", a: "No. They are additional protective barriers, not a substitute for supervision or compliant railings. We discuss spacing, fixings and limitations, and recommend keeping climbable furniture away from protected openings." },
+  { q: "Do the listed locations have Aravindh branch offices?", a: "No branch addresses are implied. Nallagandla, Vanasthalipuram and the other listed areas are places we travel to for measurement and installation. Contact us to confirm your exact location." },
 ];
 
 export const REVIEWS = [
   {
-    text: "Aravind Invisible Grills transformed our balcony beautifully. Premium quality SS 316 cables, neat installation, and the work was completed exactly on schedule.",
+    text: "Aravindh Invisible Grills transformed our balcony beautifully. Premium quality SS 316 cables, neat installation, and the work was completed exactly on schedule.",
     name: "Rahul Sharma",
     area: "Gachibowli, Hyderabad",
     initials: "RS",
@@ -444,11 +215,11 @@ export const REVIEWS = [
     name: "Sneha Patel",
     area: "Secunderabad, Hyderabad",
     initials: "SP",
-    service: "Ceiling Cloth Hangers",
+    service: "Cloth Hangers",
   },
 ];
 
-export const FIELD_OPTIONS = SERVICES.map((service) => service.title).concat("Other Safety Solutions");
+export const FIELD_OPTIONS = SERVICES.map((service) => service.short).concat("Multiple services", "Other Safety Solutions");
 
 export const scrollToSection = (target: string) => {
   const el = document.getElementById(target);
@@ -457,13 +228,6 @@ export const scrollToSection = (target: string) => {
   window.scrollTo({ top: Math.max(y, 0), behavior: "smooth" });
 };
 
-/** Stable, readable URLs shared by the service cards and static page generation. */
-export const servicePath = (service: Service) => `/services/${service.short.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}/`;
 
 /** Areas we travel to for measurement and installation. These are service areas, not branch offices. */
-export const SERVICE_AREAS = ["Hyderabad", "Gachibowli", "Kondapur", "Miyapur", "Kukatpally", "Madhapur", "HITEC City", "Nallagandla", "Vanasthalipuram", "LB Nagar", "Manikonda", "Narsingi", "Banjara Hills", "Jubilee Hills"];
-
-export const HOME_SEO = {
-  title: "Invisible Grills & Pigeon Safety Nets in Hyderabad | Aravindh",
-  description: "Invisible grills, pigeon safety nets, balcony safety nets, child safety nets and ceiling cloth hangers in Hyderabad. Free doorstep measurement.",
-};
+export const SERVICE_AREAS = ["Hyderabad", "Nallagandla", "Vanasthalipuram", "Gachibowli", "Kondapur", "Miyapur", "Kukatpally", "Manikonda", "Madhapur", "Tellapur", "Narsingi", "HITEC City", "Jubilee Hills", "Banjara Hills", "Secunderabad"];

@@ -1,13 +1,60 @@
 # Aravindh Invisible Grills
 
-React, TypeScript and Vite website. Run `npm ci`, then `npm run dev` for local development. `npm run build` type-checks and generates the production site in `dist/`, including pre-rendered local and service pages.
+A complete safety-solutions business website for **Aravindh Invisible Grills** — invisible grills, safety nets, sports netting, bird control and ceiling cloth drying hangers in Hyderabad & Telangana. Built with React 19, TypeScript, Vite and Tailwind CSS, with build-time pre-rendering for crawlable local SEO.
 
-## Deployment and SEO
+## Run locally
 
-Builds temporarily use `https://aravindinvisiblegrillscoin-git-arena-9c8d5d-7c8f1a-kare-aravind.vercel.app` for canonical URLs, Open Graph URLs, the sitemap and its robots.txt reference. Once the custom domain is connected, set `SITE_URL=https://aravindhinvisiblegrills.in` at build time (or update the default) to use it instead. An existing `SITE_URL` deployment environment variable overrides the temporary default. Configure the domain and HTTPS with your hosting and DNS providers separately; building the site does not connect the domain. Deploy the entire `dist` directory; static hosts should serve the `index.html` in each local and service page directory. Service URLs are physical directories, so direct visits and refreshes work on static hosts that serve directory indexes.
+```bash
+npm ci
+npm run dev      # generates responsive images, then starts Vite
+npm run build    # images + type-check + client build + pre-render + SEO audits
+npm run preview  # serve dist/ locally
+npm run verify   # static verification of the built site
+npm run verify -- --browser  # also run desktop/mobile browser checks against the preview
+```
 
-The request form prepares a WhatsApp message; it does not store or transmit submissions itself. Customers must send the message in WhatsApp. Business address is intentionally omitted because none was supplied. The original review data remains in the source, but testimonials are not displayed until their authenticity can be confirmed. Confirm all existing warranty, product and performance claims with the business before publishing.
+`npm run build` writes a fully rendered `index.html` for **61 indexable pages**: home, 5 hub/company pages, 33 service pages, 18 location pages and 4 planning guides. It also writes `404.html`, 28 legacy redirect fallbacks, `sitemap.xml`, `robots.txt` and `dist/seo-report.json`. The build fails on duplicate titles/descriptions/H1s, broken internal links, missing assets, invalid related links, accidental `noindex`, or redirect/canonical regressions.
 
-Service cards use standard page links so browser history and scroll restoration work naturally. The service list retains the selected filter and scroll position when returning from a card. Gallery photos open as normal image links rather than a modal.
+## Main URLs
 
-The build also generates `404.html` for unknown URLs. Configure your static host to serve it with HTTP status 404 for missing routes (and to serve the generated directory indexes for valid routes); an SPA fallback that returns `index.html` with status 200 is not a proper 404. Do not add the error page to the sitemap. The sitemap is available at `/sitemap.xml` and the crawler instructions at `/robots.txt`.
+- `/` — home
+- `/services/`, `/gallery/`, `/locations/`, `/about/`, `/contact/`
+- 14 featured services at root URLs, including `/invisible-grills/`, `/ss304-invisible-grills/`, `/ss316-invisible-grills/`, `/balcony-safety-nets/`, `/pigeon-safety-nets/`, `/bird-protection-nets/`, `/child-safety-nets/`, `/sports-safety-nets/`, `/cricket-practice-nets/`, `/football-safety-nets/`, `/anti-bird-spikes/`, `/bird-spikes-installation/`, `/cloth-hangers/`, `/ceiling-cloth-drying-hangers/`
+- 19 additional specialised services at root URLs
+- `/invisible-grills-hyderabad/`, `/invisible-grills-nallagandla/`, `/invisible-grills-vanasthalipuram/`
+- `/locations/<area>/` for Gachibowli, Kondapur, Miyapur, Kukatpally, Manikonda, Madhapur, Tellapur, Narsingi, HITEC City, Jubilee Hills, Banjara Hills and Secunderabad
+- Service × location guides: `/pigeon-nets-gachibowli/`, `/balcony-safety-nets-kondapur/`, `/cloth-hangers-vanasthalipuram/`
+- Guides: `/child-safety-solutions/`, `/invisible-grills-vs-safety-nets/`, `/ss304-vs-ss316-invisible-grills/`, `/safety-solutions-cost-guide/`
+
+Every page has a unique SEO title and meta description, one H1, structured headings, descriptive image ALT text, internal links, and Call + WhatsApp buttons. “View Details” opens a real service page, not a modal.
+
+## Images & fonts
+
+Original images are preserved in `public/images/`. `scripts/optimize-images.mjs` generates responsive AVIF/WebP derivatives in `public/images/optimized/` (ignored by Git) and shared metadata in `src/generated/images.ts`. Below-fold images lazy-load; primary hero images are preloaded. Poppins is self-hosted via `@fontsource/poppins`; no Google Fonts requests remain.
+
+The brand mark is consistent across the header, footer, favicon, app icons and Open Graph image. Raster brand assets are committed in `public/`; regenerate them after editing the SVG with:
+
+```bash
+node scripts/brand-assets.mjs
+```
+
+## Structured data & deployment
+
+Each page emits a JSON-LD `@graph` with Organization + LocalBusiness, WebSite, WebPage/AboutPage/ContactPage/CollectionPage, BreadcrumbList, Service where relevant, and FAQPage where FAQs are rendered. Open Graph/Twitter metadata and canonicals use one configurable origin:
+
+- Default: `https://aravindhinvisiblegrills.in` (`src/lib/site.ts`)
+- Override: `SITE_URL=https://your-domain.com npm run build`
+
+Deploy the entire `dist/` directory. `vercel.json` supplies permanent 301 redirects for legacy `/services/*` URLs and a true 404 for unknown routes. Static legacy fallback documents are also generated for preview hosts that cannot apply Vercel redirects.
+
+## Google Search Console
+
+Set `GSC_VERIFICATION=<token>` at build time to inject the verification meta tag, or use DNS/HTML-file verification. Submit `https://your-domain/sitemap.xml`. See `docs/SEARCH-CONSOLE.md`, `docs/SEO-STRATEGY.md` and `docs/VERIFICATION.md`.
+
+## Business notes
+
+- The enquiry form **prepares a WhatsApp message**; it does not store or transmit submissions automatically.
+- Phone `+91 7995150298` and email `aravindhinvisiblegrills@gmail.com` are preserved. No street address or branch office is invented; listed areas are service locations only.
+- Nallagandla refers to the Hyderabad suburb, not Nalgonda town/district.
+- Existing testimonials are displayed with a clear “not independently verified” note and no aggregate rating schema. Confirm authenticity, warranty terms and installation-count claims with the business before publishing.
+- Gallery images are labelled as product/installation references, not verified customer projects.

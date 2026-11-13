@@ -1,100 +1,28 @@
-import { useMemo, useState } from "react";
-import { GALLERY, GALLERY_FILTERS, type GalleryCategory } from "../lib/data";
-import { SectionHead } from "../components/SectionHead";
-import { ChevronDown, Plus, Search } from "../components/Icons";
-import { cn } from "../utils/cn";
+import { useState } from 'react';
+import { GALLERY, GALLERY_FILTERS } from '../lib/data';
+import { PageShell } from '../components/PageShell';
+import { Breadcrumbs } from '../components/Breadcrumbs';
+import { SectionHead } from '../components/SectionHead';
+import { ResponsiveImage } from '../components/ResponsiveImage';
+import { ContactActions } from '../components/Actions';
+import { CTASection } from '../components/CTASection';
+import { ArrowUpRight } from '../components/Icons';
+import { cn } from '../utils/cn';
 
-const SHOWN = 6;
+function GalleryImage({ item, index }: { item: (typeof GALLERY)[number]; index: number }) {
+  return <figure className="overflow-hidden rounded-2xl border border-borderline bg-white"><a href={item.src} target="_blank" rel="noopener noreferrer" className="group relative block overflow-hidden bg-lightbg" aria-label={`Open full-size image: ${item.alt} (new tab)`}><ResponsiveImage src={item.src} alt={item.alt} priority={index < 2} sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 1023px) 46vw, 380px" className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.035]" /><span className="absolute top-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/95 text-navy shadow-sm"><ArrowUpRight className="h-4 w-4" /></span></a><figcaption className="p-5"><p className="text-[10px] font-semibold tracking-wider text-brand-dark uppercase">{item.category}</p><p className="mt-2 text-sm leading-6 text-navy">{item.alt}</p></figcaption></figure>;
+}
 
 export function Gallery() {
-  const [filter, setFilter] = useState<(typeof GALLERY_FILTERS)[number]>("All");
-  const [expanded, setExpanded] = useState(false);
+  return <section id="gallery" className="page-container py-14 sm:py-20"><SectionHead eyebrow="Project & product gallery" title="See the possibilities." subtitle="A closer look at grills, nets, bird control, sports enclosures and cloth drying systems. Open any image for a full-size view." /><div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{GALLERY.slice(0, 6).map((item, index) => <GalleryImage key={item.src} item={item} index={index} />)}</div><p className="mt-5 text-xs leading-6 text-muted">Reference imagery illustrates the service types; not every image is a verified Aravindh customer project.</p><div className="mt-7 text-center"><a href="/gallery/" className="btn btn-outline">Explore the full gallery <ArrowUpRight className="h-4 w-4" /></a></div></section>;
+}
 
-  const filtered = useMemo(
-    () =>
-      filter === "All"
-        ? GALLERY
-        : GALLERY.filter((item) => item.category === (filter as GalleryCategory)),
-    [filter]
-  );
-
-  const visible = expanded || filter !== "All" ? filtered : filtered.slice(0, SHOWN);
-  const remaining = GALLERY.length - SHOWN;
-
-  return (
-    <section id="gallery" className="mx-auto max-w-[1200px] px-5 py-20">
-      <SectionHead
-        title="Our Work Gallery"
-        subtitle="Explore our gallery of grills, nets and home-utility solutions"
-      />
-
-      <div className="reveal mb-9 flex flex-wrap justify-center gap-2.5">
-        {GALLERY_FILTERS.map((option) => (
-          <button
-            key={option}
-            type="button"
-            onClick={() => setFilter(option)}
-            aria-pressed={filter === option}
-            className={cn(
-              "cursor-pointer rounded-full px-4 py-2 text-[13px] font-semibold transition-all",
-              filter === option
-                ? "bg-navy text-white shadow-[0_6px_16px_rgba(10,37,64,0.25)]"
-                : "bg-white text-navy ring-1 ring-slate-200 hover:ring-brand"
-            )}
-          >
-            {option}
-          </button>
-        ))}
-      </div>
-
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {visible.map((item, index) => (
-          <a
-            key={`${item.alt}-${index}`}
-            href={item.src}
-            className="gallery-item group relative block cursor-pointer overflow-hidden rounded-xl text-left shadow-[0_6px_22px_rgba(10,37,64,0.1)]"
-            aria-label={`Enlarge photo: ${item.alt}`}
-          >
-            <img
-              src={item.src}
-              alt={item.alt}
-              loading="lazy"
-              className="h-[240px] w-full object-cover"
-            />
-            <span className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/10 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
-            <span className="absolute top-3.5 right-3.5 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-navy opacity-0 shadow transition-opacity group-hover:opacity-100">
-              <Search className="h-[17px] w-[17px]" />
-            </span>
-            <span className="absolute right-0 bottom-0 left-0 p-4">
-              <span className="mb-1 block text-[11px] font-bold tracking-[1px] text-brand uppercase">
-                {item.category}
-              </span>
-              <span className="block text-[13.5px] leading-snug font-medium text-white">
-                {item.alt}
-              </span>
-            </span>
-          </a>
-        ))}
-      </div>
-
-      {filter === "All" && (
-        <div className="mt-9 text-center">
-          <button
-            type="button"
-            onClick={() => setExpanded((value) => !value)}
-            className={cn(
-              "inline-flex cursor-pointer items-center gap-2.5 rounded-full border-2 border-navy px-7 py-3 text-[15px] font-semibold shadow-[0_4px_14px_rgba(10,37,64,0.12)] transition-all",
-              expanded
-                ? "bg-navy text-white"
-                : "bg-white text-navy hover:bg-navy hover:text-white"
-            )}
-          >
-            {expanded ? <ChevronDown className="h-[17px] w-[17px]" /> : <Plus className="h-[17px] w-[17px]" />}
-            {expanded ? "Show Less Images" : `View More Images (${remaining} More)`}
-          </button>
-        </div>
-      )}
-
-    </section>
-  );
+export function GalleryHub() {
+  const [filter, setFilter] = useState<string>('All');
+  const visible = GALLERY.filter((item) => filter === 'All' || item.category === filter);
+  return <PageShell>
+    <section className="border-b border-borderline bg-lightbg"><div className="page-container py-8 sm:py-12"><Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Gallery', href: '/gallery/' }]} /><div className="mt-8 max-w-3xl"><p className="eyebrow">Project & product gallery</p><h1 className="mt-4 text-4xl font-bold tracking-[-0.04em] text-navy sm:text-5xl">A closer look at safer, more usable spaces.</h1><p className="mt-5 text-base leading-8 text-muted">Browse reference images by service, compare finishes and see how different systems fit balconies, windows, terraces and utilities. Select an image to open the full-size version in a new tab.</p><ContactActions className="mt-7" /></div></div></section>
+    <section className="page-container py-12 sm:py-16"><div className="mb-6 flex flex-wrap gap-2" role="group" aria-label="Filter gallery by service">{GALLERY_FILTERS.map((category) => <button key={category} type="button" onClick={() => setFilter(category)} aria-pressed={filter === category} className={cn('min-h-11 cursor-pointer rounded-full border px-4 py-2 text-xs font-semibold transition-colors', filter === category ? 'border-navy bg-navy text-white' : 'border-borderline bg-white text-navy hover:border-brand')}>{category}</button>)}</div><p className="mb-7 text-xs text-muted" role="status" aria-live="polite">{visible.length} reference images · {filter === 'All' ? 'All services' : filter}</p><div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{visible.map((item, index) => <GalleryImage key={item.src} item={item} index={index} />)}</div><p className="mt-8 rounded-xl bg-lightbg p-5 text-xs leading-6 text-muted">These images are product and installation references, including material from the original website. They are not all verified Aravindh customer projects. Ask our team for relevant examples of your chosen service when booking.</p></section>
+    <CTASection title="Have a space in mind? Let’s measure it." />
+  </PageShell>;
 }

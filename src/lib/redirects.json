@@ -1,0 +1,114 @@
+[
+  {
+    "source": "/services/balcony-safety-nets/",
+    "destination": "/balcony-safety-nets/"
+  },
+  {
+    "source": "/services/pigeon-safety-nets/",
+    "destination": "/pigeon-safety-nets/"
+  },
+  {
+    "source": "/services/bird-protection-nets/",
+    "destination": "/bird-protection-nets/"
+  },
+  {
+    "source": "/services/children-safety-nets/",
+    "destination": "/child-safety-nets/"
+  },
+  {
+    "source": "/services/all-sports-practice-nets/",
+    "destination": "/sports-safety-nets/"
+  },
+  {
+    "source": "/services/cricket-practice-nets/",
+    "destination": "/cricket-practice-nets/"
+  },
+  {
+    "source": "/services/football-stop-nets/",
+    "destination": "/football-safety-nets/"
+  },
+  {
+    "source": "/services/bird-control-spikes/",
+    "destination": "/anti-bird-spikes/"
+  },
+  {
+    "source": "/services/ceiling-cloth-hangers/",
+    "destination": "/cloth-hangers/"
+  },
+  {
+    "source": "/services/balcony-invisible-grills/",
+    "destination": "/balcony-invisible-grills/"
+  },
+  {
+    "source": "/services/window-invisible-grills/",
+    "destination": "/window-invisible-grills/"
+  },
+  {
+    "source": "/services/invisible-grills-for-pets/",
+    "destination": "/invisible-grills-for-pets/"
+  },
+  {
+    "source": "/services/invisible-grills-for-kids/",
+    "destination": "/invisible-grills-for-kids/"
+  },
+  {
+    "source": "/services/invisible-grills-for-birds/",
+    "destination": "/invisible-grills-for-birds/"
+  },
+  {
+    "source": "/services/building-safety-nets/",
+    "destination": "/building-safety-nets/"
+  },
+  {
+    "source": "/services/car-parking-safety-nets/",
+    "destination": "/car-parking-safety-nets/"
+  },
+  {
+    "source": "/services/coconut-tree-safety-nets/",
+    "destination": "/coconut-tree-safety-nets/"
+  },
+  {
+    "source": "/services/construction-safety-nets/",
+    "destination": "/construction-safety-nets/"
+  },
+  {
+    "source": "/services/duct-area-safety-nets/",
+    "destination": "/duct-area-safety-nets/"
+  },
+  {
+    "source": "/services/industrial-safety-nets/",
+    "destination": "/industrial-safety-nets/"
+  },
+  {
+    "source": "/services/open-area-safety-nets/",
+    "destination": "/open-area-safety-nets/"
+  },
+  {
+    "source": "/services/pets-and-monkey-safety-nets/",
+    "destination": "/pets-and-monkey-safety-nets/"
+  },
+  {
+    "source": "/services/staircase-safety-nets/",
+    "destination": "/staircase-safety-nets/"
+  },
+  {
+    "source": "/services/swimming-pool-nets/",
+    "destination": "/swimming-pool-nets/"
+  },
+  {
+    "source": "/services/anti-bird-nets/",
+    "destination": "/anti-bird-nets/"
+  },
+  {
+    "source": "/services/terrace-cricket-nets/",
+    "destination": "/terrace-cricket-nets/"
+  },
+  {
+    "source": "/services/manual-ceiling-cloth-hangers/",
+    "destination": "/manual-ceiling-cloth-hangers/"
+  },
+  {
+    "source": "/services/ss-ceiling-cloth-hangers/",
+    "destination": "/stainless-steel-cloth-hangers/"
+  }
+]

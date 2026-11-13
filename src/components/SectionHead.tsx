@@ -1,10 +1,7 @@
-export function SectionHead({ title, subtitle }: { title: string; subtitle?: string }) {
-  return (
-    <div className="reveal mb-12 text-center">
-      <h2 className="section-title text-[28px] font-bold text-navy uppercase sm:text-[32px]">
-        {title}
-      </h2>
-      {subtitle && <p className="mt-6 text-[15.5px] text-muted sm:text-base">{subtitle}</p>}
-    </div>
-  );
+export function SectionHead({ title, subtitle, eyebrow, align = 'center' }: { title: string; subtitle?: string; eyebrow?: string; align?: 'center' | 'left' }) {
+  return <div className={align === 'center' ? 'mx-auto mb-10 max-w-3xl text-center' : 'mb-10 max-w-3xl text-left'}>
+    {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
+    <h2 className="text-3xl font-bold leading-tight tracking-[-0.035em] text-navy sm:text-4xl">{title}</h2>
+    {subtitle && <p className="mt-4 text-[15px] leading-7 text-muted sm:text-base">{subtitle}</p>}
+  </div>;
 }
