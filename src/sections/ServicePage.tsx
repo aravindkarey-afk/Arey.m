@@ -1,128 +1,66 @@
-import { CONTACT, SERVICE_DETAILS, relatedServices, serviceFaqs, servicePath, type Service } from "../lib/data";
-import { Header, Footer, FloatingActions } from "../components/Chrome";
-import { Check, Phone, WhatsApp } from "../components/Icons";
+import type { ReactNode } from 'react';
+import { CONTACT } from '../lib/data';
+import { SERVICES, servicePath, type Service } from '../lib/services';
+import { SERVICE_CONTENT } from '../lib/service-content';
+import { COMBINATION_PLACES } from '../lib/locations';
+import { PageShell } from '../components/PageShell';
+import { PageHero } from '../components/PageHero';
+import { SectionHead } from '../components/SectionHead';
+import { ContactActions } from '../components/Actions';
+import { ServiceCard } from '../components/ServiceCard';
+import { CTASection } from '../components/CTASection';
+import { FAQList } from '../components/FAQList';
+import { ArrowUpRight, Check, MapPin, Ruler, ShieldCheck } from '../components/Icons';
 
-const materialNotes: Record<string, string> = {
-  "Invisible Grills": "Invisible grill options include SS304 and SS316 stainless steel cables on aluminium tracks. We discuss cable grade, coating and spacing for your particular opening — see our SS304 and SS316 guides for a comparison.",
-  "Safety Nets": "Net material, mesh size, fixing points and coverage depend on the space and intended use. Our team can discuss the available options during the site visit.",
-  "Bird Control": "The appropriate netting or spikes, fixings and coverage depend on the location and the birds involved. Ask our team for the specifications proposed for your site.",
-  "Sports Nets": "Netting, mesh size, supports and dimensions depend on the sport and practice area. Discuss the proposed specifications with our team before installation.",
-  "Ceiling Cloth Hangers": "Hanger configuration, rod material, fittings and dimensions depend on the model and available ceiling space. Ask our team about the options for your home.",
-};
+function DetailList({ items }: { items: string[] }) {
+  return <ul className="mt-5 space-y-3">{items.map((item) => <li key={item} className="flex items-start gap-3 text-sm leading-7 text-muted"><Check className="mt-1.5 h-4 w-4 shrink-0 text-brand" /><span>{item}</span></li>)}</ul>;
+}
+function InfoPanel({ icon, title, children }: { icon: ReactNode; title: string; children: ReactNode }) {
+  return <div className="rounded-2xl border border-borderline bg-white p-6"><span className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-soft text-brand-dark">{icon}</span><h2 className="text-xl font-semibold text-navy">{title}</h2>{children}</div>;
+}
 
 export function ServicePage({ service }: { service: Service }) {
-  const details = SERVICE_DETAILS[service.short];
-  const faqs = serviceFaqs(service);
-  const related = relatedServices(service);
-  const whatsapp = `https://wa.me/917995150298?text=${encodeURIComponent(`Hi Aravindh Invisible Grills, I am interested in ${service.short}. Please arrange a free measurement and share a quote.`)}`;
-  const back = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    try {
-      const referrer = new URL(document.referrer);
-      if (referrer.origin === location.origin && referrer.pathname === "/" && history.length > 1) {
-        event.preventDefault();
-        history.back();
-      }
-    } catch { /* Direct visits use the services link. */ }
-  };
-
-  return (
-    <>
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[2000] focus:bg-white focus:p-3">Skip to content</a>
-      <Header />
-      <main id="main" className="bg-lightbg pb-20 pt-[105px] md:pt-[145px]">
-        <div className="mx-auto max-w-[1200px] px-5">
-          <nav aria-label="Breadcrumb" className="py-3 text-sm text-muted">
-            <a href="/" className="local-back">Home</a>
-            <span className="px-2 text-slate-300">/</span>
-            <a href="/#services" onClick={back} className="local-back">Services</a>
-            <span className="px-2 text-slate-300">/</span>
-            <span className="text-slate-500">{service.short}</span>
-          </nav>
-          <div className="mt-3 overflow-hidden rounded-2xl bg-white shadow-[0_8px_32px_rgba(10,37,64,0.08)]">
-            <img src={service.image} alt={`${service.title} by Aravindh Invisible Grills`} className="h-[250px] w-full object-cover sm:h-[380px] lg:h-[440px]" width={1200} height={440} fetchPriority="high" decoding="async" />
-            <div className="grid gap-8 p-6 sm:p-10 lg:grid-cols-[1fr_300px]">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-[.16em] text-brand-dark">{service.category} · Hyderabad &amp; Telangana</p>
-                <h1 className="mt-3 text-3xl font-bold leading-tight text-navy sm:text-4xl">{service.title}</h1>
-                <p className="mt-5 text-base leading-8 text-muted">{service.desc}</p>
-                {details ? (
-                  details.intro.map((text) => <p key={text} className="mt-3 leading-7 text-muted">{text}</p>)
-                ) : (
-                  <p className="mt-3 leading-7 text-muted">Every space is different. Tell us about your requirements and our team can recommend an approach for your property, take measurements and prepare a written quote.</p>
-                )}
-
-                <section className="mt-10">
-                  <h2 className="text-2xl font-bold text-navy">Key features &amp; benefits</h2>
-                  <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-                    {(details?.highlights ?? ["Solution planned around your space", "Free doorstep measurement", "Written quote before work begins", "Installation by our trained team"]).map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-slate-700"><Check className="mt-1 h-4 w-4 shrink-0 text-brand" />{item}</li>
-                    ))}
-                  </ul>
-                </section>
-
-                <section className="mt-10">
-                  <h2 className="text-2xl font-bold text-navy">Materials &amp; specifications</h2>
-                  <p className="mt-3 leading-7 text-muted">{materialNotes[service.category] || "Materials and specifications are selected for your requirements. Ask our team for details during your measurement."}</p>
-                  {service.category === "Invisible Grills" && (
-                    <div className="mt-4 flex flex-wrap gap-3">
-                      <a href="/ss304-invisible-grills/" className="local-button-outline">SS304 Invisible Grills ↗</a>
-                      <a href="/ss316-invisible-grills/" className="local-button-outline">SS316 Invisible Grills ↗</a>
-                    </div>
-                  )}
-                </section>
-
-                <section className="mt-10">
-                  <h2 className="text-2xl font-bold text-navy">Installation process</h2>
-                  <ol className="mt-4 list-decimal space-y-3 pl-5 leading-7 text-muted">
-                    <li>Contact us to discuss your space and arrange a free doorstep measurement.</li>
-                    <li>Our team assesses the site and discusses materials, specifications and a written quote.</li>
-                    <li>Once you approve the proposal, our team arranges installation and fits the solution to your space.</li>
-                  </ol>
-                </section>
-
-                <section className="mt-10">
-                  <h2 className="text-2xl font-bold text-navy">Warranty information</h2>
-                  <p className="mt-3 leading-7 text-muted">Warranty coverage and terms depend on the product and installation. Please ask our team to confirm the applicable warranty in writing before ordering.</p>
-                </section>
-
-                <section className="mt-10">
-                  <h2 className="text-2xl font-bold text-navy">Frequently asked questions</h2>
-                  <div className="mt-4 divide-y divide-slate-200">
-                    {faqs.map((faq) => (
-                      <details key={faq.q} className="py-4">
-                        <summary className="cursor-pointer font-semibold text-navy">{faq.q}</summary>
-                        <p className="mt-3 leading-7 text-muted">{faq.a}</p>
-                      </details>
-                    ))}
-                  </div>
-                </section>
-
-                {related.length > 0 && (
-                  <section className="mt-10">
-                    <h2 className="text-2xl font-bold text-navy">Related services</h2>
-                    <div className="mt-4 flex flex-wrap gap-3">
-                      {related.map((item) => (
-                        <a key={item.short} href={servicePath(item)} className="local-button-outline hover:bg-brand-light">{item.short} ↗</a>
-                      ))}
-                    </div>
-                  </section>
-                )}
-              </div>
-              <aside className="h-fit rounded-xl bg-navy p-6 text-white lg:sticky lg:top-36">
-                <h2 className="text-xl font-bold">Free doorstep measurement</h2>
-                <p className="mt-3 text-sm leading-6 text-slate-200">Tell us about your space. Our team will help arrange a visit and a written quote.</p>
-                <div className="mt-6 flex flex-col gap-3">
-                  <a href={CONTACT.phoneHref} className="flex items-center justify-center gap-2 rounded-md bg-callblue px-4 py-3 font-semibold text-white"><Phone className="h-4 w-4" /> Call Now</a>
-                  <a href={whatsapp} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 rounded-md bg-whatsapp px-4 py-3 font-semibold text-white"><WhatsApp className="h-4 w-4" /> WhatsApp</a>
-                </div>
-              </aside>
-            </div>
-          </div>
-          <a href="/#services" onClick={back} className="local-back mt-8 inline-block">← Back to Services</a>
+  const content = SERVICE_CONTENT[service.slug];
+  const related = content.related.map((slug) => SERVICES.find((item) => item.slug === slug)).filter((item): item is Service => !!item);
+  const combinations = COMBINATION_PLACES.filter((place) => place.primaryService === service.slug);
+  return <PageShell>
+    <PageHero eyebrow={`${service.category} · Hyderabad`} title={service.title} description={content.intro[0]} image={service.image} alt={content.imageAlt} service={service.short}
+      crumbs={[{ label: 'Home', href: '/' }, { label: 'Services', href: '/services/' }, { label: service.short, href: servicePath(service) }]} />
+    <section className="page-container py-14 sm:py-20">
+      <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+        <div>
+          <p className="eyebrow">A solution for your space</p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-navy">Understand the options. Choose with confidence.</h2>
+          <p className="mt-6 text-base leading-8 text-muted">{content.intro[1]}</p>
+          <h3 className="mt-8 text-xl font-semibold text-navy">Benefits of {service.short}</h3>
+          <DetailList items={content.benefits} />
         </div>
-      </main>
-      <Footer />
-      <FloatingActions />
-    </>
-  );
+        <InfoPanel icon={<Ruler className="h-5 w-5" />} title="Materials & specification">
+          <p className="mt-4 text-sm leading-8 text-muted">{content.materials}</p>
+          <p className="mt-5 border-t border-borderline pt-5 text-xs leading-6 text-muted">Final product suitability is assessed during your site visit. Ask us to confirm the specification in your written quote.</p>
+        </InfoPanel>
+      </div>
+    </section>
+    <section className="border-y border-borderline bg-lightbg">
+      <div className="page-container grid gap-10 py-14 lg:grid-cols-2 lg:py-20">
+        <div><SectionHead title="Where it fits" subtitle="A few common applications. We assess each opening or use case individually." align="left" /><div className="space-y-4">{content.applications.map((application, index) => <div key={application.heading} className="flex gap-4 rounded-2xl border border-borderline bg-white p-5"><span className="text-sm font-bold text-brand">0{index + 1}</span><div><h3 className="font-semibold text-navy">{application.heading}</h3><p className="mt-2 text-sm leading-7 text-muted">{application.text}</p></div></div>)}</div></div>
+        <div><SectionHead title="Installation, step by step" subtitle="A measured approach, with clear approval before the work begins." align="left" /><ol className="space-y-6">{content.installation.map((step, index) => <li key={step} className="flex gap-4"><span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-navy text-sm font-semibold text-white">{index + 1}</span><div className="pt-1"><h3 className="font-semibold text-navy">{['Measure & assess', 'Agree the specification', 'Install & hand over'][index]}</h3><p className="mt-2 text-sm leading-7 text-muted">{step}</p></div></li>)}</ol>
+          <div className="mt-8 rounded-xl border border-brand/20 bg-brand-soft p-5"><p className="flex items-center gap-2 font-semibold text-navy"><ShieldCheck className="h-4 w-4 text-brand-dark" /> Free site visit &amp; measurement</p><p className="mt-2 text-sm leading-7 text-muted">We check access, mounting surfaces and the space before recommending a system. Installation is carried out only after you approve the quote.</p></div>
+        </div>
+      </div>
+    </section>
+    <section className="page-container py-14 sm:py-20">
+      <SectionHead title="Explore related services" subtitle="Compare complementary options for your home, building or facility." eyebrow="More ways we can help" />
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">{related.map((item) => <ServiceCard key={item.slug} service={item} />)}</div>
+      <div className="mt-10 rounded-2xl border border-borderline bg-lightbg p-6 sm:p-8">
+        <h2 className="flex items-center gap-2 text-xl font-semibold text-navy"><MapPin className="h-5 w-5 text-brand" /> Local service pages</h2>
+        <div className="mt-5 flex flex-wrap gap-3">{['Hyderabad', 'Nallagandla', 'Vanasthalipuram', 'Gachibowli', 'Kukatpally', 'Secunderabad'].map((area, index) => { const href = ['/invisible-grills-hyderabad/', '/invisible-grills-nallagandla/', '/invisible-grills-vanasthalipuram/', '/locations/gachibowli/', '/locations/kukatpally/', '/locations/secunderabad/'][index]; return <a key={area} href={href} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-borderline bg-white px-4 py-2 text-sm font-medium text-navy hover:border-brand">{service.short} · {area}<ArrowUpRight className="h-3.5 w-3.5" /></a>; })}</div>
+        {combinations.map((place) => <a key={place.path} href={place.path} className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand-dark hover:underline">{place.h1}<ArrowUpRight className="h-4 w-4" /></a>)}
+        <p className="mt-4 text-xs leading-6 text-muted">These area pages cover our local services; contact us to confirm availability for this specific solution at your location.</p>
+        <ContactActions service={service.short} className="mt-6" />
+      </div>
+    </section>
+    <section className="border-t border-borderline bg-lightbg"><div className="page-container grid gap-10 py-14 lg:grid-cols-[0.75fr_1.25fr] lg:py-20"><div><p className="eyebrow">Before you book</p><h2 className="mt-3 text-3xl font-bold tracking-tight text-navy">{service.short}: your questions answered</h2><p className="mt-4 text-sm leading-7 text-muted">Still comparing options? Call {CONTACT.phone} or send us a photo on WhatsApp.</p><ContactActions service={service.short} quote={false} className="mt-6" /></div><FAQList items={content.faqs} /></div></section>
+    <CTASection service={service.short} />
+  </PageShell>;
 }

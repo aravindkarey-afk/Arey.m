@@ -1,20 +1,7 @@
-import { Header, Footer, FloatingActions } from "../components/Chrome";
+import { PageShell } from '../components/PageShell';
+import { ContactActions } from '../components/Actions';
+import { ArrowUpRight } from '../components/Icons';
 
 export function NotFound() {
-  return <>
-    <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[2000] focus:bg-white focus:p-3">Skip to content</a>
-    <Header />
-    <main id="main" className="bg-lightbg px-5 pt-[150px] pb-20 md:pt-[190px]">
-      <section className="mx-auto max-w-3xl rounded-2xl bg-white p-8 text-center shadow-[0_8px_32px_rgba(10,37,64,0.08)] sm:p-14">
-        <p className="text-sm font-bold tracking-[.2em] text-brand-dark">ERROR 404</p>
-        <h1 className="mt-4 text-3xl font-bold text-navy sm:text-4xl">Page not found</h1>
-        <p className="mx-auto mt-4 max-w-lg leading-7 text-muted">The page you are looking for may have moved or no longer exists. Explore our services or return to the homepage.</p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <a href="/" className="local-button">Go to homepage</a>
-          <a href="/#services" className="local-button-outline">Browse services</a>
-        </div>
-      </section>
-    </main>
-    <Footer /><FloatingActions />
-  </>;
+  return <PageShell><section className="bg-lightbg px-5 py-20 sm:py-28"><div className="mx-auto max-w-3xl rounded-3xl border border-borderline bg-white p-8 text-center sm:p-14"><p className="eyebrow">Error 404</p><h1 className="mt-4 text-4xl font-bold tracking-tight text-navy">This page isn’t here.</h1><p className="mx-auto mt-5 max-w-lg text-base leading-8 text-muted">The address may have changed. Browse our services, find your area or contact us for help.</p><div className="mt-8 flex flex-wrap justify-center gap-3"><a href="/services/" className="btn btn-outline">All services <ArrowUpRight className="h-4 w-4" /></a><a href="/locations/" className="btn btn-outline">Service locations <ArrowUpRight className="h-4 w-4" /></a><a href="/" className="btn btn-outline">Homepage</a></div><ContactActions quote={false} className="mt-8 justify-center" /></div></section></PageShell>;
 }

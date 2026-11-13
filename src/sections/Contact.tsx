@@ -58,9 +58,16 @@ export function Contact({
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (!initialService) return;
-    setFields((current) => ({ ...current, requirement: initialService.title }));
-    setSubmitted(false);
+    const params = new URLSearchParams(window.location.search);
+    const service = params.get('service');
+    const area = params.get('area');
+    if (initialService || service || area) {
+      setFields((current) => ({ ...current,
+        requirement: initialService?.title || (FIELD_OPTIONS.includes(service || '') ? service! : current.requirement),
+        location: area?.slice(0, 100) || current.location,
+      }));
+      setSubmitted(false);
+    }
   }, [initialService]);
 
   const update = (key: keyof Fields, value: string) => {
@@ -70,8 +77,13 @@ export function Contact({
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (fields.phone.replace(/\D/g, "").length < 10) {
-      setError("Please enter a valid 10-digit phone number.");
+    const digits = fields.phone.replace(/\D/g, '');
+    if (digits.length < 10 || digits.length > 15) {
+      setError('Please enter a valid phone number with 10–15 digits, including country code if needed.');
+      return;
+    }
+    if (!fields.name.trim() || !fields.location.trim()) {
+      setError('Please enter your name and service area.');
       return;
     }
     setError("");
@@ -128,7 +140,7 @@ export function Contact({
           </div>
         </div>
 
-        <div className="reveal rounded-2xl bg-white p-7 shadow-[0_10px_36px_rgba(10,37,64,0.1)] ring-1 ring-slate-100 sm:p-8">
+        <div id="enquiry" className="reveal scroll-mt-32 rounded-2xl bg-white p-7 shadow-[0_10px_36px_rgba(10,37,64,0.1)] ring-1 ring-slate-100 sm:p-8">
           <h3 className="mb-5 text-[20px] font-semibold text-navy">Request Free Measurement</h3>
 
           {submitted ? (
@@ -229,7 +241,7 @@ export function Contact({
               </div>
 
               {error && (
-                <p className="mb-4 rounded-md bg-red-50 px-3.5 py-2.5 text-[13px] font-medium text-red-600">
+                <p role="alert" className="mb-4 rounded-md bg-red-50 px-3.5 py-2.5 text-[13px] font-medium text-red-600">
                   {error}
                 </p>
               )}

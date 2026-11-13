@@ -1,65 +1,38 @@
-import { FloatingActions, Footer, Header } from "./components/Chrome";
-import { useReveal } from "./components/useReveal";
-import { About, Areas, Hero, WhyUs } from "./sections/HomeSections";
-import { Services } from "./sections/Services";
-import { Gallery } from "./sections/Gallery";
-import { Faq } from "./sections/FaqReviews";
-import { Contact } from "./sections/Contact";
-import { ServicePage } from "./sections/ServicePage";
-import { NotFound } from "./sections/NotFound";
-import { SERVICES, servicePath } from "./lib/data";
-import { LocalPage, PLACES } from "./sections/LocalPage";
-import { GuidePage } from "./sections/GuidePage";
-import { GUIDE_BY_PATH } from "./lib/guides";
-import { AboutPage } from "./sections/AboutPage";
-import { ContactPage } from "./sections/ContactPage";
+import { PageContext, normalizePath } from './components/PageContext';
+import { PageShell } from './components/PageShell';
+import { useReveal } from './components/useReveal';
+import { SERVICE_BY_PATH } from './lib/services';
+import { PLACE_BY_PATH } from './lib/locations';
+import { GUIDE_BY_PATH } from './lib/guides';
+import { About, Areas, FreeVisit, Hero, WhyUs } from './sections/HomeSections';
+import { Services, ServicesHub } from './sections/Services';
+import { Gallery, GalleryHub } from './sections/Gallery';
+import { LocationsHub } from './sections/LocationsHub';
+import { Faq, Reviews } from './sections/FaqReviews';
+import { Contact } from './sections/Contact';
+import { ServicePage } from './sections/ServicePage';
+import { LocalPage } from './sections/LocalPage';
+import { GuidePage } from './sections/GuidePage';
+import { AboutPage } from './sections/AboutPage';
+import { ContactPage } from './sections/ContactPage';
+import { NotFound } from './sections/NotFound';
 
-export type ServiceRequest = { title: string; id: number } | null;
-
-export default function App({ pathname = "/" }: { pathname?: string }) {
+export default function App({ pathname = '/' }: { pathname?: string }) {
   useReveal();
-
-  const normalized = pathname.endsWith("/") ? pathname : `${pathname}/`;
-
-  const service = SERVICES.find((item) => servicePath(item) === normalized);
-  if (service) return <ServicePage service={service} />;
-
-  const place = PLACES[normalized];
-  if (place) return <LocalPage place={place} />;
-
-  const guide = GUIDE_BY_PATH[normalized];
-  if (guide) return <GuidePage guide={guide} />;
-
-  if (normalized === "/about/") return <AboutPage />;
-  if (normalized === "/contact/") return <ContactPage />;
-
-  if (normalized !== "/") return <NotFound />;
-
-  return (
-    <>
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[2000] focus:rounded focus:bg-navy focus:px-3 focus:py-2 focus:text-xs focus:font-semibold focus:text-white"
-      >
-        Skip to content
-      </a>
-
-      <Header />
-
-      <main id="main">
-        <Hero />
-        <About />
-        <Services />
-        <WhyUs />
-        <Gallery />
-        <Areas />
-        <Faq />
-
-        <Contact initialService={null} />
-      </main>
-
-      <Footer />
-      <FloatingActions />
-    </>
-  );
+  const path = normalizePath(pathname);
+  const service = SERVICE_BY_PATH.get(path);
+  const place = PLACE_BY_PATH.get(path);
+  const guide = GUIDE_BY_PATH.get(path);
+  let page;
+  if (service) page = <ServicePage service={service} />;
+  else if (place) page = <LocalPage place={place} />;
+  else if (guide) page = <GuidePage guide={guide} />;
+  else if (path === '/about/') page = <AboutPage />;
+  else if (path === '/contact/') page = <ContactPage />;
+  else if (path === '/services/') page = <ServicesHub />;
+  else if (path === '/gallery/') page = <GalleryHub />;
+  else if (path === '/locations/') page = <LocationsHub />;
+  else if (path === '/') page = <PageShell><Hero /><About /><Services /><WhyUs /><Gallery /><Reviews /><Areas /><FreeVisit /><Faq /><Contact initialService={null} /></PageShell>;
+  else page = <NotFound />;
+  return <PageContext.Provider value={path}>{page}</PageContext.Provider>;
 }

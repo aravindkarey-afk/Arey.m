@@ -3,7 +3,209 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "routes": [
-    { "handle": "filesystem" },
-    { "src": "/[^.]*", "status": 404, "dest": "/404.html" }
+    {
+      "src": "^/services/balcony-safety-nets/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/balcony-safety-nets/"
+      }
+    },
+    {
+      "src": "^/services/pigeon-safety-nets/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/pigeon-safety-nets/"
+      }
+    },
+    {
+      "src": "^/services/bird-protection-nets/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/bird-protection-nets/"
+      }
+    },
+    {
+      "src": "^/services/children-safety-nets/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/child-safety-nets/"
+      }
+    },
+    {
+      "src": "^/services/all-sports-practice-nets/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/sports-safety-nets/"
+      }
+    },
+    {
+      "src": "^/services/cricket-practice-nets/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/cricket-practice-nets/"
+      }
+    },
+    {
+      "src": "^/services/football-stop-nets/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/football-safety-nets/"
+      }
+    },
+    {
+      "src": "^/services/bird-control-spikes/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/anti-bird-spikes/"
+      }
+    },
+    {
+      "src": "^/services/ceiling-cloth-hangers/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/cloth-hangers/"
+      }
+    },
+    {
+      "src": "^/services/balcony-invisible-grills/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/balcony-invisible-grills/"
+      }
+    },
+    {
+      "src": "^/services/window-invisible-grills/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/window-invisible-grills/"
+      }
+    },
+    {
+      "src": "^/services/invisible-grills-for-pets/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/invisible-grills-for-pets/"
+      }
+    },
+    {
+      "src": "^/services/invisible-grills-for-kids/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/invisible-grills-for-kids/"
+      }
+    },
+    {
+      "src": "^/services/invisible-grills-for-birds/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/invisible-grills-for-birds/"
+      }
+    },
+    {
+      "src": "^/services/building-safety-nets/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/building-safety-nets/"
+      }
+    },
+    {
+      "src": "^/services/car-parking-safety-nets/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/car-parking-safety-nets/"
+      }
+    },
+    {
+      "src": "^/services/coconut-tree-safety-nets/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/coconut-tree-safety-nets/"
+      }
+    },
+    {
+      "src": "^/services/construction-safety-nets/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/construction-safety-nets/"
+      }
+    },
+    {
+      "src": "^/services/duct-area-safety-nets/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/duct-area-safety-nets/"
+      }
+    },
+    {
+      "src": "^/services/industrial-safety-nets/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/industrial-safety-nets/"
+      }
+    },
+    {
+      "src": "^/services/open-area-safety-nets/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/open-area-safety-nets/"
+      }
+    },
+    {
+      "src": "^/services/pets-and-monkey-safety-nets/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/pets-and-monkey-safety-nets/"
+      }
+    },
+    {
+      "src": "^/services/staircase-safety-nets/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/staircase-safety-nets/"
+      }
+    },
+    {
+      "src": "^/services/swimming-pool-nets/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/swimming-pool-nets/"
+      }
+    },
+    {
+      "src": "^/services/anti-bird-nets/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/anti-bird-nets/"
+      }
+    },
+    {
+      "src": "^/services/terrace-cricket-nets/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/terrace-cricket-nets/"
+      }
+    },
+    {
+      "src": "^/services/manual-ceiling-cloth-hangers/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/manual-ceiling-cloth-hangers/"
+      }
+    },
+    {
+      "src": "^/services/ss-ceiling-cloth-hangers/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/stainless-steel-cloth-hangers/"
+      }
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/[^.]*",
+      "status": 404,
+      "dest": "/404.html"
+    }
   ]
 }

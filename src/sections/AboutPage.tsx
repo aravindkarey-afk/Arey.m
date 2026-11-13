@@ -1,127 +1,27 @@
-import { CONTACT, STATS, WHY_US, SERVICE_AREAS } from "../lib/data";
-import { IMG } from "../assets/refimg";
-import { Header, Footer, FloatingActions } from "../components/Chrome";
-import { Award, Bolt, Check, Eye, Phone, ShieldCheck, Sun, Tag, WhatsApp } from "../components/Icons";
-import { Contact } from "./Contact";
-
-const valueIcons: Record<string, typeof ShieldCheck> = {
-  shield: ShieldCheck, sun: Sun, eye: Eye, bolt: Bolt, award: Award, tag: Tag,
-};
+import { WHY_US } from '../lib/data';
+import { FEATURED_PLACES } from '../lib/locations';
+import { PageShell } from '../components/PageShell';
+import { PageHero } from '../components/PageHero';
+import { SectionHead } from '../components/SectionHead';
+import { ResponsiveImage } from '../components/ResponsiveImage';
+import { CTASection } from '../components/CTASection';
+import { ArrowUpRight, Check, Ruler, ShieldCheck, Wrench } from '../components/Icons';
 
 const expertise = [
-  { title: "Invisible Grills", text: "SS304 and SS316 stainless steel cable grills for balconies and windows, with spacing tailored to your family.", href: "/ss316-invisible-grills/", label: "Explore grill materials" },
-  { title: "Safety Nets", text: "Balcony, window, staircase and building safety nets for children, pets and high-rise homes.", href: "/services/balcony-safety-nets/", label: "View safety nets" },
-  { title: "Bird Control", text: "Pigeon safety nets, bird protection nets and anti-bird spikes to keep spaces clean and hygienic.", href: "/services/pigeon-safety-nets/", label: "View bird control" },
-  { title: "Child Safety", text: "Whole-home child safety planning across balconies, windows and staircases.", href: "/child-safety-solutions/", label: "Child safety solutions" },
+  { title: 'Invisible Grills', text: 'SS304 and SS316 cable options for balconies and windows, with the grade and fixing layout assessed for the opening.', href: '/invisible-grills/' },
+  { title: 'Safety Nets', text: 'Balcony, child, staircase and building netting, specified around the intended use and supported perimeter.', href: '/balcony-safety-nets/' },
+  { title: 'Bird Control', text: 'Pigeon nets, bird protection nets and anti-bird spikes for entry gaps, utility areas and selected perching ledges.', href: '/pigeon-safety-nets/' },
+  { title: 'Sports Nets', text: 'Cricket practice, football and sports enclosures planned around the activity, boundary and access.', href: '/sports-safety-nets/' },
+  { title: 'Cloth Hangers', text: 'Ceiling-mounted drying systems planned around reach, ceiling construction and the everyday laundry routine.', href: '/cloth-hangers/' },
 ];
-
 export function AboutPage() {
-  return (
-    <>
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[2000] focus:bg-white focus:p-3">Skip to content</a>
-      <Header />
-      <main id="main">
-        <section className="mx-auto grid max-w-[1200px] items-center gap-10 px-5 pt-[150px] pb-14 lg:grid-cols-2 lg:pt-[180px]">
-          <div>
-            <nav aria-label="Breadcrumb" className="text-sm text-muted">
-              <a href="/" className="local-back">Home</a>
-              <span className="px-2 text-slate-300">/</span>
-              <span className="text-slate-500">About Us</span>
-            </nav>
-            <p className="mt-6 text-sm font-semibold uppercase tracking-[.18em] text-brand-dark">About Us · Hyderabad &amp; Telangana</p>
-            <h1 className="mt-4 text-4xl font-bold leading-tight text-navy sm:text-5xl">About Aravindh Invisible Grills</h1>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
-              We are a Hyderabad-based team specialising in invisible grills, safety nets and bird-control solutions. Our focus is simple: add reliable protection to your home without stealing your view, your light or your airflow.
-            </p>
-            <p className="mt-4 max-w-xl leading-relaxed text-muted">
-              From high-rise apartments in the west of the city to independent homes in the east, we visit your home for a free measurement, explain the options honestly and provide a written quote before any work begins.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href={CONTACT.phoneHref} className="local-button"><Phone className="mr-2 h-4 w-4" /> Call {CONTACT.phone}</a>
-              <a href={CONTACT.whatsappGeneral} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-md bg-whatsapp px-5 py-3 font-semibold text-white"><WhatsApp className="mr-2 h-4 w-4" /> WhatsApp Us</a>
-            </div>
-          </div>
-          <img src={IMG.s26} alt="Aravindh Invisible Grills balcony installation with an open city view in Hyderabad" className="aspect-[4/3] w-full rounded-3xl object-cover shadow-xl" width={800} height={600} fetchPriority="high" decoding="async" />
-        </section>
-
-        <div className="bg-navy">
-          <div className="mx-auto grid max-w-[1200px] grid-cols-2 gap-8 px-5 py-12 lg:grid-cols-4">
-            {STATS.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="text-[32px] leading-none font-bold text-white sm:text-[38px]">{stat.value}</p>
-                <p className="mt-2 text-[12px] font-medium tracking-[0.5px] text-slate-300 uppercase">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <section className="mx-auto max-w-[1200px] px-5 py-16">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <img src="/images/family-balcony.jpg" alt="Family enjoying a safe, open balcony protected by invisible grills in Hyderabad" className="w-full rounded-2xl object-cover shadow-[0_14px_36px_rgba(10,37,64,0.2)]" width={800} height={600} loading="lazy" decoding="async" />
-            <div>
-              <h2 className="text-3xl font-bold text-navy">Our story &amp; mission</h2>
-              <p className="mt-4 leading-8 text-muted">
-                Traditional iron grills cage a home, block sunlight and spoil the look of a building. We started Aravindh Invisible Grills to offer a better alternative — high-tensile stainless steel cables and engineered safety nets that keep families safer while balconies and windows stay bright and open.
-              </p>
-              <p className="mt-4 leading-8 text-muted">
-                Our mission is to make professional home safety accessible across Hyderabad and Telangana: free doorstep measurement, transparent written quotes, quality materials and a neat installation by our own trained technicians.
-              </p>
-              <ul className="mt-6 space-y-3">
-                {["Honest advice on the right material and grade for your home", "Free doorstep measurement with a written quote", "Neat, dust-controlled installation", "Service across Hyderabad and Telangana"].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-slate-700"><Check className="mt-1 h-5 w-5 shrink-0 text-brand" /> {item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-lightbg px-5 py-16">
-          <div className="mx-auto max-w-[1200px]">
-            <h2 className="text-center text-3xl font-bold text-navy">What we specialise in</h2>
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {expertise.map((item) => (
-                <div key={item.title} className="flex flex-col rounded-xl bg-white p-6 shadow-[0_4px_18px_rgba(10,37,64,0.06)]">
-                  <h3 className="text-lg font-semibold text-navy">{item.title}</h3>
-                  <p className="mt-2 flex-1 text-sm leading-7 text-muted">{item.text}</p>
-                  <a href={item.href} className="mt-4 text-sm font-semibold text-brand-dark hover:underline">{item.label} ↗</a>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-[1200px] px-5 py-16">
-          <h2 className="text-center text-3xl font-bold text-navy">Why families choose us</h2>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {WHY_US.map((item) => {
-              const Icon = valueIcons[item.icon] ?? ShieldCheck;
-              return (
-                <div key={item.title} className="rounded-xl border border-slate-100 bg-white p-7 text-center shadow-[0_4px_18px_rgba(10,37,64,0.06)]">
-                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-brand-light text-brand"><Icon className="h-6 w-6" /></div>
-                  <h3 className="mb-2 text-base font-semibold text-navy">{item.title}</h3>
-                  <p className="text-sm leading-7 text-muted">{item.text}</p>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
-        <section className="bg-lightbg px-5 py-16">
-          <div className="mx-auto max-w-[1000px] text-center">
-            <h2 className="text-3xl font-bold text-navy">Areas we serve</h2>
-            <p className="mx-auto mt-4 max-w-2xl leading-8 text-muted">We travel to your home for measurement and installation across Hyderabad and Telangana, including {SERVICE_AREAS.slice(1, -1).join(", ")} and {SERVICE_AREAS[SERVICE_AREAS.length - 1]}.</p>
-            <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <a href="/invisible-grills-hyderabad/" className="local-button-outline bg-white">Invisible Grills in Hyderabad ↗</a>
-              <a href="/invisible-grills-nallagandla/" className="local-button-outline bg-white">Nallagandla ↗</a>
-              <a href="/invisible-grills-vanasthalipuram/" className="local-button-outline bg-white">Vanasthalipuram ↗</a>
-            </div>
-          </div>
-        </section>
-
-        <Contact initialService={null} />
-      </main>
-      <Footer />
-      <FloatingActions />
-    </>
-  );
+  return <PageShell>
+    <PageHero eyebrow="About us · Hyderabad & Telangana" title="Aravindh Invisible Grills. More ways to care for your space." description="We are a Hyderabad-based safety and installation business. Our work spans invisible grills, protective nets, sports netting, bird control and ceiling cloth drying hangers." image="/images/reference/s26.webp" alt="Balcony invisible grill reference illustrating an open residential outlook" crumbs={[{ label: 'Home', href: '/' }, { label: 'About Us', href: '/about/' }]} />
+    <section className="page-container py-14 sm:py-20"><div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"><ResponsiveImage src="/images/family-balcony.jpg" alt="Illustration of a family using a bright balcony with invisible grills" className="aspect-[4/3] w-full rounded-3xl object-cover" sizes="(max-width: 1023px) calc(100vw - 40px), 550px" /><div><p className="eyebrow">Our purpose</p><h2 className="mt-3 text-3xl font-bold tracking-tight text-navy">Safer Homes, Brighter Views</h2><p className="mt-5 text-base leading-8 text-muted">A useful safety solution should fit the way you live. We help you compare discreet cable grills, application-specific nets and practical utility fittings without treating every opening as the same job.</p><p className="mt-4 text-sm leading-8 text-muted">From apartments to independent houses and practice spaces, the process starts with a conversation and a site measurement. We explain the proposed materials, access requirements and limitations, then prepare a written quote before installation.</p><ul className="mt-6 space-y-3">{['Free site visit and measurement in listed service areas', 'Material options explained before you approve the work', 'A measured scope and written quotation', 'Doorstep service across Hyderabad and Telangana'].map((item) => <li key={item} className="flex gap-3 text-sm leading-7 text-navy"><Check className="mt-1.5 h-4 w-4 shrink-0 text-brand" />{item}</li>)}</ul></div></div></section>
+    <section className="border-y border-borderline bg-lightbg"><div className="page-container py-14 sm:py-20"><SectionHead eyebrow="Our expertise" title="Five service families. One measured approach." subtitle="Explore the complete range, with a dedicated page for each product and application." /><div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{expertise.map((item) => <article key={item.title} className="flex flex-col rounded-2xl border border-borderline bg-white p-6"><h3 className="text-xl font-semibold text-navy">{item.title}</h3><p className="mt-3 flex-1 text-sm leading-7 text-muted">{item.text}</p><a href={item.href} className="mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand-dark">Explore {item.title}<ArrowUpRight className="h-4 w-4" /></a></article>)}</div></div></section>
+    <section className="page-container py-14 sm:py-20"><SectionHead eyebrow="How we work" title="Measure. Explain. Install." /><div className="grid gap-6 md:grid-cols-3">{[{ icon: Ruler, title: 'Understand the space', text: 'We review the openings, intended use, access and fixing surfaces before recommending a system.' }, { icon: ShieldCheck, title: 'Agree the specification', text: 'Compare suitable materials and confirm the scope, quotation and applicable warranty terms.' }, { icon: Wrench, title: 'Install and hand over', text: 'Work follows the agreed plan, with a final check and care guidance for the installed system.' }].map(({ icon: Icon, title, text }, index) => <article key={title} className="rounded-2xl border border-borderline p-6"><Icon className="h-7 w-7 text-brand" /><p className="mt-5 text-xs font-semibold text-brand-dark">0{index + 1}</p><h3 className="mt-2 text-xl font-semibold text-navy">{title}</h3><p className="mt-3 text-sm leading-7 text-muted">{text}</p></article>)}</div></section>
+    <section className="border-t border-borderline bg-lightbg"><div className="page-container py-14"><SectionHead align="left" eyebrow="Why choose us" title="Clear advice, practical details" /><div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{WHY_US.map((item) => <article key={item.title}><h3 className="flex items-center gap-2 font-semibold text-navy"><Check className="h-4 w-4 shrink-0 text-brand" />{item.title}</h3><p className="mt-3 text-sm leading-7 text-muted">{item.text}</p></article>)}</div></div></section>
+    <section className="page-container py-14"><SectionHead align="left" title="Where we work" subtitle="These are service locations, not branch offices. Nallagandla refers to the Hyderabad suburb." /><div className="flex flex-wrap gap-3">{FEATURED_PLACES.map((place) => <a key={place.path} href={place.path} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-borderline px-4 py-2 text-sm font-medium text-navy hover:border-brand">{place.area}<ArrowUpRight className="h-3.5 w-3.5" /></a>)}</div></section>
+    <CTASection title="Let’s talk about your space." />
+  </PageShell>;
 }

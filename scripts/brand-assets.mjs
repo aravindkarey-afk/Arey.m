@@ -1,5 +1,6 @@
-// One-off brand asset generator. Run with: npm i --no-save sharp && node scripts/brand-assets.mjs
-// Outputs (committed to public/) so the production build does NOT need sharp.
+// One-off brand asset generator. Run with: node scripts/brand-assets.mjs
+// Outputs are committed to public/ so this script is not part of the production build.
+// Responsive image optimization is handled separately by scripts/optimize-images.mjs.
 import sharp from 'sharp';
 import { readFile, writeFile } from 'node:fs/promises';
 

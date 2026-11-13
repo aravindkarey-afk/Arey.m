@@ -1,288 +1,115 @@
-import { useEffect, useState } from "react";
-import { CONTACT, NAV, SERVICES, servicePath, scrollToSection } from "../lib/data";
-import { Logo, LogoMark } from "./Logo";
-import {
-  ArrowUp,
-  Check,
-  Close,
-  Mail,
-  MapPin,
-  Menu,
-  Phone,
-  WhatsApp,
-} from "./Icons";
-import { cn } from "../utils/cn";
-
-/* ----------------------------------------------------------------- HEADER */
+import { useEffect, useRef, useState } from 'react';
+import { CONTACT, NAV, servicePath, SERVICES } from '../lib/data';
+import { SERVICE_BY_PATH } from '../lib/services';
+import { Logo, LogoMark } from './Logo';
+import { ArrowUp, Check, Close, Mail, MapPin, Menu, Phone, WhatsApp } from './Icons';
+import { cn } from '../utils/cn';
+import { usePathname } from './PageContext';
+import { whatsappLink } from './Actions';
 
 export function Header() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const toggle = useRef<HTMLButtonElement>(null);
+  const pathname = usePathname();
+  const active = (href: string) => href === '/' ? pathname === '/' : pathname === href || (href === '/services/' && SERVICE_BY_PATH.has(pathname));
 
   useEffect(() => {
     if (!open) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const escape = (event: KeyboardEvent) => { if (event.key === 'Escape') { setOpen(false); toggle.current?.focus(); } };
+    const desktop = window.matchMedia('(min-width: 1024px)');
+    const resize = () => { if (desktop.matches) setOpen(false); };
+    document.addEventListener('keydown', escape);
+    desktop.addEventListener('change', resize);
+    return () => { document.body.style.overflow = previous; document.removeEventListener('keydown', escape); desktop.removeEventListener('change', resize); };
   }, [open]);
 
-  const go = (target: string) => {
-    setOpen(false);
-    if (window.location.pathname !== "/") { window.location.href = `/#${target}`; return; }
-    scrollToSection(target);
-  };
-
-  return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 z-[1000] w-full bg-white transition-shadow duration-300",
-        scrolled
-          ? "shadow-[0_4px_24px_rgba(10,37,64,0.14)]"
-          : "shadow-[0_2px_15px_rgba(0,0,0,0.08)]"
-      )}
-    >
-      <div className="hidden bg-navy text-white md:block">
-        <div className="mx-auto flex max-w-[1200px] items-center justify-between px-5 py-1.5 text-[12.5px]">
-          <p className="flex items-center gap-2">
-            <Check className="h-3.5 w-3.5 text-brand" strokeWidth={2.6} />
-            Invisible grills &amp; safety nets across Hyderabad and Telangana
-          </p>
-          <a
-            href={CONTACT.phoneHref}
-            className="flex items-center gap-2 font-semibold transition-colors hover:text-brand"
-          >
-            <Phone className="h-3.5 w-3.5" /> {CONTACT.phone}
-          </a>
-        </div>
+  return <header className="site-header sticky top-0 z-[1000] w-full border-b border-borderline bg-white shadow-[0_3px_18px_rgba(10,37,64,0.05)]">
+    <div className="hidden bg-navy text-white md:block">
+      <div className="page-container flex min-h-9 items-center justify-between gap-4 py-1.5 text-[11px] xl:text-xs">
+        <p className="flex items-center gap-2"><Check className="h-3.5 w-3.5 text-emerald-300" /> Grills, safety nets, sports nets, bird control &amp; cloth hangers</p>
+        <a href={CONTACT.phoneHref} className="flex shrink-0 items-center gap-2 font-semibold hover:text-emerald-300"><Phone className="h-3.5 w-3.5" /> {CONTACT.phone}</a>
       </div>
-
-      <div className="mx-auto flex max-w-[1200px] items-center justify-between px-5 py-3">
-        <Logo onClick={() => go("home")} />
-
-        <nav className="hidden items-center gap-6 lg:flex">
-          {NAV.map((item) => (
-            <a
-              key={item.target}
-              href={`/#${item.target}`}
-              onClick={(event) => { if (window.location.pathname === "/") { event.preventDefault(); go(item.target); } }}
-              className="cursor-pointer text-[14.5px] font-medium text-navy transition-colors hover:text-brand"
-            >
-              {item.label}
-            </a>
-          ))}
-          <a
-            href={CONTACT.phoneHref}
-            className="flex items-center gap-2 rounded-md bg-brand px-4 py-2 text-[14.5px] font-semibold text-white transition-colors hover:bg-brand-dark"
-          >
-            <Phone className="h-4 w-4" /> Call Now
-          </a>
-        </nav>
-
-        <div className="flex items-center gap-2 lg:hidden">
-          <a
-            href={CONTACT.phoneHref}
-            className="flex items-center gap-1.5 rounded-md bg-brand px-3 py-2 text-[13px] font-semibold text-white"
-            aria-label="Call Aravindh Invisible Grills"
-          >
-            <Phone className="h-3.5 w-3.5" /> Call
-          </a>
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            className="cursor-pointer p-1.5 text-navy"
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            aria-controls="mobile-navigation"
-          >
-            {open ? <Close className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </div>
+    </div>
+    <div className="page-container flex min-h-[76px] items-center justify-between gap-3 py-3">
+      <Logo />
+      <nav aria-label="Main navigation" className="hidden items-center gap-5 lg:flex xl:gap-7">
+        {NAV.map((item) => <a key={item.href} href={item.href} aria-current={active(item.href) ? 'page' : undefined}
+          className={cn('nav-link py-3 text-[13px] font-semibold xl:text-sm', active(item.href) ? 'text-brand-dark' : 'text-navy')}>{item.label}</a>)}
+        <a href={CONTACT.phoneHref} className="btn btn-primary !min-h-10 !px-4 !py-2 !text-xs"><Phone className="h-4 w-4" /> Call Now</a>
+      </nav>
+      <div className="flex items-center gap-1 lg:hidden">
+        <a href={CONTACT.phoneHref} className="btn btn-primary !min-h-11 !px-3 !text-xs" aria-label="Call Aravindh Invisible Grills"><Phone className="h-4 w-4" /><span className="hidden min-[380px]:inline">Call</span></a>
+        <button ref={toggle} type="button" onClick={() => setOpen(!open)} className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-lg text-navy hover:bg-lightbg"
+          aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="mobile-navigation">
+          {open ? <Close className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
       </div>
-
-      {open && (
-        <nav id="mobile-navigation" className="fade-in max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-borderline bg-white lg:hidden">
-          <ul className="mx-auto max-w-[1200px] px-5 py-3">
-            {NAV.map((item) => (
-              <li key={item.target} className="border-b border-slate-100 last:border-b-0">
-                <a
-                  href={`/#${item.target}`}
-                  onClick={(event) => { if (window.location.pathname === "/") { event.preventDefault(); go(item.target); } else setOpen(false); }}
-                  className="block w-full cursor-pointer py-3 text-left text-[15px] font-medium text-navy transition-colors hover:text-brand"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      )}
-    </header>
-  );
+    </div>
+    <nav id="mobile-navigation" aria-label="Mobile navigation" hidden={!open} className="max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-borderline bg-white lg:hidden">
+      <ul className="page-container py-3">
+        {NAV.map((item) => <li key={item.href} className="border-b border-slate-100 last:border-0">
+          <a href={item.href} onClick={() => setOpen(false)} aria-current={active(item.href) ? 'page' : undefined}
+            className={cn('flex min-h-12 items-center justify-between py-3 text-base font-semibold', active(item.href) ? 'text-brand-dark' : 'text-navy')}>{item.label}<span aria-hidden="true">↗</span></a>
+        </li>)}
+      </ul>
+      <div className="page-container grid grid-cols-2 gap-3 pt-2 pb-5">
+        <a href={CONTACT.phoneHref} className="btn btn-primary"><Phone className="h-4 w-4" /> Call Now</a>
+        <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp"><WhatsApp className="h-5 w-5" /> WhatsApp</a>
+      </div>
+    </nav>
+  </header>;
 }
 
-/* ----------------------------------------------------------------- FOOTER */
-
-const svcHref = (short: string) => {
-  const service = SERVICES.find((item) => item.short === short);
-  return service ? servicePath(service) : "/#services";
-};
-
+const bySlug = (slug: string) => servicePath(SERVICES.find((service) => service.slug === slug)!);
 const footerColumns = [
-  {
-    title: "Invisible Grills",
-    items: [
-      { label: "Balcony Invisible Grills", href: svcHref("Balcony Invisible Grills") },
-      { label: "Window Invisible Grills", href: svcHref("Window Invisible Grills") },
-      { label: "SS304 Invisible Grills", href: "/ss304-invisible-grills/" },
-      { label: "SS316 Invisible Grills", href: "/ss316-invisible-grills/" },
-      { label: "Invisible Grills for Kids", href: svcHref("Invisible Grills for Kids") },
-      { label: "Invisible Grills for Pets", href: svcHref("Invisible Grills for Pets") },
-      { label: "Child Safety Solutions", href: "/child-safety-solutions/" },
-    ],
-  },
-  {
-    title: "Safety Nets & Bird Control",
-    items: [
-      { label: "Balcony Safety Nets", href: svcHref("Balcony Safety Nets") },
-      { label: "Children Safety Nets", href: svcHref("Children Safety Nets") },
-      { label: "Pigeon Safety Nets", href: svcHref("Pigeon Safety Nets") },
-      { label: "Bird Protection Nets", href: svcHref("Bird Protection Nets") },
-      { label: "Anti Bird Nets", href: svcHref("Anti Bird Nets") },
-      { label: "Staircase Safety Nets", href: svcHref("Staircase Safety Nets") },
-      { label: "Ceiling Cloth Hangers", href: svcHref("Ceiling Cloth Hangers") },
-    ],
-  },
-  {
-    title: "Company & Service Areas",
-    items: [
-      { label: "About Us", href: "/about/" },
-      { label: "Contact Us", href: "/contact/" },
-      { label: "Invisible Grills in Hyderabad", href: "/invisible-grills-hyderabad/" },
-      { label: "Invisible Grills in Nallagandla", href: "/invisible-grills-nallagandla/" },
-      { label: "Invisible Grills in Vanasthalipuram", href: "/invisible-grills-vanasthalipuram/" },
-      { label: "All Services", href: "/#services" },
-      { label: "Our Work Gallery", href: "/#gallery" },
-    ],
-  },
+  { title: 'Invisible Grills', links: [['Invisible Grills', '/invisible-grills/'], ['SS304 Invisible Grills', '/ss304-invisible-grills/'], ['SS316 Invisible Grills', '/ss316-invisible-grills/'], ['Balcony Invisible Grills', bySlug('balcony-invisible-grills')], ['Window Invisible Grills', bySlug('window-invisible-grills')]] },
+  { title: 'Safety Nets', links: [['Balcony Safety Nets', '/balcony-safety-nets/'], ['Child Safety Nets', '/child-safety-nets/'], ['Sports Safety Nets', '/sports-safety-nets/'], ['Cricket Practice Nets', '/cricket-practice-nets/'], ['Football Safety Nets', '/football-safety-nets/']] },
+  { title: 'Bird Control', links: [['Pigeon Safety Nets', '/pigeon-safety-nets/'], ['Bird Protection Nets', '/bird-protection-nets/'], ['Anti-Bird Spikes', '/anti-bird-spikes/'], ['Bird Spikes Installation', '/bird-spikes-installation/'], ['All Services', '/services/']] },
+  { title: 'Cloth Hangers & Company', links: [['Cloth Hangers', '/cloth-hangers/'], ['Ceiling Cloth Drying Hangers', '/ceiling-cloth-drying-hangers/'], ['About Us', '/about/'], ['Project Gallery', '/gallery/'], ['Contact Us', '/contact/']] },
 ];
+const areaLinks = [['Hyderabad', '/invisible-grills-hyderabad/'], ['Nallagandla', '/invisible-grills-nallagandla/'], ['Vanasthalipuram', '/invisible-grills-vanasthalipuram/'], ['Gachibowli', '/locations/gachibowli/'], ['Kukatpally', '/locations/kukatpally/'], ['Secunderabad', '/locations/secunderabad/']];
 
 export function Footer() {
-  return (
-    <footer className="bg-navy text-slate-300">
-      <div className="mx-auto grid max-w-[1200px] gap-10 px-5 py-14 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
-        <div className="max-w-[400px]">
-          <div className="mb-3 flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10">
-              <LogoMark variant="bare" className="h-7 w-7" />
-            </span>
-            <h3 className="text-[19px] font-bold text-white">
-              Aravindh <span className="text-brand">Invisible Grills</span>
-            </h3>
-          </div>
-
-          <p className="mb-4 text-[13.5px] leading-[1.7]">
-            Safer homes, brighter views — premium invisible grills, safety nets and bird-control
-            solutions installed across Hyderabad &amp; Telangana.
-          </p>
-
-          <p className="mb-2 flex items-center gap-2 text-[13px]">
-            <Phone className="h-3.5 w-3.5 shrink-0 text-brand" />
-            <a href={CONTACT.phoneHref} className="hover:text-brand">
-              {CONTACT.phone}
-            </a>
-          </p>
-          <p className="mb-2 flex items-center gap-2 text-[13px]">
-            <Mail className="h-3.5 w-3.5 shrink-0 text-brand" />
-            <a href={CONTACT.emailHref} className="break-all hover:text-brand">
-              {CONTACT.email}
-            </a>
-          </p>
-          <p className="flex items-center gap-2 text-[13px]">
-            <MapPin className="h-3.5 w-3.5 shrink-0 text-brand" /> {CONTACT.coverage}
-          </p>
+  return <footer className="site-footer bg-navy text-slate-300">
+    <div className="page-container grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[1.35fr_1fr_1fr_1fr_1.15fr]">
+      <div className="max-w-sm md:col-span-2 lg:col-span-3 xl:col-span-1">
+        <a href="/" className="mb-5 flex items-center gap-3" aria-label="Aravindh Invisible Grills homepage">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10"><LogoMark variant="bare" className="h-8 w-8" /></span>
+          <span className="text-lg font-bold leading-tight text-white">Aravindh <span className="text-emerald-300">Invisible Grills</span></span>
+        </a>
+        <p className="text-sm leading-7">Complete safety, protection and installation services. Invisible grills, safety nets, sports nets, bird control and cloth hangers across Hyderabad.</p>
+        <div className="mt-5 space-y-3 text-sm">
+          <a href={CONTACT.phoneHref} className="flex min-h-8 items-center gap-2 hover:text-emerald-300"><Phone className="h-4 w-4 shrink-0 text-emerald-300" /> {CONTACT.phone}</a>
+          <a href={CONTACT.emailHref} className="flex min-h-8 items-center gap-2 break-all hover:text-emerald-300"><Mail className="h-4 w-4 shrink-0 text-emerald-300" /> {CONTACT.email}</a>
+          <p className="flex items-start gap-2"><MapPin className="mt-1 h-4 w-4 shrink-0 text-emerald-300" /> Doorstep service in Hyderabad, Telangana</p>
         </div>
-
-        {footerColumns.map((col) => (
-          <div key={col.title}>
-            <h4 className="mb-1.5 text-[15px] font-semibold text-white">{col.title}</h4>
-            <ul className="space-y-0.5">
-              {col.items.map((item) => (
-                <li key={item.label}>
-                  <a
-                    href={item.href}
-                    className="cursor-pointer text-left text-[13px] text-slate-300 transition-all hover:translate-x-1 hover:text-brand"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
       </div>
-
-      <div className="mx-auto flex max-w-[1200px] flex-wrap gap-x-6 gap-y-3 px-5 pb-8 text-sm"><span className="font-semibold text-white">Service areas:</span><a href="/invisible-grills-hyderabad/" className="hover:text-brand">Hyderabad</a><a href="/invisible-grills-nallagandla/" className="hover:text-brand">Nallagandla</a><a href="/invisible-grills-vanasthalipuram/" className="hover:text-brand">Vanasthalipuram</a></div>
-      <div className="border-t border-white/10">
-        <p className="mx-auto max-w-[1200px] px-5 py-5 text-center text-[12.5px] text-slate-400">
-          © {new Date().getFullYear()} Aravindh Invisible Grills. All Rights Reserved.
-        </p>
-      </div>
-    </footer>
-  );
+      {footerColumns.map((column) => <div key={column.title}>
+        <h2 className="mb-4 text-sm font-semibold text-white">{column.title}</h2>
+        <ul className="space-y-1">{column.links.map(([label, href]) => <li key={href}><a href={href} className="inline-block min-h-8 py-1.5 text-[13px] leading-6 hover:text-emerald-300">{label}</a></li>)}</ul>
+      </div>)}
+    </div>
+    <div className="page-container border-t border-white/10 py-7">
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs"><a href="/locations/" className="min-h-8 py-2 font-semibold text-white hover:text-emerald-300">All service locations ↗</a>{areaLinks.map(([label, href]) => <a key={href} href={href} className="min-h-8 py-2 hover:text-emerald-300">{label}</a>)}</div>
+      <p className="mt-3 text-[11px] leading-6 text-slate-400">Listed areas are service locations, not branch offices. Nallagandla refers to the Hyderabad suburb.</p>
+    </div>
+    <div className="border-t border-white/10"><p className="page-container py-5 text-center text-xs text-slate-400">© {new Date().getFullYear()} Aravindh Invisible Grills. All rights reserved.</p></div>
+  </footer>;
 }
-
-/* --------------------------------------------------------- FLOATING ACTIONS */
 
 export function FloatingActions() {
   const [showTop, setShowTop] = useState(false);
-
   useEffect(() => {
-    const onScroll = () => setShowTop(window.scrollY > 600);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const onScroll = () => setShowTop(window.scrollY > 700);
+    onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
-
-  return (
-    <div className="fixed right-4 bottom-5 z-[999] flex flex-col items-center gap-3 sm:right-6 sm:bottom-6">
-      {showTop && (
-        <button
-          type="button"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fade-in flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-navy text-white shadow-[0_6px_18px_rgba(10,37,64,0.35)] transition-transform hover:scale-110"
-          title="Back to top"
-          aria-label="Back to top"
-        >
-          <ArrowUp className="h-5 w-5" />
-        </button>
-      )}
-      <a
-        href={CONTACT.phoneHref}
-        className="relative isolate flex h-[54px] w-[54px] items-center justify-center rounded-full bg-callblue text-white shadow-[0_8px_22px_rgba(0,123,255,0.45)] transition-transform hover:scale-110"
-        title="Call Us Now"
-        aria-label="Call us now"
-      >
-        <Phone className="h-6 w-6" />
-      </a>
-      <a
-        href={CONTACT.whatsappGeneral}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="pulse-ring relative isolate flex h-[54px] w-[54px] items-center justify-center rounded-full bg-whatsapp text-white shadow-[0_8px_22px_rgba(37,211,102,0.5)] transition-transform hover:scale-110"
-        title="Chat on WhatsApp"
-        aria-label="Chat on WhatsApp"
-      >
-        <WhatsApp className="h-7 w-7" />
-      </a>
-    </div>
-  );
+  return <div className="floating-actions fixed right-4 bottom-5 z-[900] flex flex-col items-end gap-3 sm:right-6 sm:bottom-6">
+    {showTop && <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })}
+      className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-borderline bg-white text-navy shadow-lg" aria-label="Back to top"><ArrowUp className="h-5 w-5" /></button>}
+    <a href={CONTACT.phoneHref} className="flex h-12 w-12 items-center justify-center rounded-full bg-callblue text-white shadow-lg transition-transform hover:scale-105 sm:h-13 sm:w-13" aria-label="Call Now: +91 7995150298" title="Call Now"><Phone className="h-5 w-5" /></a>
+    <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="flex h-13 w-13 items-center justify-center rounded-full bg-whatsapp text-white shadow-lg transition-transform hover:scale-105" aria-label="Chat on WhatsApp for a free site visit" title="WhatsApp Us"><WhatsApp className="h-7 w-7" /></a>
+  </div>;
 }
