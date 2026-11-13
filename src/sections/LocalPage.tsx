@@ -14,7 +14,7 @@ type Place = {
 export const PLACES: Record<string, Place> = {
   '/invisible-grills-hyderabad/': {
     name: 'Hyderabad', region: 'Telangana',
-    metaTitle: 'Safety Nets & Invisible Grills Across Hyderabad: Areas We Serve',
+    metaTitle: 'Invisible Grills in Hyderabad: Areas We Serve | Aravindh Invisible Grills',
     metaDescription: 'Invisible grills in Hyderabad with pigeon safety nets, PG safety nets, balcony, window and child safety nets, and ceiling cloth hangers. Free doorstep measurement across the city.',
     intro: 'Invisible grills in Hyderabad for balconies and windows, along with pigeon safety nets, balcony safety nets, child safety nets and ceiling cloth hangers, measured and installed at your home.',
     detail: 'Tell us your area in Hyderabad and the spaces you want to cover, and we will arrange a convenient time for measurement and a quotation.',
@@ -33,7 +33,7 @@ export const PLACES: Record<string, Place> = {
   },
   '/invisible-grills-vanasthalipuram/': {
     name: 'Vanasthalipuram', region: 'Hyderabad',
-    metaTitle: 'Invisible Grills & Pigeon Safety Nets in Vanasthalipuram, Hyderabad',
+    metaTitle: 'Invisible Grills in Vanasthalipuram | Aravindh Invisible Grills',
     metaDescription: 'Invisible grills, pigeon safety nets, balcony and window safety nets, child safety nets and ceiling cloth hangers in Vanasthalipuram and LB Nagar. Free doorstep measurement.',
     intro: 'From apartment balconies to windows and utility spaces, find invisible grills, pigeon safety nets and balcony safety nets that help preserve light and airflow in your Vanasthalipuram home.',
     detail: 'Contact our team with your location in Vanasthalipuram to discuss your requirements and arrange a measurement.',
@@ -52,7 +52,7 @@ export const PLACES: Record<string, Place> = {
   },
   '/invisible-grills-nallagandla/': {
     name: 'Nallagandla', region: 'Hyderabad',
-    metaTitle: 'Invisible Grills & Pigeon Safety Nets in Nallagandla, Hyderabad',
+    metaTitle: 'Invisible Grills in Nallagandla | Aravindh Invisible Grills',
     metaDescription: 'Invisible grills, pigeon safety nets, balcony safety nets, child safety nets and ceiling cloth hangers in Nallagandla and nearby Gachibowli. Free doorstep measurement.',
     intro: 'Looking for invisible grills in Nallagandla? Explore discreet protection for apartment balconies and windows, alongside pigeon safety nets, balcony safety nets and bird protection nets.',
     detail: 'Share your Nallagandla property details with our team for a measurement and a tailored quotation.',
@@ -78,13 +78,13 @@ export function LocalPage({ place }: { place: Place }) {
     <main id="main">
       <section className="local-hero mx-auto grid max-w-[1200px] items-center gap-10 px-5 pt-[150px] pb-16 lg:grid-cols-2 lg:pt-[180px]">
         <div>
-          <a href="/" className="local-back">← Home</a>
-          <p className="mt-7 text-sm font-semibold uppercase tracking-[.18em] text-brand-dark">Doorstep service in {place.name}, {place.region}</p>
+          <nav aria-label="Breadcrumb" className="text-sm text-muted"><a href="/" className="local-back">Home</a><span className="px-2 text-slate-300">/</span><span className="text-slate-500">Invisible Grills in {place.name}</span></nav>
+          <p className="mt-6 text-sm font-semibold uppercase tracking-[.18em] text-brand-dark">Doorstep service in {place.name}, {place.region}</p>
           <h1 className="mt-4 text-4xl font-bold leading-tight text-navy sm:text-5xl">Invisible grills &amp; safety nets in {place.name}</h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">{place.intro}</p>
-          <div className="mt-8 flex flex-wrap gap-3"><a href="#contact" className="local-button">Request a quote ↗</a><a href={CONTACT.phoneHref} className="local-button-outline">Call {CONTACT.phone}</a></div>
+          <div className="mt-8 flex flex-wrap gap-3"><a href={CONTACT.phoneHref} className="local-button">Call {CONTACT.phone}</a><a href={CONTACT.whatsappGeneral} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-md bg-whatsapp px-5 py-3 font-semibold text-white">WhatsApp Us</a><a href="#contact" className="local-button-outline">Request a quote ↗</a></div>
         </div>
-        <img src="/images/reference/s26.webp" alt="Invisible grill fitted across a balcony" className="aspect-[4/3] w-full rounded-3xl object-cover shadow-xl" fetchPriority="high" />
+        <img src="/images/reference/s26.webp" alt={`Invisible grill installation on a balcony in ${place.name}, Hyderabad`} className="aspect-[4/3] w-full rounded-3xl object-cover shadow-xl" width={800} height={600} fetchPriority="high" decoding="async" />
       </section>
       <section className="bg-lightbg px-5 py-20"><div className="mx-auto max-w-[1200px]">
         <p className="text-sm font-semibold uppercase tracking-[.18em] text-brand-dark">Solutions for your space</p>

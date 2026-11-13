@@ -53,7 +53,7 @@ export function Hero() {
           </span>
 
           <h1 className="mb-5 text-[34px] leading-[1.18] font-bold text-navy sm:text-[42px]">
-            Invisible grills &amp; safety nets for <span className="text-brand">clearer views.</span>
+            Invisible Grills in Hyderabad for <span className="text-brand">safer, clearer views.</span>
           </h1>
 
           <p className="mb-5 max-w-[540px] text-[16px] leading-[1.7] text-muted sm:text-[17px]">
@@ -217,6 +217,13 @@ export function About() {
                 </li>
               ))}
             </ul>
+
+            <div className="mb-6 flex flex-wrap gap-x-5 gap-y-2 text-[14px] font-semibold text-brand-dark">
+              <a href="/about/" className="hover:underline">About us ↗</a>
+              <a href="/ss304-invisible-grills/" className="hover:underline">SS304 invisible grills ↗</a>
+              <a href="/ss316-invisible-grills/" className="hover:underline">SS316 invisible grills ↗</a>
+              <a href="/child-safety-solutions/" className="hover:underline">Child safety solutions ↗</a>
+            </div>
 
             <a
               href={CONTACT.phoneHref}

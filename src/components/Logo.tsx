@@ -1,5 +1,44 @@
 import { cn } from "../utils/cn";
 
+/**
+ * Brand mark — the same "invisible grill cables on a track" symbol used by the
+ * favicon, app icons and Open Graph image, so the brand is consistent everywhere.
+ * `variant="tile"` includes the navy rounded square (light backgrounds);
+ * `variant="bare"` is just the cables (for dark backgrounds inside a tinted box).
+ */
+export function LogoMark({
+  className,
+  variant = "tile",
+}: {
+  className?: string;
+  variant?: "tile" | "bare";
+}) {
+  return (
+    <svg viewBox="0 0 64 64" className={className} role="img" aria-label="Aravindh Invisible Grills logo">
+      {variant === "tile" && (
+        <>
+          <defs>
+            <linearGradient id="aig-logo-tile" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#103257" />
+              <stop offset="1" stopColor="#0a2540" />
+            </linearGradient>
+          </defs>
+          <rect width="64" height="64" rx="14" fill="url(#aig-logo-tile)" />
+        </>
+      )}
+      <rect x="13" y="15" width="38" height="3.2" rx="1.6" fill="#34a06a" />
+      <g strokeLinecap="round">
+        <line x1="18" y1="18.5" x2="18" y2="46.5" stroke="#ffffff" strokeWidth="3.4" opacity="0.45" />
+        <line x1="25" y1="18.5" x2="25" y2="46.5" stroke="#ffffff" strokeWidth="3.6" opacity="0.72" />
+        <line x1="32" y1="18.5" x2="32" y2="46.5" stroke="#34a06a" strokeWidth="4.6" />
+        <line x1="39" y1="18.5" x2="39" y2="46.5" stroke="#ffffff" strokeWidth="3.6" opacity="0.72" />
+        <line x1="46" y1="18.5" x2="46" y2="46.5" stroke="#ffffff" strokeWidth="3.4" opacity="0.45" />
+      </g>
+      <rect x="13" y="46" width="38" height="3.2" rx="1.6" fill="#34a06a" />
+    </svg>
+  );
+}
+
 export function Logo({
   light = false,
   onClick,
@@ -14,19 +53,7 @@ export function Logo({
       className="flex cursor-pointer items-center gap-3 text-left"
       aria-label="Aravindh Invisible Grills - Home"
     >
-      <span
-        className={cn(
-          "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-white shadow-[0_6px_16px_rgba(10,37,64,0.25)]",
-          light ? "bg-white/10" : "bg-navy"
-        )}
-      >
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <rect x="3" y="3" width="18" height="18" rx="2" stroke="#4caf50" strokeWidth="1.6" />
-          <line x1="7.5" y1="3" x2="7.5" y2="21" stroke="#ffffff" strokeWidth="1.4" />
-          <line x1="12" y1="3" x2="12" y2="21" stroke="#ffffff" strokeWidth="1.4" />
-          <line x1="16.5" y1="3" x2="16.5" y2="21" stroke="#ffffff" strokeWidth="1.4" />
-        </svg>
-      </span>
+      <LogoMark className="h-11 w-11 shrink-0 rounded-xl shadow-[0_6px_16px_rgba(10,37,64,0.25)]" />
       <span className="flex flex-col">
         <span
           className={cn(

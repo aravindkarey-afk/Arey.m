@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { CONTACT, NAV, SERVICES, servicePath, scrollToSection } from "../lib/data";
-import { Logo } from "./Logo";
+import { Logo, LogoMark } from "./Logo";
 import {
   ArrowUp,
   Check,
@@ -131,43 +131,46 @@ export function Header() {
 
 /* ----------------------------------------------------------------- FOOTER */
 
+const svcHref = (short: string) => {
+  const service = SERVICES.find((item) => item.short === short);
+  return service ? servicePath(service) : "/#services";
+};
+
 const footerColumns = [
   {
-    title: "Safety Grills & Nets",
+    title: "Invisible Grills",
     items: [
-      "Balcony Invisible Grills",
-      "Window Invisible Grills",
-      "Invisible Grills for Pets",
-      "Invisible Grills for Kids",
-      "Invisible Grills for Birds",
-      "Balcony Safety Nets",
-      "Building Safety Nets",
-      "Car Parking Safety Nets",
-      "Children Safety Nets",
+      { label: "Balcony Invisible Grills", href: svcHref("Balcony Invisible Grills") },
+      { label: "Window Invisible Grills", href: svcHref("Window Invisible Grills") },
+      { label: "SS304 Invisible Grills", href: "/ss304-invisible-grills/" },
+      { label: "SS316 Invisible Grills", href: "/ss316-invisible-grills/" },
+      { label: "Invisible Grills for Kids", href: svcHref("Invisible Grills for Kids") },
+      { label: "Invisible Grills for Pets", href: svcHref("Invisible Grills for Pets") },
+      { label: "Child Safety Solutions", href: "/child-safety-solutions/" },
     ],
   },
   {
-    title: "Sports & Utility Solutions",
+    title: "Safety Nets & Bird Control",
     items: [
-      "All Sports Practice Nets",
-      "Cricket Practice Nets",
-      "Terrace Cricket Nets",
-      "Football Stop Nets",
-      "Ceiling Cloth Hangers",
-      "Manual Ceiling Cloth Hangers",
-      "SS Ceiling Cloth Hangers",
+      { label: "Balcony Safety Nets", href: svcHref("Balcony Safety Nets") },
+      { label: "Children Safety Nets", href: svcHref("Children Safety Nets") },
+      { label: "Pigeon Safety Nets", href: svcHref("Pigeon Safety Nets") },
+      { label: "Bird Protection Nets", href: svcHref("Bird Protection Nets") },
+      { label: "Anti Bird Nets", href: svcHref("Anti Bird Nets") },
+      { label: "Staircase Safety Nets", href: svcHref("Staircase Safety Nets") },
+      { label: "Ceiling Cloth Hangers", href: svcHref("Ceiling Cloth Hangers") },
     ],
   },
   {
-    title: "Anti Bird Nets",
+    title: "Company & Service Areas",
     items: [
-      "Anti Bird Nets",
-      "Bird Control Spikes",
-      "Bird Protection Nets",
-      "Pigeon Safety Nets",
-      "Cricket Practice Nets",
-      "Terrace Cricket Nets",
-      "Football Stop Nets",
+      { label: "About Us", href: "/about/" },
+      { label: "Contact Us", href: "/contact/" },
+      { label: "Invisible Grills in Hyderabad", href: "/invisible-grills-hyderabad/" },
+      { label: "Invisible Grills in Nallagandla", href: "/invisible-grills-nallagandla/" },
+      { label: "Invisible Grills in Vanasthalipuram", href: "/invisible-grills-vanasthalipuram/" },
+      { label: "All Services", href: "/#services" },
+      { label: "Our Work Gallery", href: "/#gallery" },
     ],
   },
 ];
@@ -179,12 +182,7 @@ export function Footer() {
         <div className="max-w-[400px]">
           <div className="mb-3 flex items-center gap-3">
             <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="2" stroke="#4caf50" strokeWidth="1.6" />
-                <line x1="7.5" y1="3" x2="7.5" y2="21" stroke="#ffffff" strokeWidth="1.4" />
-                <line x1="12" y1="3" x2="12" y2="21" stroke="#ffffff" strokeWidth="1.4" />
-                <line x1="16.5" y1="3" x2="16.5" y2="21" stroke="#ffffff" strokeWidth="1.4" />
-              </svg>
+              <LogoMark variant="bare" className="h-7 w-7" />
             </span>
             <h3 className="text-[19px] font-bold text-white">
               Aravindh <span className="text-brand">Invisible Grills</span>
@@ -218,12 +216,12 @@ export function Footer() {
             <h4 className="mb-1.5 text-[15px] font-semibold text-white">{col.title}</h4>
             <ul className="space-y-0.5">
               {col.items.map((item) => (
-                <li key={item}>
+                <li key={item.label}>
                   <a
-                    href={SERVICES.find((service) => service.short === item) ? servicePath(SERVICES.find((service) => service.short === item)!) : "/#services"}
+                    href={item.href}
                     className="cursor-pointer text-left text-[13px] text-slate-300 transition-all hover:translate-x-1 hover:text-brand"
                   >
-                    {item}
+                    {item.label}
                   </a>
                 </li>
               ))}
