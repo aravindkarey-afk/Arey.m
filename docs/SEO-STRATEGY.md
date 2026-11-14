@@ -1,4 +1,4 @@
-# SEO strategy — Aravindh Invisible Grills
+# SEO strategy — Aravind Invisible Grills
 
 Primary market: **Hyderabad, Telangana**. The site represents the complete safety and installation business, not only invisible grills. All copy is original; competitor names are not used as site keywords or branding.
 

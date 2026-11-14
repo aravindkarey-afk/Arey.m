@@ -91,7 +91,7 @@ export function Contact({
   };
 
   const whatsappMessage = `https://wa.me/917995150298?text=${encodeURIComponent(
-    `Hi Aravindh Invisible Grills, I am ${fields.name || "a customer"}. I need ${
+    `Hi Aravind Invisible Grills, I am ${fields.name || "a customer"}. I need ${
       fields.requirement || "your services"
     } at ${fields.location || "Hyderabad"}. My number is ${
       fields.phone

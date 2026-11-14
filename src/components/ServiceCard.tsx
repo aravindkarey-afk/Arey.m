@@ -27,7 +27,7 @@ export function ServiceCard({ service, priority = false }: { service: Service; p
       </a>
       <div className="mt-4 grid grid-cols-2 gap-2">
         <a href={CONTACT.phoneHref} className="btn btn-soft !min-h-10 !px-3 !py-2 !text-xs" aria-label={`Call now about ${service.short}`}><Phone className="h-3.5 w-3.5" /> Call Now</a>
-        <a href={whatsappLink(`Hi Aravindh Invisible Grills, I would like a quote for ${service.short}. Please arrange a free measurement.`)} target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp !min-h-10 !px-3 !py-2 !text-xs" aria-label={`WhatsApp about ${service.short}`}><WhatsApp className="h-4 w-4" /> WhatsApp</a>
+        <a href={whatsappLink(`Hi Aravind Invisible Grills, I would like a quote for ${service.short}. Please arrange a free measurement.`)} target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp !min-h-10 !px-3 !py-2 !text-xs" aria-label={`WhatsApp about ${service.short}`}><WhatsApp className="h-4 w-4" /> WhatsApp</a>
       </div>
     </div>
   </article>;

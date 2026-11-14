@@ -40,7 +40,7 @@ export function Header() {
         <a href={CONTACT.phoneHref} className="btn btn-primary !min-h-10 !px-4 !py-2 !text-xs"><Phone className="h-4 w-4" /> Call Now</a>
       </nav>
       <div className="flex items-center gap-1 lg:hidden">
-        <a href={CONTACT.phoneHref} className="btn btn-primary !min-h-11 !px-3 !text-xs" aria-label="Call Aravindh Invisible Grills"><Phone className="h-4 w-4" /><span className="hidden min-[380px]:inline">Call</span></a>
+        <a href={CONTACT.phoneHref} className="btn btn-primary !min-h-11 !px-3 !text-xs" aria-label="Call Aravind Invisible Grills"><Phone className="h-4 w-4" /><span className="hidden min-[380px]:inline">Call</span></a>
         <button ref={toggle} type="button" onClick={() => setOpen(!open)} className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-lg text-navy hover:bg-lightbg"
           aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="mobile-navigation">
           {open ? <Close className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -75,9 +75,9 @@ export function Footer() {
   return <footer className="site-footer bg-navy text-slate-300">
     <div className="page-container grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[1.35fr_1fr_1fr_1fr_1.15fr]">
       <div className="max-w-sm md:col-span-2 lg:col-span-3 xl:col-span-1">
-        <a href="/" className="mb-5 flex items-center gap-3" aria-label="Aravindh Invisible Grills homepage">
+        <a href="/" className="mb-5 flex items-center gap-3" aria-label="Aravind Invisible Grills homepage">
           <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10"><LogoMark variant="bare" className="h-8 w-8" /></span>
-          <span className="text-lg font-bold leading-tight text-white">Aravindh <span className="text-emerald-300">Invisible Grills</span></span>
+          <span className="text-lg font-bold leading-tight text-white">Aravind <span className="text-emerald-300">Invisible Grills</span></span>
         </a>
         <p className="text-sm leading-7">Complete safety, protection and installation services. Invisible grills, safety nets, sports nets, bird control and cloth hangers across Hyderabad.</p>
         <div className="mt-5 space-y-3 text-sm">
@@ -95,7 +95,7 @@ export function Footer() {
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs"><a href="/locations/" className="min-h-8 py-2 font-semibold text-white hover:text-emerald-300">All service locations ↗</a>{areaLinks.map(([label, href]) => <a key={href} href={href} className="min-h-8 py-2 hover:text-emerald-300">{label}</a>)}</div>
       <p className="mt-3 text-[11px] leading-6 text-slate-400">Listed areas are service locations, not branch offices. Nallagandla refers to the Hyderabad suburb.</p>
     </div>
-    <div className="border-t border-white/10"><p className="page-container py-5 text-center text-xs text-slate-400">© {new Date().getFullYear()} Aravindh Invisible Grills. All rights reserved.</p></div>
+    <div className="border-t border-white/10"><p className="page-container py-5 text-center text-xs text-slate-400">© {new Date().getFullYear()} Aravind Invisible Grills. All rights reserved.</p></div>
   </footer>;
 }
 

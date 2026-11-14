@@ -50,7 +50,7 @@ Screenshots are written to `verification/` (ignored by Git). Report: `dist/verif
 ## Deployment notes
 
 - `vercel.json` uses route-level **301** redirects for legacy `/services/*` URLs, then filesystem handling, then a true **404** via `/404.html`.
-- Canonicals/sitemap/schema follow `SITE_URL`; default is `https://aravindhinvisiblegrills.in`.
+- Canonicals/sitemap/schema follow `SITE_URL`; default is `https://aravindinvisiblegrills.in`.
 - Set `GSC_VERIFICATION` at build time if using meta-tag verification, then submit `/sitemap.xml`.
 
 ## Owner follow-ups before publishing

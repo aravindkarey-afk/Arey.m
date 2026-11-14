@@ -9,12 +9,12 @@ import { CONTACT, SERVICE_AREAS } from "./data";
  * (see scripts/prerender.mjs). Canonicals, the sitemap and schema all follow it.
  */
 export const SITE = {
-  name: "Aravindh Invisible Grills",
-  shortName: "Aravindh",
+  name: "Aravind Invisible Grills",
+  shortName: "Aravind",
   slogan: "Safer Homes, Brighter Views",
   description:
     "Invisible grills, safety nets and bird control solutions in Hyderabad and Telangana. Free doorstep measurement and professional installation.",
-  defaultOrigin: "https://aravindhinvisiblegrills.in",
+  defaultOrigin: "https://aravindinvisiblegrills.in",
   logo: "/android-chrome-512x512.png",
   ogImage: "/og-image.png",
   phone: CONTACT.phone,

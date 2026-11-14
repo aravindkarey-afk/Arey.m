@@ -4,7 +4,7 @@ The website is prepared for Search Console. Ownership verification and indexing 
 
 ## 0. Connect the real domain first
 
-Canonicals, the sitemap and schema default to `https://aravindhinvisiblegrills.in`. When your domain is live, either keep that default or build with:
+Canonicals, the sitemap and schema default to `https://aravindinvisiblegrills.in`. When your domain is live, either keep that default or build with:
 
 ```bash
 SITE_URL=https://your-domain.com npm run build

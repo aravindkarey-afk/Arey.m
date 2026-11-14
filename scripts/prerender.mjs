@@ -86,7 +86,7 @@ try {
     ];
     if (page.serviceName) graph.push({ '@type': 'Service', '@id': serviceId, name: page.serviceName, serviceType: page.serviceType || page.serviceName, description: page.description, provider: { '@id': businessId }, areaServed: placeSchema(page.area || 'Hyderabad'), url });
     if (page.faqs?.length) graph.push({ '@type': 'FAQPage', '@id': `${url}#faq`, mainEntity: page.faqs.map((faq) => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })) });
-    if (page.path === '/services/') graph.push({ '@type': 'ItemList', '@id': `${url}#services`, name: 'All Aravindh safety and installation services', itemListElement: SERVICES.map((service, index) => ({ '@type': 'ListItem', position: index + 1, name: service.short, url: `${origin}${servicePath(service)}` })) });
+    if (page.path === '/services/') graph.push({ '@type': 'ItemList', '@id': `${url}#services`, name: 'All Aravind safety and installation services', itemListElement: SERVICES.map((service, index) => ({ '@type': 'ListItem', position: index + 1, name: service.short, url: `${origin}${servicePath(service)}` })) });
     if (page.path === '/locations/') graph.push({ '@type': 'ItemList', '@id': `${url}#locations`, name: 'Hyderabad service locations', itemListElement: PLACES.map((place, index) => ({ '@type': 'ListItem', position: index + 1, name: place.area, url: `${origin}${place.path}` })) });
     return { '@context': 'https://schema.org', '@graph': graph };
   }
@@ -126,7 +126,7 @@ try {
     rendered.push({ page, html });
   }
 
-  const notFound = { path: '/404.html', title: 'Page Not Found | Aravindh Invisible Grills', description: 'The requested page could not be found. Explore Aravindh Invisible Grills services, locations or contact options.', image: null, faqs: [], crumbs: [] };
+  const notFound = { path: '/404.html', title: 'Page Not Found | Aravind Invisible Grills', description: 'The requested page could not be found. Explore Aravind Invisible Grills services, locations or contact options.', image: null, faqs: [], crumbs: [] };
   const notFoundHtml = updateHead(template, notFound, false).replace('<div id="root"></div>', `<div id="root">${renderToString(React.createElement(App, { pathname: '/404.html' }))}</div>`);
   await writeFile('dist/404.html', notFoundHtml);
 
@@ -134,7 +134,7 @@ try {
   // These small fallback documents keep legacy links usable on static preview hosts.
   for (const redirect of redirects) {
     const target = `${origin}${redirect.destination}`;
-    const html = `<!doctype html><html lang="en-IN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page Moved | Aravindh Invisible Grills</title><meta name="robots" content="noindex, follow"><link rel="canonical" href="${target}"><meta http-equiv="refresh" content="0; url=${escape(redirect.destination)}"></head><body style="font-family:sans-serif;padding:24px"><p>This service page has moved. <a href="${escape(redirect.destination)}">Continue to ${escape(redirect.destination)}</a>.</p></body></html>`;
+    const html = `<!doctype html><html lang="en-IN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page Moved | Aravind Invisible Grills</title><meta name="robots" content="noindex, follow"><link rel="canonical" href="${target}"><meta http-equiv="refresh" content="0; url=${escape(redirect.destination)}"></head><body style="font-family:sans-serif;padding:24px"><p>This service page has moved. <a href="${escape(redirect.destination)}">Continue to ${escape(redirect.destination)}</a>.</p></body></html>`;
     const directory = path.join('dist', redirect.source);
     await mkdir(directory, { recursive: true });
     await writeFile(path.join(directory, 'index.html'), html);

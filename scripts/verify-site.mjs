@@ -1,4 +1,4 @@
-import { readFile, writeFile, mkdir, access, mkdtemp } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, access, mkdtemp, readdir } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { brotliDecompressSync } from 'node:zlib';
 import { tmpdir } from 'node:os';
@@ -44,6 +44,18 @@ ok('Brand OG image exists', await exists('dist/og-image.png'));
 const homeHtml = await readFile('dist/index.html', 'utf8');
 ok('Fonts are self-hosted', !homeHtml.includes('fonts.googleapis.com') && !homeHtml.includes('fonts.gstatic.com'));
 
+// Brand spelling guard: the business name is "Aravind Invisible Grills" (no extra H).
+// The legacy Gmail address still contains the old spelling and is intentionally preserved.
+const htmlFiles = (await readdir('dist', { recursive: true })).filter((file) => file.endsWith('.html'));
+const wrongBrand = [];
+for (const file of htmlFiles) {
+  const text = (await readFile(path.join('dist', file), 'utf8')).replaceAll('aravindhinvisiblegrills@gmail.com', '');
+  if (/aravindh/i.test(text)) wrongBrand.push(file);
+}
+ok('Brand spelling is "Aravind" everywhere', wrongBrand.length === 0, wrongBrand.slice(0, 5).join(', '));
+ok('LocalBusiness schema uses the official name', (await readFile('dist/index.html', 'utf8')).includes(`"name":"Aravind Invisible Grills"`));
+ok('Canonical domain is aravindinvisiblegrills.in', report.origin === 'https://aravindinvisiblegrills.in', report.origin);
+
 let browserResults = null;
 if (withBrowser) {
   const { chromium: playwrightChromium } = await import('@playwright/test');
@@ -59,7 +71,7 @@ if (withBrowser) {
         const packageDir = path.dirname(new URL(import.meta.resolve('@sparticuz/chromium')).pathname);
         const archive = path.join(packageDir, '..', 'bin', 'al2023.tar.br');
         if (await exists(archive)) {
-          const dir = await mkdtemp(path.join(tmpdir(), 'aravindh-browser-'));
+          const dir = await mkdtemp(path.join(tmpdir(), 'aravind-browser-'));
           const tar = path.join(dir, 'al2023.tar');
           await writeFile(tar, brotliDecompressSync(await readFile(archive)));
           execFileSync('tar', ['-xf', tar, '-C', dir]);

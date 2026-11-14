@@ -10,7 +10,7 @@ export type Guide = {
 export const GUIDES: Guide[] = [
   {
     path: '/child-safety-solutions/',
-    metaTitle: 'Child Safety Solutions for Hyderabad Homes | Aravindh',
+    metaTitle: 'Child Safety Solutions for Hyderabad Homes | Aravind',
     metaDescription: 'Plan balcony, window and staircase protection for your Hyderabad home. Compare child safety nets and invisible grills with a measured, whole-home survey.',
     eyebrow: 'Family safety planning', h1: 'Child Safety Solutions in Hyderabad',
     intro: ['A safer home is a connected plan, not a single product. Walk through the balconies, windows and stairs your children use, then compare additional protective barriers with the supervision and existing railings already in place.'],
@@ -29,7 +29,7 @@ export const GUIDES: Guide[] = [
   },
   {
     path: '/invisible-grills-vs-safety-nets/',
-    metaTitle: 'Invisible Grills vs Safety Nets: Which Fits? | Aravindh',
+    metaTitle: 'Invisible Grills vs Safety Nets: Which Fits? | Aravind',
     metaDescription: 'Compare invisible grills and safety nets for Hyderabad balconies and windows. Understand appearance, mesh, fixing points and questions for your site survey.',
     eyebrow: 'Compare before you choose', h1: 'Invisible Grills vs Safety Nets',
     intro: ['Both systems can add protection to an opening, but they work differently. Compare the view, the intended use and the fixing perimeter before deciding which system belongs in your Hyderabad home.'],
@@ -48,7 +48,7 @@ export const GUIDES: Guide[] = [
   },
   {
     path: '/ss304-vs-ss316-invisible-grills/',
-    metaTitle: 'SS304 vs SS316 Invisible Grills: Grade Guide | Aravindh',
+    metaTitle: 'SS304 vs SS316 Invisible Grills: Grade Guide | Aravind',
     metaDescription: 'Understand SS304 and SS316 invisible grill grades before ordering in Hyderabad. Compare exposure, corrosion resistance and the complete system specification.',
     eyebrow: 'Material selection', h1: 'SS304 vs SS316 Invisible Grills',
     intro: ['The stainless steel grade is one part of an invisible grill system. Understand the difference between 304 and 316, then check the cable, coating, tracks and anchors proposed for your actual opening.'],
@@ -67,7 +67,7 @@ export const GUIDES: Guide[] = [
   },
   {
     path: '/safety-solutions-cost-guide/',
-    metaTitle: 'Safety Net & Grill Installation Cost Guide | Aravindh',
+    metaTitle: 'Safety Net & Grill Installation Cost Guide | Aravind',
     metaDescription: 'What affects invisible grill, safety net, bird spike and cloth hanger prices in Hyderabad? Prepare dimensions and access details for an accurate site quote.',
     eyebrow: 'Transparent quotations', h1: 'What Affects Your Installation Quote?',
     intro: ['A useful price starts with the space and the job. Here is how to prepare for an invisible grill, safety net, bird-control or cloth-hanger quotation in Hyderabad without relying on a misleading one-size-fits-all rate.'],

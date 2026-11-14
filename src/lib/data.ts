@@ -7,9 +7,9 @@ export const CONTACT = {
   phone: "+91 7995150298",
   phoneHref: "tel:+917995150298",
   whatsapp:
-    "https://wa.me/917995150298?text=Hi%20Aravindh%20Invisible%20Grills%2C%20I%20want%20a%20free%20quote%20for%20my%20home.",
+    "https://wa.me/917995150298?text=Hi%20Aravind%20Invisible%20Grills%2C%20I%20want%20a%20free%20quote%20for%20my%20home.",
   whatsappGeneral:
-    "https://wa.me/917995150298?text=Hi%20Aravindh%20Invisible%20Grills%2C%20I%20want%20to%20know%20more%20about%20your%20services.",
+    "https://wa.me/917995150298?text=Hi%20Aravind%20Invisible%20Grills%2C%20I%20want%20to%20know%20more%20about%20your%20services.",
   email: "aravindhinvisiblegrills@gmail.com",
   emailHref: "mailto:aravindhinvisiblegrills@gmail.com",
   coverage: "Serving all of Hyderabad & Telangana",
@@ -171,12 +171,12 @@ export const FAQS = [
   { q: "Can I book more than one service for the same property?", a: "Yes. Tell us about each balcony, window, ledge, practice area or utility space. We can plan multiple services together and explain the materials, access requirements and quotation." },
   { q: "How long does installation take and what affects the price?", a: "Dimensions, material, fixing points, access and site preparation all affect the work. We confirm the scope, price and expected schedule after measurement; we do not promise a universal installation time." },
   { q: "Do nets or grills replace adult supervision?", a: "No. They are additional protective barriers, not a substitute for supervision or compliant railings. We discuss spacing, fixings and limitations, and recommend keeping climbable furniture away from protected openings." },
-  { q: "Do the listed locations have Aravindh branch offices?", a: "No branch addresses are implied. Nallagandla, Vanasthalipuram and the other listed areas are places we travel to for measurement and installation. Contact us to confirm your exact location." },
+  { q: "Do the listed locations have Aravind branch offices?", a: "No branch addresses are implied. Nallagandla, Vanasthalipuram and the other listed areas are places we travel to for measurement and installation. Contact us to confirm your exact location." },
 ];
 
 export const REVIEWS = [
   {
-    text: "Aravindh Invisible Grills transformed our balcony beautifully. Premium quality SS 316 cables, neat installation, and the work was completed exactly on schedule.",
+    text: "Aravind Invisible Grills transformed our balcony beautifully. Premium quality SS 316 cables, neat installation, and the work was completed exactly on schedule.",
     name: "Rahul Sharma",
     area: "Gachibowli, Hyderabad",
     initials: "RS",

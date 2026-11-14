@@ -1,6 +1,6 @@
-# Aravindh Invisible Grills
+# Aravind Invisible Grills
 
-A complete safety-solutions business website for **Aravindh Invisible Grills** — invisible grills, safety nets, sports netting, bird control and ceiling cloth drying hangers in Hyderabad & Telangana. Built with React 19, TypeScript, Vite and Tailwind CSS, with build-time pre-rendering for crawlable local SEO.
+A complete safety-solutions business website for **Aravind Invisible Grills** — invisible grills, safety nets, sports netting, bird control and ceiling cloth drying hangers in Hyderabad & Telangana. Built with React 19, TypeScript, Vite and Tailwind CSS, with build-time pre-rendering for crawlable local SEO.
 
 ## Run locally
 
@@ -42,7 +42,7 @@ node scripts/brand-assets.mjs
 
 Each page emits a JSON-LD `@graph` with Organization + LocalBusiness, WebSite, WebPage/AboutPage/ContactPage/CollectionPage, BreadcrumbList, Service where relevant, and FAQPage where FAQs are rendered. Open Graph/Twitter metadata and canonicals use one configurable origin:
 
-- Default: `https://aravindhinvisiblegrills.in` (`src/lib/site.ts`)
+- Default: `https://aravindinvisiblegrills.in` (`src/lib/site.ts`)
 - Override: `SITE_URL=https://your-domain.com npm run build`
 
 Deploy the entire `dist/` directory. `vercel.json` supplies permanent 301 redirects for legacy `/services/*` URLs and a true 404 for unknown routes. Static legacy fallback documents are also generated for preview hosts that cannot apply Vercel redirects.
