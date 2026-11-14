@@ -1,11 +1,13 @@
+import type { LucideIcon } from 'lucide-react';
 import { servicePath, type Service } from '../lib/services';
 import { SERVICE_CONTENT } from '../lib/service-content';
 import { ResponsiveImage } from './ResponsiveImage';
 import { ArrowUpRight, Phone, WhatsApp } from './Icons';
 import { whatsappLink } from './Actions';
 import { CONTACT } from '../lib/data';
+import { cn } from '../utils/cn';
 
-export function ServiceCard({ service, priority = false }: { service: Service; priority?: boolean }) {
+export function ServiceCard({ service, priority = false, categoryIcon: CategoryIcon }: { service: Service; priority?: boolean; categoryIcon?: LucideIcon }) {
   const content = SERVICE_CONTENT[service.slug];
   const path = servicePath(service);
   const remember = () => {
@@ -17,7 +19,10 @@ export function ServiceCard({ service, priority = false }: { service: Service; p
       <ResponsiveImage src={service.image} alt={content.imageAlt} priority={priority} loading={priority ? 'eager' : 'lazy'}
         sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 1023px) 46vw, 380px"
         className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.035]" />
-      <span className="absolute top-3 left-3 rounded-full bg-white/95 px-3 py-1.5 text-[10px] font-bold tracking-wider text-navy uppercase shadow-sm">{service.category}</span>
+      <span className={cn('absolute top-3 left-3 rounded-full bg-white/95 px-3 py-1.5 text-[10px] font-bold tracking-wider text-navy uppercase shadow-sm', CategoryIcon && 'inline-flex items-center gap-1.5')}>
+        {CategoryIcon && <CategoryIcon aria-hidden="true" className="h-3.5 w-3.5 shrink-0 text-callblue" strokeWidth={1.8} />}
+        {service.category}
+      </span>
     </a>
     <div className="flex flex-1 flex-col p-5 sm:p-6">
       <h3 className="text-xl font-semibold leading-snug tracking-[-0.02em] text-navy"><a href={path} onClick={remember} className="hover:text-brand-dark">{service.short}</a></h3>
