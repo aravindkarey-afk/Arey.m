@@ -50,7 +50,7 @@ const og = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" vi
   <rect width="1200" height="630" fill="url(#bg)"/>
   <rect x="0" y="0" width="1200" height="8" fill="#34a06a"/>
   <text x="80" y="118" font-family="DejaVu Sans" font-size="24" font-weight="bold" letter-spacing="5" fill="#7fd6a8">HYDERABAD  •  TELANGANA</text>
-  <text x="78" y="208" font-family="DejaVu Sans" font-size="72" font-weight="bold" fill="#ffffff">Aravindh</text>
+  <text x="78" y="208" font-family="DejaVu Sans" font-size="72" font-weight="bold" fill="#ffffff">Aravind</text>
   <text x="78" y="288" font-family="DejaVu Sans" font-size="72" font-weight="bold" fill="#34a06a">Invisible Grills</text>
   <text x="80" y="345" font-family="DejaVu Sans" font-size="30" fill="#dbe7f0">Safer Homes, Brighter Views</text>
   <rect x="80" y="372" width="120" height="4" rx="2" fill="#34a06a"/>

@@ -13,7 +13,7 @@ const common = ['invisible-grills', 'balcony-safety-nets', 'pigeon-safety-nets',
 const PLACE_SOURCES: Record<string, PlaceSource> = {
   '/invisible-grills-hyderabad/': {
     path: '/invisible-grills-hyderabad/', name: 'Hyderabad', region: 'Telangana', featured: true,
-    metaTitle: 'Invisible Grills in Hyderabad: Areas We Serve | Aravindh Invisible Grills',
+    metaTitle: 'Invisible Grills in Hyderabad: Areas We Serve | Aravind Invisible Grills',
     metaDescription: 'Invisible grills in Hyderabad plus safety nets, sports nets, bird spikes and cloth hangers. Explore local service guides and arrange a free site measurement.',
     h1: 'Invisible Grills & Safety Solutions in Hyderabad',
     intro: 'Plan invisible grills for your balcony or window, alongside safety nets, sports netting, bird control and cloth drying hangers. We visit Hyderabad properties for measurement and a written quotation.',
@@ -40,7 +40,7 @@ const PLACE_SOURCES: Record<string, PlaceSource> = {
   },
   '/invisible-grills-nallagandla/': {
     path: '/invisible-grills-nallagandla/', name: 'Nallagandla', region: 'Hyderabad', featured: true,
-    metaTitle: 'Invisible Grills in Nallagandla | Aravindh Invisible Grills',
+    metaTitle: 'Invisible Grills in Nallagandla | Aravind Invisible Grills',
     metaDescription: 'Invisible grills in Nallagandla, Hyderabad, plus balcony nets, pigeon nets and utility hangers. Plan apartment access and book a free site measurement.',
     h1: 'Invisible Grills in Nallagandla, Hyderabad',
     intro: 'Looking for invisible grills in Nallagandla? Plan discreet balcony and window protection, with pigeon nets, child safety nets and cloth hangers available for the same property.',
@@ -66,7 +66,7 @@ const PLACE_SOURCES: Record<string, PlaceSource> = {
   },
   '/invisible-grills-vanasthalipuram/': {
     path: '/invisible-grills-vanasthalipuram/', name: 'Vanasthalipuram', region: 'Hyderabad', featured: true,
-    metaTitle: 'Invisible Grills in Vanasthalipuram | Aravindh Invisible Grills',
+    metaTitle: 'Invisible Grills in Vanasthalipuram | Aravind Invisible Grills',
     metaDescription: 'Invisible grills in Vanasthalipuram plus window nets, pigeon control and cloth hangers. Measure house and apartment openings with a free site visit.',
     h1: 'Invisible Grills in Vanasthalipuram, Hyderabad',
     intro: 'From apartment balconies to independent-house windows and utility spaces, explore invisible grills, safety nets and bird control planned around your Vanasthalipuram property.',
@@ -93,7 +93,7 @@ const PLACE_SOURCES: Record<string, PlaceSource> = {
   },
   '/locations/gachibowli/': {
     path: '/locations/gachibowli/', name: 'Gachibowli', region: 'Hyderabad', featured: true,
-    metaTitle: 'Safety Solutions in Gachibowli, Hyderabad | Aravindh',
+    metaTitle: 'Safety Solutions in Gachibowli, Hyderabad | Aravind',
     metaDescription: 'Safety solutions in Gachibowli: invisible grills, balcony nets, pigeon control, sports nets and cloth hangers. Plan access and book a free site visit.',
     h1: 'Safety & Installation Services in Gachibowli',
     intro: 'Coordinate invisible grills, safety nets, bird control, sports netting and cloth hangers for your Gachibowli property, with a site survey before the quotation.',
@@ -119,7 +119,7 @@ const PLACE_SOURCES: Record<string, PlaceSource> = {
   },
   '/locations/kukatpally/': {
     path: '/locations/kukatpally/', name: 'Kukatpally', region: 'Hyderabad', featured: true,
-    metaTitle: 'Safety Nets & Grills in Kukatpally | Aravindh Hyderabad',
+    metaTitle: 'Safety Nets & Grills in Kukatpally | Aravind Hyderabad',
     metaDescription: 'Invisible grills, safety nets, bird spikes and cloth hangers in Kukatpally. Plan fixes for apartments and independent houses with a free site survey.',
     h1: 'Invisible Grills & Safety Services in Kukatpally',
     intro: 'From apartment balconies to independent-house windows and utility areas, compare grills, nets, bird control and drying hangers for your Kukatpally property.',
@@ -145,7 +145,7 @@ const PLACE_SOURCES: Record<string, PlaceSource> = {
   },
   '/locations/secunderabad/': {
     path: '/locations/secunderabad/', name: 'Secunderabad', region: 'Telangana', featured: true,
-    metaTitle: 'Safety Solutions in Secunderabad | Aravindh Invisible Grills',
+    metaTitle: 'Safety Solutions in Secunderabad | Aravind Invisible Grills',
     metaDescription: 'Invisible grills, safety nets, bird control and cloth hangers in Secunderabad. Survey windows, balconies and utility areas before a written quotation.',
     h1: 'Home & Building Safety Services in Secunderabad',
     intro: 'Plan window and balcony protection, bird exclusion, sports netting or overhead cloth drying for your Secunderabad property with a measured site visit.',
@@ -171,7 +171,7 @@ const PLACE_SOURCES: Record<string, PlaceSource> = {
   },
   '/pigeon-nets-gachibowli/': {
     path: '/pigeon-nets-gachibowli/', name: 'Gachibowli', region: 'Hyderabad',
-    metaTitle: 'Pigeon Nets in Gachibowli, Hyderabad | Aravindh',
+    metaTitle: 'Pigeon Nets in Gachibowli, Hyderabad | Aravind',
     metaDescription: 'Pigeon nets installation in Gachibowli for balconies, AC platforms and utility gaps. Survey entry points and service access before a written quote.',
     h1: 'Pigeon Nets in Gachibowli',
     intro: 'Close the gaps pigeons use around your Gachibowli balcony or utility area, with a measured mesh layout and attention to AC servicing and building access.',
@@ -197,7 +197,7 @@ const PLACE_SOURCES: Record<string, PlaceSource> = {
   },
   '/balcony-safety-nets-kondapur/': {
     path: '/balcony-safety-nets-kondapur/', name: 'Kondapur', region: 'Hyderabad',
-    metaTitle: 'Balcony Safety Nets in Kondapur | Aravindh Hyderabad',
+    metaTitle: 'Balcony Safety Nets in Kondapur | Aravind Hyderabad',
     metaDescription: 'Balcony safety nets in Kondapur, Hyderabad. Measure railings, mesh and anchors, and coordinate utility access with a free site visit and written quote.',
     h1: 'Balcony Safety Nets in Kondapur',
     intro: 'Plan a balcony safety net around your Kondapur apartment’s railing, side walls and utility access, with the intended use and fixing points assessed before quoting.',
@@ -223,7 +223,7 @@ const PLACE_SOURCES: Record<string, PlaceSource> = {
   },
   '/cloth-hangers-vanasthalipuram/': {
     path: '/cloth-hangers-vanasthalipuram/', name: 'Vanasthalipuram', region: 'Hyderabad',
-    metaTitle: 'Cloth Hangers in Vanasthalipuram | Aravindh Hyderabad',
+    metaTitle: 'Cloth Hangers in Vanasthalipuram | Aravind Hyderabad',
     metaDescription: 'Cloth hangers in Vanasthalipuram for utility balconies and washing areas. Compare ceiling rods and manual systems with a free space measurement.',
     h1: 'Cloth Hangers in Vanasthalipuram',
     intro: 'Make better use of your Vanasthalipuram utility with cloth hangers planned around ceiling height, user reach and the space needed for everyday laundry.',
@@ -249,7 +249,7 @@ const PLACE_SOURCES: Record<string, PlaceSource> = {
   },
   '/locations/kondapur/': {
     path: '/locations/kondapur/', name: 'Kondapur', region: 'Hyderabad', featured: true,
-    metaTitle: 'Invisible Grills & Safety Nets in Kondapur | Aravindh', metaDescription: 'Grills, safety nets, bird control and cloth hangers in Kondapur. Plan balcony, utility and window measurements before approving a written quote.',
+    metaTitle: 'Invisible Grills & Safety Nets in Kondapur | Aravind', metaDescription: 'Grills, safety nets, bird control and cloth hangers in Kondapur. Plan balcony, utility and window measurements before approving a written quote.',
     h1: 'Invisible Grills & Safety Services in Kondapur', intro: 'Compare invisible grills, balcony nets, bird protection and drying hangers for your Kondapur home. We survey the openings together so each system has a practical, compatible layout.', detail: 'Share your property type, opening list and access requirements when booking.',
     localHeading: 'Keep the balcony, utility and window plans connected', localParagraphs: ['A Kondapur apartment may have a main balcony facing the view and a smaller utility opening with different requirements. Treating both as one generic enclosure can overlook ventilation, clothes drying and access to equipment. We record each opening separately before comparing grills and nets.', 'Tell us whether you want a clearer balcony outlook, bird exclusion, an additional child barrier or easier laundry access. Those purposes guide the product discussion. Our Balcony Safety Nets in Kondapur page covers the enclosure-specific checks in more detail.', 'Before booking, confirm who can approve external fixings and how visitors enter the building. A coordinated measurement helps identify conflicting anchor positions, but association permission and safe access remain necessary before installation.'],
     nearby: ['Gachibowli', 'HITEC City', 'Madhapur', 'Nallagandla'], services: common,
@@ -259,7 +259,7 @@ const PLACE_SOURCES: Record<string, PlaceSource> = {
   },
   '/locations/miyapur/': {
     path: '/locations/miyapur/', name: 'Miyapur', region: 'Hyderabad', featured: true,
-    metaTitle: 'Safety Nets & Invisible Grills in Miyapur | Aravindh', metaDescription: 'Invisible grills, child nets, pigeon nets and cloth hangers in Miyapur. Measure apartment and house openings with a free, planned site visit.',
+    metaTitle: 'Safety Nets & Invisible Grills in Miyapur | Aravind', metaDescription: 'Invisible grills, child nets, pigeon nets and cloth hangers in Miyapur. Measure apartment and house openings with a free, planned site visit.',
     h1: 'Invisible Grills & Safety Nets in Miyapur', intro: 'Plan protective grills and nets around the actual windows, balconies and utility spaces in your Miyapur property, with material options explained before a written quote.', detail: 'Share your property type, opening list and access requirements when booking.',
     localHeading: 'Start with the openings your household uses every day', localParagraphs: ['Miyapur has a mix of apartment buildings and residential houses. A useful survey distinguishes frequently used windows from utility gaps and shared terrace openings. The product choice should follow the opening and its purpose, not simply the number of floors in the building.', 'For a family flat, list the balcony, children’s room windows and any area used by pets. A net for bird exclusion may differ from a net proposed as an additional protective barrier. We discuss those distinctions and the limitations of each system.', 'If an overhead cloth hanger is also needed, include it in the same enquiry. Reach, wet-laundry clearance and window operation can then be checked alongside the grill or net layout rather than after installation.'],
     nearby: ['Kukatpally', 'Kondapur', 'Nallagandla'], services: common,
@@ -269,7 +269,7 @@ const PLACE_SOURCES: Record<string, PlaceSource> = {
   },
   '/locations/manikonda/': {
     path: '/locations/manikonda/', name: 'Manikonda', region: 'Hyderabad', featured: true,
-    metaTitle: 'Balcony Grills & Safety Services in Manikonda | Aravindh', metaDescription: 'Invisible grills, balcony nets, bird spikes and utility hangers in Manikonda. Plan apartment access and fixing surfaces before installation.',
+    metaTitle: 'Balcony Grills & Safety Services in Manikonda | Aravind', metaDescription: 'Invisible grills, balcony nets, bird spikes and utility hangers in Manikonda. Plan apartment access and fixing surfaces before installation.',
     h1: 'Balcony Grills & Safety Services in Manikonda', intro: 'Explore view-conscious invisible grills, balcony safety nets, bird control and cloth drying systems for your Manikonda home, with a site-specific measurement.', detail: 'Share your property type, opening list and access requirements when booking.',
     localHeading: 'A shared building needs a clear installation scope', localParagraphs: ['For a Manikonda apartment or gated community, the opening itself is only part of the job. Visitor registration, permitted working hours and approval for exterior changes can affect how the measurement and installation are planned. Share those requirements before we arrive.', 'Photograph the balcony face, returns and utility area. If pigeons use an external ledge, a net across the balcony does not necessarily address that perch. We can discuss a separate bird-spike assessment while keeping the intended protective barrier clear.', 'Where several services are requested, we identify their fixing zones and access needs together. This is particularly useful when a drying hanger, outdoor AC unit and balcony enclosure share a compact utility.'],
     nearby: ['Narsingi', 'Gachibowli', 'Jubilee Hills', 'Banjara Hills'], services: common,
@@ -279,7 +279,7 @@ const PLACE_SOURCES: Record<string, PlaceSource> = {
   },
   '/locations/madhapur/': {
     path: '/locations/madhapur/', name: 'Madhapur', region: 'Hyderabad', featured: true,
-    metaTitle: 'Invisible Grills & Bird Nets in Madhapur | Aravindh', metaDescription: 'Grills, pigeon nets, balcony protection and cloth hangers in Madhapur. Coordinate home or managed-property access with a free site survey.',
+    metaTitle: 'Invisible Grills & Bird Nets in Madhapur | Aravind', metaDescription: 'Grills, pigeon nets, balcony protection and cloth hangers in Madhapur. Coordinate home or managed-property access with a free site survey.',
     h1: 'Invisible Grills & Bird Protection in Madhapur', intro: 'Keep your Madhapur balcony or utility more usable with a planned combination of bird exclusion, invisible grills, safety nets and overhead drying equipment.', detail: 'Share your property type, opening list and access requirements when booking.',
     localHeading: 'Match the solution to a home or managed-property routine', localParagraphs: ['A Madhapur property may be owner-occupied, rented or managed for tenants. Before work is proposed, identify who can authorise drilling or adhesive fixing and who will be present for the visit. That avoids treating a tenant enquiry as automatic permission to alter the building.', 'For recurring pigeon mess, describe the times and places birds use the balcony. Entry gaps and outside perches may need different treatments. We explain where a fitted net is useful and where a ledge-specific bird-control option should be considered.', 'If the balcony also serves as a drying area, keep garment clearance and equipment access in the plan. The aim is a usable everyday space, not merely an enclosure that looks complete in a photograph.'],
     nearby: ['HITEC City', 'Kondapur', 'Jubilee Hills', 'Gachibowli'], services: common,
@@ -289,7 +289,7 @@ const PLACE_SOURCES: Record<string, PlaceSource> = {
   },
   '/locations/tellapur/': {
     path: '/locations/tellapur/', name: 'Tellapur', region: 'Hyderabad', featured: true,
-    metaTitle: 'Invisible Grills & Safety Nets in Tellapur | Aravindh', metaDescription: 'Invisible grills, child nets, bird protection and cloth hangers in Tellapur. Measure new-home balconies and utilities before choosing materials.',
+    metaTitle: 'Invisible Grills & Safety Nets in Tellapur | Aravind', metaDescription: 'Invisible grills, child nets, bird protection and cloth hangers in Tellapur. Measure new-home balconies and utilities before choosing materials.',
     h1: 'Invisible Grills & Safety Nets in Tellapur', intro: 'Moving into a Tellapur home or updating an apartment? Plan balcony and window protection together with bird nets and utility drying, before furniture and appliances limit access.', detail: 'Share your property type, opening list and access requirements when booking.',
     localHeading: 'Use the move-in stage to coordinate the whole layout', localParagraphs: ['When a Tellapur home is being fitted out, grills, nets, curtains and drying equipment can compete for the same edges and ceiling space. Measuring early lets us discuss those interfaces before fixing points are chosen or bulky furniture is moved into place.', 'For a family with young children, explain the age of the children and any climbable furniture planned near the opening. We can discuss spacing and attachment options, but no barrier removes the need for supervision or suitable existing railings.', 'Check the developer’s or association’s rules for exterior work and any snagging repairs. Loose finishes or unresolved seepage should be addressed before an installation is attached to the affected surface.'],
     nearby: ['Nallagandla', 'Narsingi', 'Gachibowli', 'Miyapur'], services: common,
@@ -299,7 +299,7 @@ const PLACE_SOURCES: Record<string, PlaceSource> = {
   },
   '/locations/narsingi/': {
     path: '/locations/narsingi/', name: 'Narsingi', region: 'Hyderabad', featured: true,
-    metaTitle: 'Balcony Grills & Safety Solutions in Narsingi | Aravindh', metaDescription: 'Invisible grills, balcony nets, bird control and cloth hangers in Narsingi. Assess exposed openings, access and material options on site.',
+    metaTitle: 'Balcony Grills & Safety Solutions in Narsingi | Aravind', metaDescription: 'Invisible grills, balcony nets, bird control and cloth hangers in Narsingi. Assess exposed openings, access and material options on site.',
     h1: 'Balcony Grills & Safety Solutions in Narsingi', intro: 'Compare invisible grills and safety nets for your Narsingi balcony, alongside bird protection and utility hangers. We assess exposure, fixing surfaces and access before recommending a system.', detail: 'Share your property type, opening list and access requirements when booking.',
     localHeading: 'Exposure and attachment matter more than a product label', localParagraphs: ['For an open Narsingi balcony, tell us how directly it receives rain and whether the opening is sheltered by the floors above. Exposure is one input into the SS304 versus SS316 discussion; it does not replace checking the cable, coating, track and anchor specification.', 'A clear view is often the reason for considering invisible grills. A net may suit a different opening or enclosure requirement. We compare the actual balcony geometry and intended use rather than assuming one product is appropriate for every side of the property.', 'Where safe exterior access is restricted, tell us before the appointment. We will discuss what can be measured and whether additional access arrangements are needed; we do not assume a high opening can be reached from inside the flat.'],
     nearby: ['Manikonda', 'Tellapur', 'Gachibowli', 'Nallagandla'], services: common,
@@ -309,7 +309,7 @@ const PLACE_SOURCES: Record<string, PlaceSource> = {
   },
   '/locations/hitec-city/': {
     path: '/locations/hitec-city/', name: 'HITEC City', region: 'Hyderabad', featured: true,
-    metaTitle: 'Safety Nets & Invisible Grills in HITEC City | Aravindh', metaDescription: 'Grills, pigeon nets, balcony protection and cloth hangers in HITEC City. Plan residential or managed-property surveys around access and use.',
+    metaTitle: 'Safety Nets & Invisible Grills in HITEC City | Aravind', metaDescription: 'Grills, pigeon nets, balcony protection and cloth hangers in HITEC City. Plan residential or managed-property surveys around access and use.',
     h1: 'Safety & Installation Services in HITEC City', intro: 'Arrange a practical site survey for invisible grills, safety nets, pigeon control or cloth drying hangers at your HITEC City property, with access and approvals clarified first.', detail: 'Share your property type, opening list and access requirements when booking.',
     localHeading: 'Plan around occupancy, access and the purpose of each space', localParagraphs: ['HITEC City includes residential buildings alongside workplaces and managed accommodation. The first survey question is what the space is used for and who can approve changes. A domestic balcony barrier, a bird-exclusion net and a sports enclosure have different requirements.', 'For a flat, share the balcony and utility photographs and explain your usual access times. For a managed property, identify the facility contact and any restrictions on noisy work, lifts or material movement. These details help us plan a realistic visit.', 'We keep the quotation tied to the measured scope. If the requirement is outside our installation services or needs a structural specialist, that should be identified rather than disguised as a standard net or grill job.'],
     nearby: ['Madhapur', 'Kondapur', 'Gachibowli', 'Jubilee Hills'], services: common,
@@ -319,7 +319,7 @@ const PLACE_SOURCES: Record<string, PlaceSource> = {
   },
   '/locations/jubilee-hills/': {
     path: '/locations/jubilee-hills/', name: 'Jubilee Hills', region: 'Hyderabad', featured: true,
-    metaTitle: 'Invisible Grills & Home Safety in Jubilee Hills | Aravindh', metaDescription: 'Invisible grills, safety nets, bird spikes and ceiling cloth hangers in Jubilee Hills. Plan a discreet finish with a measured site survey.',
+    metaTitle: 'Invisible Grills & Home Safety in Jubilee Hills | Aravind', metaDescription: 'Invisible grills, safety nets, bird spikes and ceiling cloth hangers in Jubilee Hills. Plan a discreet finish with a measured site survey.',
     h1: 'Invisible Grills & Home Safety in Jubilee Hills', intro: 'Plan a discreet balcony or window finish in Jubilee Hills, with safety nets, bird control and utility drying considered as part of the same property survey.', detail: 'Share your property type, opening list and access requirements when booking.',
     localHeading: 'A discreet finish still needs a carefully checked fixing plan', localParagraphs: ['For a Jubilee Hills home, appearance may be important, but a slim grill or neatly tensioned net still depends on suitable attachment points. We discuss track finish, cable layout and the condition of the opening rather than promising a universal invisible result.', 'Independent houses and apartments can involve different combinations of windows, terraces and utility balconies. List each area and its intended use. A terrace practice enclosure, for example, should be assessed separately from a balcony barrier or a bird-entry gap.', 'Where an architect, interior designer or property manager is involved, share the relevant finish and access requirements. We can coordinate the proposed installation layout, while structural changes and specialist approvals remain outside a routine fitting.'],
     nearby: ['Banjara Hills', 'Madhapur', 'HITEC City', 'Manikonda'], services: common,
@@ -329,7 +329,7 @@ const PLACE_SOURCES: Record<string, PlaceSource> = {
   },
   '/locations/banjara-hills/': {
     path: '/locations/banjara-hills/', name: 'Banjara Hills', region: 'Hyderabad', featured: true,
-    metaTitle: 'Window Grills & Safety Services in Banjara Hills | Aravindh', metaDescription: 'Window and balcony invisible grills, bird nets, sports netting and cloth hangers in Banjara Hills. Survey the property before a written quote.',
+    metaTitle: 'Window Grills & Safety Services in Banjara Hills | Aravind', metaDescription: 'Window and balcony invisible grills, bird nets, sports netting and cloth hangers in Banjara Hills. Survey the property before a written quote.',
     h1: 'Window Grills & Safety Services in Banjara Hills', intro: 'Explore invisible grills for windows and balconies in Banjara Hills, with bird protection, safety nets and cloth drying systems measured around your property’s existing layout.', detail: 'Share your property type, opening list and access requirements when booking.',
     localHeading: 'Respect the existing openings before adding a new system', localParagraphs: ['A Banjara Hills property may combine older window frames, renovated balconies and newer utility fittings. We inspect each attachment surface rather than assuming the whole building can take the same anchors. Existing repairs and the way a window opens are useful details to share.', 'If preserving the outlook is the priority, compare cable grills with the available net options at the actual opening. The visual effect depends on distance, lighting and layout, so a photograph alone cannot establish what the finished view will look like.', 'For bird control or overhead drying, keep maintenance access in the plan. We discuss how the proposed system will be reached and used, and identify any preparation that should happen before installation.'],
     nearby: ['Jubilee Hills', 'Secunderabad', 'Madhapur', 'Hyderabad'], services: common,

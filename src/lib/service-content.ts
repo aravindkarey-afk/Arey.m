@@ -11,11 +11,11 @@ export type ServiceContent = {
 /** Original, service-specific copy. Installation promises are scoped to the surveyed site. */
 export const SERVICE_CONTENT: Record<string, ServiceContent> = {
   'invisible-grills': {
-    title: 'Invisible Grills in Hyderabad | Aravindh Invisible Grills',
-    description: 'Invisible grills in Hyderabad for balconies and windows. Compare SS304 and SS316 cables, plan your spacing and book a free site visit with Aravindh.',
+    title: 'Invisible Grills in Hyderabad | Aravind Invisible Grills',
+    description: 'Invisible grills in Hyderabad for balconies and windows. Compare SS304 and SS316 cables, plan your spacing and book a free site visit with Aravind.',
     imageAlt: 'Illustration of slim invisible grill cables above a balcony railing with an open city view',
     intro: [
-      'Invisible grills add a cable barrier to a balcony or window without the visual weight of a conventional metal enclosure. At Aravindh Invisible Grills, we measure the opening, discuss how your household uses it and plan the cables, tracks and fixings together.',
+      'Invisible grills add a cable barrier to a balcony or window without the visual weight of a conventional metal enclosure. At Aravind Invisible Grills, we measure the opening, discuss how your household uses it and plan the cables, tracks and fixings together.',
       'Our work covers individual apartments, independent homes and shared residential spaces across Hyderabad. Start with the view you want to keep, then choose the cable grade and spacing for the exposure and the people using the space.',
     ],
     benefits: ['A discreet alternative to bulky grill bars', 'SS304 and SS316 material discussions', 'Layouts planned around each opening', 'Free measurement and a written quotation'],
@@ -34,7 +34,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['ss304-invisible-grills', 'ss316-invisible-grills', 'balcony-invisible-grills', 'child-safety-nets'],
   },
   'ss304-invisible-grills': {
-    title: 'SS304 Invisible Grills in Hyderabad | Aravindh',
+    title: 'SS304 Invisible Grills in Hyderabad | Aravind',
     description: 'Explore SS304 invisible grills in Hyderabad: cable coatings, spacing, suitable openings and SS304 vs SS316. Book a measured, written quotation.',
     imageAlt: 'Window invisible grill illustration showing a slender stainless steel cable layout',
     intro: [
@@ -57,7 +57,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['ss316-invisible-grills', 'invisible-grills', 'window-invisible-grills', 'balcony-invisible-grills'],
   },
   'ss316-invisible-grills': {
-    title: 'SS316 Invisible Grills in Hyderabad | Aravindh',
+    title: 'SS316 Invisible Grills in Hyderabad | Aravind',
     description: 'SS316 invisible grills in Hyderabad for balconies and windows. Understand marine-grade cables, exposed-site considerations and professional fitting.',
     imageAlt: 'Balcony cable grill illustration used to explain SS316 invisible grill layouts',
     intro: [
@@ -80,7 +80,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['ss304-invisible-grills', 'invisible-grills', 'balcony-invisible-grills', 'invisible-grills-for-pets'],
   },
   'balcony-safety-nets': {
-    title: 'Balcony Safety Nets in Hyderabad | Aravindh',
+    title: 'Balcony Safety Nets in Hyderabad | Aravind',
     description: 'Balcony safety nets in Hyderabad, measured for your railing and openings. Compare mesh, borders and fixings for family homes. Free site measurement.',
     imageAlt: 'Illustration of a balcony safety net enclosing the space above an apartment railing',
     intro: [
@@ -103,7 +103,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['child-safety-nets', 'balcony-invisible-grills', 'pigeon-safety-nets', 'ceiling-cloth-drying-hangers'],
   },
   'pigeon-safety-nets': {
-    title: 'Pigeon Safety Nets in Hyderabad | Aravindh',
+    title: 'Pigeon Safety Nets in Hyderabad | Aravind',
     description: 'Pigeon nets installation in Hyderabad for balconies, windows and utility gaps. Close entry points with measured mesh and neat perimeter fixings.',
     imageAlt: 'Pigeon exclusion netting illustrated across a residential balcony opening',
     intro: [
@@ -126,7 +126,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['bird-protection-nets', 'anti-bird-nets', 'anti-bird-spikes', 'duct-area-safety-nets'],
   },
   'bird-protection-nets': {
-    title: 'Bird Protection Nets in Hyderabad | Aravindh',
+    title: 'Bird Protection Nets in Hyderabad | Aravind',
     description: 'Bird protection nets in Hyderabad for terraces, ducts and building openings. Plan mesh, support cables and access around your property. Free site visit.',
     imageAlt: 'Open-mesh bird protection net illustrated over a balcony with daylight passing through',
     intro: [
@@ -149,7 +149,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['pigeon-safety-nets', 'anti-bird-nets', 'bird-spikes-installation', 'open-area-safety-nets'],
   },
   'child-safety-nets': {
-    title: 'Child Safety Nets in Hyderabad | Aravindh',
+    title: 'Child Safety Nets in Hyderabad | Aravind',
     description: 'Child safety nets in Hyderabad for balconies, windows and stair gaps. Discuss mesh, anchors and supervision-aware planning with a free site visit.',
     imageAlt: 'Illustration of a child beside a balcony opening protected by an additional safety net',
     intro: [
@@ -172,7 +172,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['balcony-safety-nets', 'staircase-safety-nets', 'invisible-grills-for-kids', 'window-invisible-grills'],
   },
   'sports-safety-nets': {
-    title: 'Sports Safety Nets in Hyderabad | Aravindh',
+    title: 'Sports Safety Nets in Hyderabad | Aravind',
     description: 'Sports safety nets in Hyderabad for practice grounds, academies and terraces. Plan ball containment, mesh, supports and access. Book a site measurement.',
     imageAlt: 'Illustration of a supported sports net enclosure around a multi-use practice court',
     intro: [
@@ -195,7 +195,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['cricket-practice-nets', 'football-safety-nets', 'terrace-cricket-nets', 'open-area-safety-nets'],
   },
   'cricket-practice-nets': {
-    title: 'Cricket Practice Nets in Hyderabad | Aravindh',
+    title: 'Cricket Practice Nets in Hyderabad | Aravind',
     description: 'Cricket practice nets in Hyderabad for coaching lanes and grounds. Plan pitch clearances, ball containment, roof netting and access with a site survey.',
     imageAlt: 'Cricket practice lane illustration with stumps, side netting and overhead containment',
     intro: [
@@ -218,7 +218,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['sports-safety-nets', 'terrace-cricket-nets', 'football-safety-nets'],
   },
   'football-safety-nets': {
-    title: 'Football Safety Nets in Hyderabad | Aravindh',
+    title: 'Football Safety Nets in Hyderabad | Aravind',
     description: 'Football safety nets in Hyderabad for turf grounds and training areas. Plan ball-stop netting, perimeter height, gates and spectator clearances.',
     imageAlt: 'Football practice area illustration with a goal and high perimeter ball-stop netting',
     intro: [
@@ -241,7 +241,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['sports-safety-nets', 'cricket-practice-nets', 'open-area-safety-nets'],
   },
   'anti-bird-spikes': {
-    title: 'Anti-Bird Spikes in Hyderabad | Aravindh',
+    title: 'Anti-Bird Spikes in Hyderabad | Aravind',
     description: 'Anti-bird spikes in Hyderabad for ledges, parapets and AC platforms. Compare strip layouts, base materials and fixing options before installation.',
     imageAlt: 'Stainless steel anti-bird spike strips shown on a narrow exterior building ledge',
     intro: [
@@ -264,7 +264,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['bird-spikes-installation', 'pigeon-safety-nets', 'bird-protection-nets'],
   },
   'bird-spikes-installation': {
-    title: 'Bird Spikes Installation in Hyderabad | Aravindh',
+    title: 'Bird Spikes Installation in Hyderabad | Aravind',
     description: 'Bird spikes installation in Hyderabad: ledge cleaning, surface checks, strip alignment and fixing. Book a site survey for balconies, AC units and parapets.',
     imageAlt: 'Close view of installed bird spike strips aligned along an exterior concrete ledge',
     intro: [
@@ -287,7 +287,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['anti-bird-spikes', 'pigeon-safety-nets', 'bird-protection-nets'],
   },
   'cloth-hangers': {
-    title: 'Cloth Hangers in Hyderabad | Aravindh',
+    title: 'Cloth Hangers in Hyderabad | Aravind',
     description: 'Cloth hangers in Hyderabad for homes and utility areas. Compare ceiling drying systems, manual pulleys and stainless steel rods with a free measurement.',
     imageAlt: 'Cloth hanger rods illustrated in a bright residential utility balcony',
     intro: [
@@ -310,7 +310,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['ceiling-cloth-drying-hangers', 'manual-ceiling-cloth-hangers', 'stainless-steel-cloth-hangers', 'balcony-safety-nets'],
   },
   'ceiling-cloth-drying-hangers': {
-    title: 'Ceiling Cloth Drying Hangers Hyderabad | Aravindh',
+    title: 'Ceiling Cloth Drying Hangers Hyderabad | Aravind',
     description: 'Ceiling cloth drying hangers in Hyderabad, planned around reach, rod spacing and airflow. Free up your utility floor with a measured installation.',
     imageAlt: 'Ceiling cloth drying hanger illustration with parallel rods above a clear utility floor',
     intro: [
@@ -333,7 +333,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['cloth-hangers', 'manual-ceiling-cloth-hangers', 'stainless-steel-cloth-hangers'],
   },
   'balcony-invisible-grills': {
-    title: 'Balcony Invisible Grills Hyderabad | Aravindh',
+    title: 'Balcony Invisible Grills Hyderabad | Aravind',
     description: 'Balcony invisible grills in Hyderabad with measured cable layouts and SS304 or SS316 options. Keep the outlook open and arrange a free site measurement.',
     imageAlt: 'Balcony invisible grill illustration with cables above a railing and an unobstructed city outlook',
     intro: ['A balcony invisible grill is planned around the railing, slab and side walls of one particular opening. We check those boundaries before discussing cable direction, spacing and the view from inside the room.', 'For Hyderabad apartments, access for installation and the building’s exterior-fixing rules matter as much as the cable specification. Share association requirements early so the proposed layout can be reviewed.'],
@@ -345,7 +345,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['invisible-grills', 'ss316-invisible-grills', 'balcony-safety-nets', 'ceiling-cloth-drying-hangers'],
   },
   'window-invisible-grills': {
-    title: 'Window Invisible Grills Hyderabad | Aravindh',
+    title: 'Window Invisible Grills Hyderabad | Aravind',
     description: 'Window invisible grills in Hyderabad, planned around frame strength, opening travel and cleaning access. Compare cable options with a free measurement.',
     imageAlt: 'Sliding-window illustration with discreet vertical invisible grill cables',
     intro: ['Window invisible grills add a slim cable barrier while keeping much of the window opening visible. The frame, sill and surrounding wall need checking because attachment details vary between sliding, casement and fixed windows.', 'We measure Hyderabad homes window by window. Cleaning access, handles, curtains and the direction the sash moves are all considered before the cable layout is agreed.'],
@@ -357,7 +357,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['invisible-grills', 'ss304-invisible-grills', 'child-safety-nets', 'invisible-grills-for-kids'],
   },
   'invisible-grills-for-pets': {
-    title: 'Invisible Grills for Pets Hyderabad | Aravindh',
+    title: 'Invisible Grills for Pets Hyderabad | Aravind',
     description: 'Invisible grills for pets in Hyderabad. Plan balcony and window cable spacing around cats or dogs, with sound fixings and a free site measurement.',
     imageAlt: 'Dog beside a window fitted with an illustrative invisible grill cable barrier',
     intro: ['Pet owners often want an open outlook with an additional barrier at a balcony or window. Tell us the animal’s size, climbing behaviour and usual access to the space so the cable layout can be discussed around actual use.', 'We install pet-focused grill layouts in Hyderabad after checking the opening and nearby furniture. No barrier removes the need to supervise pets or manage doors, ledges and climbable objects.'],
@@ -369,7 +369,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['invisible-grills', 'pets-and-monkey-safety-nets', 'balcony-invisible-grills', 'window-invisible-grills'],
   },
   'invisible-grills-for-kids': {
-    title: 'Child Safety Invisible Grills Hyderabad | Aravindh',
+    title: 'Child Safety Invisible Grills Hyderabad | Aravind',
     description: 'Invisible grills for kids in Hyderabad. Discuss cable orientation, spacing and furniture placement for balconies and windows. Free home measurement.',
     imageAlt: 'Child beside an illustrative window invisible grill in a bright residential room',
     intro: ['Invisible grills for kids are an additional opening barrier chosen with the household’s routine in mind. We discuss age, climbing behaviour and furniture placement alongside the cable system.', 'Our Hyderabad survey can compare grills with child safety nets across balconies and windows. The aim is a clear, practical plan with limitations explained—not a promise that any product makes a home risk-free.'],
@@ -381,7 +381,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['child-safety-nets', 'invisible-grills', 'window-invisible-grills', 'balcony-invisible-grills'],
   },
   'invisible-grills-for-birds': {
-    title: 'Invisible Grills for Bird Control | Aravindh Hyderabad',
+    title: 'Invisible Grills for Bird Control | Aravind Hyderabad',
     description: 'Assess invisible grills for bird control in Hyderabad. Understand where cable spacing may help and when pigeon nets or spikes are more suitable.',
     imageAlt: 'Illustrative balcony cable grill with a bird outside the protected opening',
     intro: ['Some customers consider invisible grills to reduce bird access through a balcony opening. Cable spacing must be assessed for the birds involved; a layout intended mainly for a view or fall barrier may leave enough room for small birds.', 'We explain the trade-off during a Hyderabad site visit. Where complete bird exclusion is the main goal, pigeon safety nets or bird protection nets may be more appropriate than a widely spaced cable grill.'],
@@ -393,7 +393,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['pigeon-safety-nets', 'bird-protection-nets', 'anti-bird-spikes', 'invisible-grills'],
   },
   'building-safety-nets': {
-    title: 'Building Safety Nets Hyderabad | Aravindh',
+    title: 'Building Safety Nets Hyderabad | Aravind',
     description: 'Building safety nets in Hyderabad for residential and commercial openings. Define the purpose, coverage and access before a measured installation quote.',
     imageAlt: 'Illustration of green perimeter netting around a multi-storey building',
     intro: ['Building safety netting can serve different purposes, from enclosing open utility faces to debris or perimeter protection. The intended use must be stated before a material or fixing specification is selected.', 'We survey Hyderabad properties and coordinate access with the owner or manager. Personnel fall arrest and engineered construction protection require appropriate design and compliance; this page is not a certification of those systems.'],
@@ -405,7 +405,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['construction-safety-nets', 'duct-area-safety-nets', 'open-area-safety-nets', 'bird-protection-nets'],
   },
   'car-parking-safety-nets': {
-    title: 'Car Parking Safety Nets Hyderabad | Aravindh',
+    title: 'Car Parking Safety Nets Hyderabad | Aravind',
     description: 'Car parking safety nets in Hyderabad for open parking edges and decks. Assess debris containment, vehicle clearance and maintenance access on site.',
     imageAlt: 'Illustrated net barrier along the open edge of an apartment car parking deck',
     intro: ['Car parking safety nets can enclose selected open edges of parking decks or sheltered bays. The purpose may be debris containment or bird exclusion rather than vehicle impact protection.', 'We measure the parking layout in Hyderabad and check headroom, lighting, fire services and pedestrian routes. The net must not create a new obstruction or imply that it can stop a vehicle.'],
@@ -417,7 +417,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['building-safety-nets', 'open-area-safety-nets', 'bird-protection-nets'],
   },
   'coconut-tree-safety-nets': {
-    title: 'Coconut Tree Safety Nets Hyderabad | Aravindh',
+    title: 'Coconut Tree Safety Nets Hyderabad | Aravind',
     description: 'Coconut tree safety nets in Hyderabad for defined fall zones around trees. Plan collection netting, supports and safe maintenance access with a site visit.',
     imageAlt: 'Illustration of a collection net secured beneath a coconut tree crown',
     intro: ['Coconut tree safety nets are intended to catch falling coconuts or fronds within a planned collection zone. The tree’s height, crown spread, nearby paths and available support points determine whether a practical layout exists.', 'We assess the site before quoting and explain safe access for clearing collected material. Netting is not a substitute for tree-health care or a guarantee that every falling object will be caught outside the protected zone.'],
@@ -429,7 +429,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['open-area-safety-nets', 'building-safety-nets', 'bird-protection-nets'],
   },
   'construction-safety-nets': {
-    title: 'Construction Safety Nets Hyderabad | Aravindh',
+    title: 'Construction Safety Nets Hyderabad | Aravind',
     description: 'Discuss construction safety nets in Hyderabad for debris containment and site enclosures. Confirm engineered requirements, access and scope before work.',
     imageAlt: 'Construction site illustration with green debris netting around scaffold levels',
     intro: ['Construction netting requirements vary by site and purpose. Debris containment, visual screening and personnel fall protection are different applications with different design and compliance obligations.', 'Share the contractor’s specification and site plan with our Hyderabad team. We review the requested scope and access; regulated or engineered protection must be confirmed by the responsible competent parties before installation.'],
@@ -441,7 +441,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['building-safety-nets', 'industrial-safety-nets', 'open-area-safety-nets'],
   },
   'duct-area-safety-nets': {
-    title: 'Duct Area Safety Nets Hyderabad | Aravindh',
+    title: 'Duct Area Safety Nets Hyderabad | Aravind',
     description: 'Duct area safety nets in Hyderabad for apartment shafts and utility gaps. Plan bird exclusion, mesh and service access without blocking ventilation.',
     imageAlt: 'Illustration of netting across an overhead building service duct opening',
     intro: ['Apartment ducts and shafts contain small gaps that can collect debris or allow bird entry. The right net depends on whether the goal is exclusion, catching selected debris or another defined barrier function.', 'We inspect the Hyderabad duct opening and nearby pipes before proposing a layout. Ventilation, fire-service requirements and maintenance access must remain clear; a net is not a floor for people to stand on.'],
@@ -453,7 +453,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['pigeon-safety-nets', 'bird-protection-nets', 'building-safety-nets'],
   },
   'industrial-safety-nets': {
-    title: 'Industrial Safety Nets Hyderabad | Aravindh',
+    title: 'Industrial Safety Nets Hyderabad | Aravind',
     description: 'Industrial safety nets in Hyderabad for defined warehouse and facility enclosures. Review the application, supports, access and engineered requirements.',
     imageAlt: 'Illustrated overhead netting inside an industrial warehouse below roof services',
     intro: ['Industrial netting may be requested for debris separation, bird exclusion or a defined protected zone beneath overhead work. The application and required performance must be documented before a product is selected.', 'We review facility layouts and access in Hyderabad with the responsible manager. Engineered fall protection, machine guarding and fire compliance are not established merely by installing a general-purpose net.'],
@@ -465,7 +465,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['construction-safety-nets', 'building-safety-nets', 'bird-protection-nets'],
   },
   'open-area-safety-nets': {
-    title: 'Open Area Safety Nets Hyderabad | Aravindh',
+    title: 'Open Area Safety Nets Hyderabad | Aravind',
     description: 'Open area safety nets in Hyderabad for terraces and exposed spaces. Define the boundary, support layout and intended use before a site quotation.',
     imageAlt: 'Illustration of a large open terrace enclosed by supported green netting',
     intro: ['Open-area netting covers a broader space than a single balcony or window. A clear boundary, intended function and support plan are essential before choosing mesh or quoting a span.', 'We assess terraces, courtyards and suitable open-sided areas in Hyderabad. Wind exposure, drainage, access and the structure supporting the net are reviewed rather than assuming long unsupported runs are practical.'],
@@ -477,7 +477,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['sports-safety-nets', 'bird-protection-nets', 'balcony-safety-nets', 'building-safety-nets'],
   },
   'pets-and-monkey-safety-nets': {
-    title: 'Pets & Monkey Safety Nets Hyderabad | Aravindh',
+    title: 'Pets & Monkey Safety Nets Hyderabad | Aravind',
     description: 'Pet and monkey safety nets in Hyderabad. Assess mesh, entry gaps and fixing strength around balconies and open areas with a free site measurement.',
     imageAlt: 'Pet safety balcony illustration with netting and separate cat and monkey reference images',
     intro: ['Pet and monkey exclusion requirements are not identical. A mesh that helps contain a pet may not resist a determined animal at the edge, so the species and behaviour must be part of the survey.', 'We assess Hyderabad balconies and open areas, checking frames, returns and nearby climbable structures. No net can promise complete animal-proofing without suitable design, sound anchors and maintenance.'],
@@ -489,7 +489,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['invisible-grills-for-pets', 'balcony-safety-nets', 'bird-protection-nets'],
   },
   'staircase-safety-nets': {
-    title: 'Staircase Safety Nets Hyderabad | Aravindh',
+    title: 'Staircase Safety Nets Hyderabad | Aravind',
     description: 'Staircase safety nets in Hyderabad for open stair gaps and landings. Measure handrails, circulation and fixing points for a planned additional barrier.',
     imageAlt: 'White staircase safety net illustration secured beside an open flight of stairs',
     intro: ['Staircase netting can add a barrier beside open stair gaps or along a landing where the existing arrangement allows a suitable installation. Handrail strength and the required circulation width must be checked.', 'We survey homes, apartments and managed buildings in Hyderabad. The net should not obstruct escape routes or replace required guardrails and handrails.'],
@@ -501,7 +501,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['child-safety-nets', 'balcony-safety-nets', 'invisible-grills-for-kids'],
   },
   'swimming-pool-nets': {
-    title: 'Swimming Pool Safety Nets Hyderabad | Aravindh',
+    title: 'Swimming Pool Safety Nets Hyderabad | Aravind',
     description: 'Discuss swimming pool safety nets in Hyderabad. Assess pool perimeter barriers, covers, access and supervision requirements before choosing a solution.',
     imageAlt: 'Illustration of a rectangular outdoor swimming pool with a planned net barrier',
     intro: ['Pool safety planning starts with controlled access and supervision. A net around or above a pool has a specific design purpose and should not be treated as a universal substitute for a compliant pool fence or an engineered cover.', 'Share the pool layout, existing barrier and intended net function with our Hyderabad team. We assess what can be proposed and explain where a specialist engineered product or professional design is required.'],
@@ -513,7 +513,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['open-area-safety-nets', 'child-safety-nets', 'building-safety-nets'],
   },
   'anti-bird-nets': {
-    title: 'Anti-Bird Nets for Balconies Hyderabad | Aravindh',
+    title: 'Anti-Bird Nets for Balconies Hyderabad | Aravind',
     description: 'Anti-bird nets for balconies in Hyderabad. Measure the open face, side returns and service gaps for a neat bird-exclusion layout. Free site visit.',
     imageAlt: 'Balcony anti-bird net illustration with open mesh above a railing and planted corner',
     intro: ['Anti-bird nets are a balcony-focused bird-exclusion option. The work concentrates on the open face and the small returns or overhead gaps that birds use to enter around the main mesh.', 'We measure Hyderabad balconies with plants, AC pipes and uneven walls in mind. The layout should leave necessary access available and avoid trapping dirt or water at the perimeter.'],
@@ -525,7 +525,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['pigeon-safety-nets', 'bird-protection-nets', 'balcony-safety-nets', 'anti-bird-spikes'],
   },
   'terrace-cricket-nets': {
-    title: 'Terrace Cricket Practice Nets Hyderabad | Aravindh',
+    title: 'Terrace Cricket Practice Nets Hyderabad | Aravind',
     description: 'Terrace cricket practice nets in Hyderabad, subject to structural and access assessment. Plan pitch clearance, supports, wind exposure and neighbour protection.',
     imageAlt: 'Illustration of a cricket practice enclosure on a supported terrace area',
     intro: ['A terrace cricket enclosure needs more than a ground-level net layout. The roof structure, wind exposure, waterproofing and neighbouring buildings must be considered before practice is planned overhead.', 'We review proposed Hyderabad terrace sites and explain the approvals and structural information needed. Installation proceeds only for a suitable, agreed scope; this page does not imply every terrace can support a practice frame.'],
@@ -537,7 +537,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['cricket-practice-nets', 'sports-safety-nets', 'open-area-safety-nets'],
   },
   'manual-ceiling-cloth-hangers': {
-    title: 'Manual Ceiling Cloth Hangers Hyderabad | Aravindh',
+    title: 'Manual Ceiling Cloth Hangers Hyderabad | Aravind',
     description: 'Manual ceiling cloth hangers in Hyderabad with pulley-operated rods. Check reach, operating clearance and ceiling fixings with a free utility measurement.',
     imageAlt: 'Manual ceiling cloth hanger illustration with a wall-side pulley and suspended drying rods',
     intro: ['Manual ceiling cloth hangers use a rope-and-pulley arrangement to change the rod height for loading and drying. They can be useful where a fixed overhead rod would be difficult to reach.', 'We check the operating path, wall and ceiling substrates and the user’s comfortable loading position in your Hyderabad utility. Rope routing and moving parts need space and periodic inspection.'],
@@ -549,7 +549,7 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
     related: ['cloth-hangers', 'ceiling-cloth-drying-hangers', 'stainless-steel-cloth-hangers'],
   },
   'stainless-steel-cloth-hangers': {
-    title: 'Stainless Steel Cloth Hangers Hyderabad | Aravindh',
+    title: 'Stainless Steel Cloth Hangers Hyderabad | Aravind',
     description: 'Stainless steel ceiling cloth hangers in Hyderabad. Compare rod finishes, fittings and ceiling anchors for a durable, measured utility installation.',
     imageAlt: 'Stainless steel ceiling cloth hanger illustration with parallel rods in a utility balcony',
     intro: ['Stainless steel cloth hangers are chosen for a clean rod finish and corrosion resistance in a utility environment. The rod grade, brackets, fasteners and ceiling structure all contribute to the completed installation.', 'We measure the Hyderabad drying area and discuss rod length, spacing and the proposed material specification. A shiny finish alone is not proof of a particular stainless steel grade or load capacity.'],
