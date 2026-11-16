@@ -6,6 +6,9 @@ import '@fontsource/poppins/latin-600.css';
 import '@fontsource/poppins/latin-700.css';
 import './index.css';
 import App from './App';
+import { trackContactClicks } from './lib/tracking';
+
+trackContactClicks();
 
 const root = document.getElementById('root')!;
 const app = <StrictMode><App pathname={window.location.pathname} /></StrictMode>;

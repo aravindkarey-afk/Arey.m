@@ -51,6 +51,13 @@ const wrongBrand = [];
 for (const file of htmlFiles) {
   const text = (await readFile(path.join('dist', file), 'utf8')).replaceAll('aravindhinvisiblegrills@gmail.com', '');
   if (/aravindh/i.test(text)) wrongBrand.push(file);
+  ok(`GTM placement and uniqueness ${file}`,
+    /<head>\s*<!-- Google Tag Manager -->/.test(text) &&
+    /<body(?:\s[^>]*)?>\s*<!-- Google Tag Manager \(noscript\) -->/.test(text) &&
+    (text.match(/GTM-PTMSDF9S/g) || []).length === 2 &&
+    (text.match(/<!-- Google Tag Manager -->/g) || []).length === 1 &&
+    (text.match(/googletagmanager\.com\/ns\.html\?id=GTM-PTMSDF9S/g) || []).length === 1);
+
 }
 ok('Brand spelling is "Aravind" everywhere', wrongBrand.length === 0, wrongBrand.slice(0, 5).join(', '));
 ok('LocalBusiness schema uses the official name', (await readFile('dist/index.html', 'utf8')).includes(`"name":"Aravind Invisible Grills"`));
@@ -135,10 +142,27 @@ if (withBrowser) {
     await form.goto(`${baseUrl}/contact/?service=Pigeon%20Safety%20Nets&area=Gachibowli#enquiry`, { waitUntil: 'networkidle' });
     ok('Contact query prefills service', await form.locator('#contact-requirement').inputValue() === 'Pigeon Safety Nets');
     ok('Contact query prefills area', await form.locator('#contact-location').inputValue() === 'Gachibowli');
+    const eventCounts = () => form.evaluate(() => {
+      const events = window.dataLayer.filter((item) => item && typeof item === 'object' && 'event' in item).map((item) => item.event);
+      return Object.fromEntries(['whatsapp_click', 'phone_call_click', 'generate_lead'].map((name) => [name, events.filter((event) => event === name).length]));
+    });
+    ok('No contact events on page load', Object.values(await eventCounts()).every((count) => count === 0));
     await form.locator('#contact-name').fill('Test Customer');
+    await form.locator('#contact-phone').fill('123');
+    await form.getByRole('button', { name: 'Prepare WhatsApp Request' }).click();
+    ok('Invalid submission does not generate lead', (await eventCounts()).generate_lead === 0);
     await form.locator('#contact-phone').fill('9876543210');
     await form.getByRole('button', { name: 'Prepare WhatsApp Request' }).click();
+    ok('Valid submission generates one lead', (await eventCounts()).generate_lead === 1);
     const href = await form.getByRole('link', { name: 'Continue to WhatsApp' }).getAttribute('href');
+    // Prevent external navigation while exercising real click bubbling.
+    await form.evaluate(() => document.addEventListener('click', (event) => {
+      if (event.target.closest('a[href^="tel:"], a[href^="https://wa.me/"]')) event.preventDefault();
+    }, true));
+    await form.getByRole('link', { name: 'Continue to WhatsApp' }).click();
+    await form.locator('a[href^="tel:"]').first().click();
+    const counts = await eventCounts();
+    ok('WhatsApp and phone clicks each emit one event', counts.whatsapp_click === 1 && counts.phone_call_click === 1 && counts.generate_lead === 1);
     ok('Form prepares contextual WhatsApp message', href.includes('wa.me/917995150298') && decodeURIComponent(href).includes('Pigeon Safety Nets') && decodeURIComponent(href).includes('Gachibowli'));
     await form.close();
     const gallery = await browser.newPage();
