@@ -1,4 +1,4 @@
-import { trackEvent } from '../lib/tracking';
+import { trackEvent, trackGoogleAdsContactConversion } from '../lib/tracking';
 import { useEffect, useState, type FormEvent } from "react";
 import { CONTACT, FIELD_OPTIONS } from "../lib/data";
 import { SectionHead } from "../components/SectionHead";
@@ -89,6 +89,7 @@ export function Contact({
     }
     setError("");
     trackEvent('generate_lead');
+    trackGoogleAdsContactConversion();
     setSubmitted(true);
   };
 

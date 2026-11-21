@@ -92,10 +92,11 @@ try {
   }
 
   const template = await readFile('dist/index.html', 'utf8');
-  // Reuse the same container snippets for the static legacy fallback documents.
+  // Reuse the same analytics snippets for the static legacy fallback documents.
   const gtmHead = template.match(/<!-- Google Tag Manager -->[\s\S]*?<!-- End Google Tag Manager -->/)?.[0];
+  const googleAdsHead = template.match(/<!-- Google tag \(gtag\.js\) -->[\s\S]*?<!-- End Google tag \(gtag\.js\) -->/)?.[0];
   const gtmBody = template.match(/<!-- Google Tag Manager \(noscript\) -->[\s\S]*?<!-- End Google Tag Manager \(noscript\) -->/)?.[0];
-  if (!gtmHead || !gtmBody) throw new Error('Missing Google Tag Manager snippets');
+  if (!gtmHead || !googleAdsHead || !gtmBody) throw new Error('Missing Google tracking snippets');
   const assetFiles = await readdir('dist/assets');
   const fontPreloads = assetFiles.filter((file) => /^poppins-latin-(400|600|700)-normal-.*\.woff2$/.test(file)).map((file) => `<link rel="preload" href="/assets/${file}" as="font" type="font/woff2" crossorigin />`);
   const rendered = [];
@@ -138,7 +139,7 @@ try {
   // These small fallback documents keep legacy links usable on static preview hosts.
   for (const redirect of redirects) {
     const target = `${origin}${redirect.destination}`;
-    const html = `<!doctype html><html lang="en-IN"><head>${gtmHead}<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page Moved | Aravind Invisible Grills</title><meta name="robots" content="noindex, follow"><link rel="canonical" href="${target}"><meta http-equiv="refresh" content="0; url=${escape(redirect.destination)}"></head><body style="font-family:sans-serif;padding:24px">${gtmBody}<p>This service page has moved. <a href="${escape(redirect.destination)}">Continue to ${escape(redirect.destination)}</a>.</p></body></html>`;
+    const html = `<!doctype html><html lang="en-IN"><head>${gtmHead}${googleAdsHead}<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page Moved | Aravind Invisible Grills</title><meta name="robots" content="noindex, follow"><link rel="canonical" href="${target}"><meta http-equiv="refresh" content="0; url=${escape(redirect.destination)}"></head><body style="font-family:sans-serif;padding:24px">${gtmBody}<p>This service page has moved. <a href="${escape(redirect.destination)}">Continue to ${escape(redirect.destination)}</a>.</p></body></html>`;
     const directory = path.join('dist', redirect.source);
     await mkdir(directory, { recursive: true });
     await writeFile(path.join(directory, 'index.html'), html);
