@@ -57,6 +57,14 @@ for (const file of htmlFiles) {
     (text.match(/GTM-PTMSDF9S/g) || []).length === 2 &&
     (text.match(/<!-- Google Tag Manager -->/g) || []).length === 1 &&
     (text.match(/googletagmanager\.com\/ns\.html\?id=GTM-PTMSDF9S/g) || []).length === 1);
+  const googleAdsTags = text.match(/<!-- Google tag \(gtag\.js\) -->[\s\S]*?<!-- End Google tag \(gtag\.js\) -->/g) || [];
+  const googleAdsTag = googleAdsTags[0] || '';
+  ok(`Google Ads tag placement and uniqueness ${file}`,
+    googleAdsTags.length === 1 &&
+    /<script async src="https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=AW-18553147578"><\/script>/.test(googleAdsTag) &&
+    (googleAdsTag.match(/AW-18553147578/g) || []).length === 2 &&
+    /gtag\('config', 'AW-18553147578'\);/.test(googleAdsTag) &&
+    !/gtag\('config', 'GTM-PTMSDF9S'\)/.test(googleAdsTag));
 
 }
 ok('Brand spelling is "Aravind" everywhere', wrongBrand.length === 0, wrongBrand.slice(0, 5).join(', '));
@@ -92,11 +100,16 @@ if (withBrowser) {
   const browser = await playwrightChromium.launch({ executablePath, args, env, headless: true });
   await mkdir('verification', { recursive: true });
   browserResults = [];
+  // Keep verification offline and avoid sending test traffic; dataLayer calls are still asserted below.
+  const stubGoogleTags = (page) => page.route(/^https:\/\/www\.googletagmanager\.com\//, (route) => route.fulfill({
+    status: 200, contentType: 'application/javascript', body: '',
+  }));
   const routes = ['/', '/services/', '/invisible-grills/', '/pigeon-safety-nets/', '/cloth-hangers/', '/locations/', '/invisible-grills-nallagandla/', '/balcony-safety-nets-kondapur/', '/gallery/', '/about/', '/contact/'];
   try {
     for (const route of routes) {
       for (const viewport of [{ width: 1440, height: 1000, name: 'desktop' }, { width: 390, height: 844, name: 'mobile' }]) {
         const page = await browser.newPage({ viewport: { width: viewport.width, height: viewport.height } });
+        await stubGoogleTags(page);
         const consoleErrors = [];
         const pageErrors = [];
         const failedAssets = [];
@@ -131,6 +144,7 @@ if (withBrowser) {
       }
     }
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 } });
+    await stubGoogleTags(mobile);
     await mobile.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
     await mobile.getByRole('button', { name: 'Open menu' }).click();
     ok('Mobile menu opens', await mobile.locator('#mobile-navigation').isVisible());
@@ -139,6 +153,7 @@ if (withBrowser) {
     ok('Mobile menu navigates to Services', new URL(mobile.url()).pathname === '/services/');
     await mobile.close();
     const form = await browser.newPage();
+    await stubGoogleTags(form);
     await form.goto(`${baseUrl}/contact/?service=Pigeon%20Safety%20Nets&area=Gachibowli#enquiry`, { waitUntil: 'networkidle' });
     ok('Contact query prefills service', await form.locator('#contact-requirement').inputValue() === 'Pigeon Safety Nets');
     ok('Contact query prefills area', await form.locator('#contact-location').inputValue() === 'Gachibowli');
@@ -146,14 +161,22 @@ if (withBrowser) {
       const events = window.dataLayer.filter((item) => item && typeof item === 'object' && 'event' in item).map((item) => item.event);
       return Object.fromEntries(['whatsapp_click', 'phone_call_click', 'generate_lead'].map((name) => [name, events.filter((event) => event === name).length]));
     });
-    ok('No contact events on page load', Object.values(await eventCounts()).every((count) => count === 0));
+    const googleAdsConversionCount = () => form.evaluate(() => window.dataLayer.filter((item) =>
+      item && typeof item === 'object' && 'length' in item &&
+      item[0] === 'event' && item[1] === 'conversion' &&
+      item[2]?.send_to === 'AW-18553147578/do7kCKGjzbkdELqh6o5F'
+    ).length);
+    ok('No contact events or Ads conversions on page load',
+      Object.values(await eventCounts()).every((count) => count === 0) && await googleAdsConversionCount() === 0);
     await form.locator('#contact-name').fill('Test Customer');
     await form.locator('#contact-phone').fill('123');
     await form.getByRole('button', { name: 'Prepare WhatsApp Request' }).click();
-    ok('Invalid submission does not generate lead', (await eventCounts()).generate_lead === 0);
+    ok('Invalid submission does not generate lead or Ads conversion',
+      (await eventCounts()).generate_lead === 0 && await googleAdsConversionCount() === 0);
     await form.locator('#contact-phone').fill('9876543210');
     await form.getByRole('button', { name: 'Prepare WhatsApp Request' }).click();
-    ok('Valid submission generates one lead', (await eventCounts()).generate_lead === 1);
+    ok('Valid submission generates one lead and Ads conversion',
+      (await eventCounts()).generate_lead === 1 && await googleAdsConversionCount() === 1);
     const href = await form.getByRole('link', { name: 'Continue to WhatsApp' }).getAttribute('href');
     // Prevent external navigation while exercising real click bubbling.
     await form.evaluate(() => document.addEventListener('click', (event) => {
@@ -162,15 +185,18 @@ if (withBrowser) {
     await form.getByRole('link', { name: 'Continue to WhatsApp' }).click();
     await form.locator('a[href^="tel:"]').first().click();
     const counts = await eventCounts();
-    ok('WhatsApp and phone clicks each emit one event', counts.whatsapp_click === 1 && counts.phone_call_click === 1 && counts.generate_lead === 1);
+    ok('WhatsApp and phone clicks each emit one event without duplicating Ads conversion',
+      counts.whatsapp_click === 1 && counts.phone_call_click === 1 && counts.generate_lead === 1 && await googleAdsConversionCount() === 1);
     ok('Form prepares contextual WhatsApp message', href.includes('wa.me/917995150298') && decodeURIComponent(href).includes('Pigeon Safety Nets') && decodeURIComponent(href).includes('Gachibowli'));
     await form.close();
     const gallery = await browser.newPage();
+    await stubGoogleTags(gallery);
     await gallery.goto(`${baseUrl}/gallery/`, { waitUntil: 'networkidle' });
     await gallery.getByRole('button', { name: 'Sports Nets', exact: true }).click();
     ok('Gallery category filter works', await gallery.locator('figure').count() === 4);
     await gallery.close();
     const legacy = await browser.newPage();
+    await stubGoogleTags(legacy);
     await legacy.goto(`${baseUrl}/services/pigeon-safety-nets/`, { waitUntil: 'networkidle' });
     ok('Legacy service fallback reaches root URL', new URL(legacy.url()).pathname === '/pigeon-safety-nets/');
     await legacy.close();
