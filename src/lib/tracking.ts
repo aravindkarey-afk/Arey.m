@@ -1,7 +1,7 @@
 type ContactEvent = 'whatsapp_click' | 'phone_call_click' | 'generate_lead';
 type GoogleTag = (command: string, ...args: unknown[]) => void;
 
-const GOOGLE_ADS_LEAD_CONVERSION = 'AW-18553147578/OvEuCMTqpb0dELqh6o5F';
+const GOOGLE_ADS_LEAD_CONVERSION = 'AW-18553147578/-ckQCJePp70dELqh6o5F';
 
 declare global {
   interface Window {
@@ -48,7 +48,7 @@ export function trackContactClicks() {
     const href = link.getAttribute('href') || '';
     if (/^tel:/i.test(href)) {
       trackEvent('phone_call_click');
-      // Call gtag_report_conversion for Click to call (3) conversion page
+      // Call gtag_report_conversion for Click to call (4) conversion page
       gtag_report_conversion(href);
     } else if (/^https?:\\/\\/(?:www\\.)?(?:wa\\.me|api\\.whatsapp\\.com|web\\.whatsapp\\.com)(?:[/:?#]|$)/i.test(href)) {
       trackEvent('whatsapp_click');
