@@ -1,7 +1,7 @@
 type ContactEvent = 'whatsapp_click' | 'phone_call_click' | 'generate_lead';
 type GoogleTag = (command: string, ...args: unknown[]) => void;
 
-const GOOGLE_ADS_CONTACT_CONVERSION = 'AW-18553147578/do7kCKGjzbkdELqh6o5F';
+const GOOGLE_ADS_LEAD_CONVERSION = 'AW-18553147578/W8CcCML1x7wdELqh6o5F';
 
 declare global {
   interface Window {
@@ -15,9 +15,11 @@ export function trackEvent(event: ContactEvent) {
   window.dataLayer.push({ event });
 }
 
-export function trackGoogleAdsContactConversion() {
+export function trackGoogleAdsLeadConversion() {
   window.gtag?.('event', 'conversion', {
-    send_to: GOOGLE_ADS_CONTACT_CONVERSION,
+    send_to: GOOGLE_ADS_LEAD_CONVERSION,
+    value: 1.0,
+    currency: 'INR',
   });
 }
 
