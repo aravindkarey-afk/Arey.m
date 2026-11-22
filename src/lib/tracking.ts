@@ -34,7 +34,11 @@ export function gtag_report_conversion(url: string | undefined) {
 
 export function trackGoogleAdsLeadConversion() {
   // Legacy wrapper for existing calls
-  gtag_report_conversion(undefined);
+  gtag('event', 'conversion', {
+    send_to: 'AW-18553147578/LbubCKSNp70dELqh6o5F',
+    value: 1.0,
+    currency: 'INR',
+  });
 }
 
 // Delegate so links on every page (including nested icons and dynamically rendered
@@ -53,5 +57,14 @@ export function trackContactClicks() {
     } else if (/^https?:\\/\\/(?:www\\.)?(?:wa\\.me|api\\.whatsapp\\.com|web\\.whatsapp\\.com)(?:[/:?#]|$)/i.test(href)) {
       trackEvent('whatsapp_click');
     }
+  });
+}
+
+// Specific handler for Contact (2) conversion page (non-click events)
+export function trackContactConversion() {
+  window.gtag?.('event', 'conversion', {
+    send_to: 'AW-18553147578/LbubCKSNp70dELqh6o5F',
+    value: 1.0,
+    currency: 'INR',
   });
 }
