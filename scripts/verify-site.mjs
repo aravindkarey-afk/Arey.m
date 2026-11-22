@@ -164,7 +164,9 @@ if (withBrowser) {
     const googleAdsConversionCount = () => form.evaluate(() => window.dataLayer.filter((item) =>
       item && typeof item === 'object' && 'length' in item &&
       item[0] === 'event' && item[1] === 'conversion' &&
-      item[2]?.send_to === 'AW-18553147578/do7kCKGjzbkdELqh6o5F'
+      item[2]?.send_to === 'AW-18553147578/W8CcCML1x7wdELqh6o5F' &&
+      item[2]?.value === 1.0 &&
+      item[2]?.currency === 'INR'
     ).length);
     ok('No contact events or Ads conversions on page load',
       Object.values(await eventCounts()).every((count) => count === 0) && await googleAdsConversionCount() === 0);
